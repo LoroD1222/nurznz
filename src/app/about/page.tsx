@@ -139,6 +139,30 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <section className="px-5 py-[42px] sm:px-8 lg:px-0">
+        <div className="mx-auto max-w-[1136px] text-center">
+          <h2 className="text-[13px] font-black uppercase leading-[18px] tracking-[4px] text-teal-deep">
+            What agencies are we working with?
+          </h2>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-9">
+            {[
+              ["/assets/figma/partner-logo-wish.jpg", "WISH partner logo"],
+              ["/assets/figma/partner-logo-breakthrough.png", "Breakthrough ACTION partner logo"],
+              ["/assets/figma/partner-logo-unicef.png", "UNICEF partner logo"],
+              ["/assets/figma/partner-logo-dtree.png", "D-tree partner logo"],
+            ].map(([src, alt]) => (
+              <Image
+                key={src}
+                src={src}
+                alt={alt}
+                width={138}
+                height={58}
+                className="max-h-[58px] w-auto object-contain"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="bg-cream px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px]">
           <SectionLabel>Past trip proof</SectionLabel>

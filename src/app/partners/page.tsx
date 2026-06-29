@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 };
 
 const partnerFeatures = [
-  ["white-label", "White-label ready", "Descriptions, route notes and guest flow can sit behind your own sales brand."],
-  ["groups", "Private groups", "Custom group requests, shared departures and adjusted pickup windows are supported."],
+  ["white-label", "White-Label Delivery", "Descriptions, route notes and guest flow can sit behind your own sales brand."],
+  ["groups", "Ready-to-Sell Activity Catalogue", "Custom group requests, shared departures and adjusted pickup windows are supported."],
   ["rates", "STO partner rates", "Net rates and seasonal terms are available for active travel sellers."],
 ];
 
@@ -86,7 +86,7 @@ export default function PartnersPage() {
               </article>
             ))}
           </div>
-          <SectionLabel>Partner Options</SectionLabel>
+          <SectionLabel>Partnership options</SectionLabel>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {partnerFeatures.map(([id, heading, body]) => (
               <article key={id} id={id} className="rounded-[8px] border border-[#e3d7c6] bg-white/75 p-6">
@@ -169,7 +169,7 @@ export default function PartnersPage() {
               requests.
             </p>
           </div>
-          <ContactForm title="Partner enquiry" />
+          <ContactForm variant="partner" />
         </div>
       </section>
       </InnerPageShell>
