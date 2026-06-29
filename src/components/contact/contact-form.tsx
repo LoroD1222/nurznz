@@ -36,7 +36,7 @@ const formConfigs = {
       message: "Message",
     },
     placeholders: {
-      primary: "Full name",
+      primary: "Lead guest or requester name",
       secondary: "Best contact details",
       tertiary: "Snorkelling, Stone Town, Spice Farm day",
       quaternary: "Preferred date or month",

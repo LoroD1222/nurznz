@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const highlights = [
   ["Pickup", "Hotel or meeting point"],
   ["Duration", "Half-day slots"],
-  ["Level", "Suitable for beginners"],
+  ["Swim level", "Suitable for beginners"],
   ["Guide", "Local boat, towels, gear"],
 ];
 
