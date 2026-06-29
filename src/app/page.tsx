@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HomePage } from "@/components/home/home-page";
+import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const pageTitle = "NUR Zanzibar | B2B Zanzibar Activity Provider";
@@ -93,19 +94,35 @@ const structuredData = [
     description:
       "Half-day and full-day island experiences operated for hotels, DMCs, agents and travel partners who need dependable local activity supply.",
   },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Can partners sell NUR activities under their own brand?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Hotels, DMCs and travel sellers can request white-label descriptions, pickup notes and operational support for guest-facing sales.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you support private groups and custom timings?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Shared departures, private groups and adjusted pickup windows can be arranged based on availability and route requirements.",
+        },
+      },
+    ],
+  },
 ];
 
 export default function Page() {
   return (
     <>
       <HomePage />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLd data={structuredData} />
     </>
   );
 }

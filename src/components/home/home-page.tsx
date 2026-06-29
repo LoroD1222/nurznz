@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ActivityRail } from "@/components/home/activity-rail";
+import { FaqAccordion } from "@/components/home/faq-accordion";
 
-const navItems = ["Home", "Trips", "Partners", "About", "Contact"];
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Trips", href: "/experience" },
+  { label: "Partners", href: "/partners" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 const stats = [
   { value: "3-4h", label: "half-day activities" },
@@ -13,18 +21,34 @@ const stats = [
 
 const activities = [
   {
+    title: "Mnemba snorkelling",
+    category: "Marine",
+    duration: "3-4h",
+    durationClass: "bg-coral text-white",
     image: "/assets/figma/activity-fish.jpg",
     alt: "Tropical fish in clear water during a Mnemba snorkelling activity",
   },
   {
+    title: "Jozani forest walk",
+    category: "Nature",
+    duration: "4h",
+    durationClass: "bg-[#153b3a] text-white",
     image: "/assets/figma/activity-monkey.jpg",
     alt: "Monkey in a Zanzibar forest visited during nature routes",
   },
   {
+    title: "Blue lagoon day",
+    category: "Coast",
+    duration: "1 day",
+    durationClass: "bg-[#fffaf3] text-teal-deep",
     image: "/assets/figma/activity-lagoon.jpg",
     alt: "Zanzibar coastal lodge and turquoise water on a marine activity route",
   },
   {
+    title: "Safari extension",
+    category: "Wildlife",
+    duration: "Full day",
+    durationClass: "bg-coral text-teal-deep",
     image: "/assets/figma/activity-elephant.jpg",
     alt: "Elephants in a green safari landscape connected to activity planning",
   },
@@ -89,51 +113,60 @@ const partnerLogos = [
     width: 124,
     height: 64,
   },
-  {
-    src: "/assets/figma/partner-logo-unicef.png",
-    alt: "UNICEF partner logo",
-    width: 154,
-    height: 45,
-  },
-  {
-    src: "/assets/figma/partner-logo-dtree.png",
-    alt: "D-tree partner logo",
-    width: 124,
-    height: 64,
-  },
-  {
-    src: "/assets/figma/partner-logo-breakthrough.png",
-    alt: "Breakthrough ACTION partner logo",
-    width: 134,
-    height: 44,
-  },
 ];
 
-const reviews = Array.from({ length: 3 }, (_, index) => ({
-  id: index,
-  quote:
-    "“(Testimonial) lorem ipsum dolor sit amet, consec adipiscing sed do eiusmod.”",
-  author: "Full name",
-  details: "Company name / details.",
-}));
+const reviews = [
+  {
+    id: 0,
+    quote:
+      "NUR made our Zanzibar short trips easier to sell because timings, pickup notes and guest support were clear from the start.",
+    author: "Amina Salim",
+    details: "Hotel experiences desk",
+  },
+  {
+    id: 1,
+    quote:
+      "The team understands how agents work. Rates, route notes and operational answers arrive quickly.",
+    author: "Jonas Weber",
+    details: "DMC product manager",
+  },
+  {
+    id: 2,
+    quote:
+      "Private group requests are handled with practical local detail, from pickup windows to guest-ready confirmations.",
+    author: "Mariam Said",
+    details: "Private group planner",
+  },
+];
 
 const footerColumns = [
   {
     heading: "Explore",
-    links: ["Home", "Trips", "Partners", "About", "Contact"],
+    links: [
+      { label: "Home", href: "/" },
+      { label: "Trips", href: "/experience" },
+      { label: "Partners", href: "/partners" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
   },
   {
     heading: "Activities",
     links: [
-      "Mnemba snorkelling",
-      "Stone Town walk",
-      "Spice farm visit",
-      "Safari Blue day",
+      { label: "Mnemba snorkelling", href: "/experience#mnemba" },
+      { label: "Stone Town walk", href: "/experience#stone-town" },
+      { label: "Spice farm visit", href: "/experience#spice-farm" },
+      { label: "Safari Blue day", href: "/experience#safari-blue" },
     ],
   },
   {
     heading: "Partner supply",
-    links: ["Partner rates", "STO rates", "White-label options", "Private groups"],
+    links: [
+      { label: "Partner rates", href: "/partners#rates" },
+      { label: "STO rates", href: "/partners#rates" },
+      { label: "White-label options", href: "/partners#white-label" },
+      { label: "Private groups", href: "/partners#groups" },
+    ],
   },
 ];
 
@@ -152,7 +185,7 @@ function Logo() {
   );
 }
 
-function SiteHeader() {
+export function SiteHeader() {
   return (
     <header className="relative z-20 border-b border-[rgba(217,217,217,0.53)] bg-white">
       <div className="mx-auto flex min-h-[76px] w-full max-w-[1234px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-0">
@@ -165,21 +198,21 @@ function SiteHeader() {
           >
             {navItems.map((item) => (
               <Link
-                key={item}
-                href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
-                className={item === "Home" ? "font-bold text-coral" : ""}
+                key={item.label}
+                href={item.href}
+                className={item.label === "Home" ? "font-bold text-coral" : ""}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </nav>
         </div>
         <div className="hidden items-center gap-[10px] sm:flex sm:gap-[11px]">
           <Button asChild variant="secondary" size="compact">
-            <Link href="#trips">Open Trips</Link>
+            <Link href="/experience">Open Trips</Link>
           </Button>
           <Button asChild size="wide">
-            <Link href="#partners">Partner rates</Link>
+            <Link href="/partners#rates">Partner rates</Link>
           </Button>
         </div>
       </div>
@@ -189,11 +222,11 @@ function SiteHeader() {
       >
         {navItems.map((item) => (
           <Link
-            key={item}
-            href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
-            className={item === "Home" ? "font-bold text-coral" : "shrink-0"}
+            key={item.label}
+            href={item.href}
+            className={item.label === "Home" ? "font-bold text-coral" : "shrink-0"}
           >
-            {item}
+            {item.label}
           </Link>
         ))}
       </nav>
@@ -232,10 +265,10 @@ function HeroSection() {
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-[17px]">
               <Button asChild size="wide">
-                <Link href="#partners">Partner rates</Link>
+                <Link href="/partners#rates">Partner rates</Link>
               </Button>
               <Button asChild variant="secondary-dark" size="default">
-                <Link href="#trips">Open Trips</Link>
+                <Link href="/experience">Open Trips</Link>
               </Button>
             </div>
           </div>
@@ -270,16 +303,8 @@ function HeroSection() {
   );
 }
 
-function SectionLabel({ children, dark = false }: { children: string; dark?: boolean }) {
-  return (
-    <p
-      className={`text-[14px] font-black uppercase leading-[18px] tracking-[4px] ${
-        dark ? "text-coral-bright" : "text-coral-bright"
-      }`}
-    >
-      {children}
-    </p>
-  );
+export function SectionLabel({ children }: { children: string; dark?: boolean }) {
+  return <p className="type-overline">{children}</p>;
 }
 
 function ActivityCatalogue() {
@@ -297,52 +322,7 @@ function ActivityCatalogue() {
         >
           Exciting Zanzibar Activities We Offer
         </h2>
-        <div className="mt-[30px] grid gap-[17px] md:grid-cols-2 xl:grid-cols-4">
-          {activities.map((activity, index) => (
-            <article
-              key={activity.image}
-              className="relative rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-[9px] shadow-[0_2px_26px_0_rgba(0,0,0,0.04)]"
-            >
-              <div className="relative h-[162px] overflow-hidden rounded-[7px]">
-                <Image
-                  src={activity.image}
-                  alt={activity.alt}
-                  fill
-                  sizes="(min-width: 1280px) 289px, (min-width: 768px) 45vw, 90vw"
-                  className="object-cover"
-                />
-                <span
-                  className={`absolute right-3 top-[9px] flex h-7 min-w-[62px] items-center justify-center rounded-full bg-coral px-3 text-[12px] font-bold leading-4 ${
-                    index === 3 ? "text-teal-deep" : "text-white"
-                  }`}
-                >
-                  3-4h
-                </span>
-              </div>
-              <p className="mt-2 text-[15px] font-bold uppercase leading-[29px] tracking-[3px] text-coral">
-                Marine
-              </p>
-              <h3 className="text-[25px] font-extrabold leading-[29px] text-teal-deep">
-                Mnemba snorkelling
-              </h3>
-            </article>
-          ))}
-        </div>
-        <div className="mt-[30px] flex items-end justify-between gap-8">
-          <p className="max-w-[688px] text-[17px] leading-[26px] text-[rgba(12,51,49,0.76)]">
-            The Home page should show breadth quickly. This rail can scroll
-            horizontally and expose more than four products without making the
-            section feel heavy.
-          </p>
-          <div className="hidden gap-[15px] xl:flex" aria-hidden="true">
-            <span className="grid size-[42px] place-items-center rounded-full bg-coral text-white">
-              <ArrowLeftIcon />
-            </span>
-            <span className="grid size-[42px] place-items-center rounded-full bg-coral text-white">
-              <ArrowRightIcon />
-            </span>
-          </div>
-        </div>
+        <ActivityRail activities={activities} />
       </div>
     </section>
   );
@@ -364,7 +344,7 @@ function PartnerSection() {
           White-label Zanzibar activities
           <br className="hidden sm:block" /> for travel partners
         </h2>
-        <div className="mt-[62px] grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mx-auto mt-[62px] grid max-w-[706px] gap-x-[26px] gap-y-[56px] md:grid-cols-2">
           {partnerCards.map((card) => (
             <article
               key={card.title}
@@ -411,34 +391,6 @@ function CheckIcon() {
         d="M5.6 9.6 8.2 12.1 13.7 6.8"
         stroke="#153B3A"
         strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ArrowLeftIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-      <path
-        d="M11 4 6 9l5 5M6.8 9H14"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ArrowRightIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-      <path
-        d="m7 4 5 5-5 5M11.2 9H4"
-        stroke="currentColor"
-        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -510,10 +462,10 @@ function SplitCta({
           )}
           <div className="mt-[30px] flex flex-wrap gap-[17px]">
             <Button asChild size="wide">
-              <Link href="#partners">Partner rates</Link>
+              <Link href="/partners#rates">Partner rates</Link>
             </Button>
             <Button asChild variant="secondary-dark" size="default">
-              <Link href="#trips">Open Trips</Link>
+              <Link href="/experience">Open Trips</Link>
             </Button>
           </div>
         </div>
@@ -545,8 +497,8 @@ function LogoStrip() {
           What agencies are we working with?
         </h2>
         <div className="relative mt-8 overflow-hidden">
-          <div className="flex items-center gap-[30px] overflow-hidden opacity-95 sm:gap-[34px]">
-            {partnerLogos.map((logo, index) => (
+          <div className="flex animate-[logo-roll_22s_linear_infinite] items-center gap-[46px] opacity-95">
+            {[...partnerLogos, ...partnerLogos].map((logo, index) => (
               <Image
                 key={`${logo.alt}-${index}`}
                 src={logo.src}
@@ -628,70 +580,45 @@ function ReviewsAndFaq() {
   );
 }
 
-function ChevronIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <path
-        d="m4.2 6.2 3.8 3.7 3.8-3.7"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function FaqSection() {
   const faqs = [
     {
-      question: "Question can be added here",
+      question: "Can partners sell NUR activities under their own brand?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      open: true,
+        "Yes. Hotels, DMCs and travel sellers can request white-label descriptions, pickup notes and operational support for guest-facing sales.",
     },
-    { question: "Question can be added here" },
-    { question: "Question can be added here" },
-    { question: "Question can be added here" },
+    {
+      question: "Do you support private groups and custom timings?",
+      answer:
+        "Yes. Shared departures, private groups and adjusted pickup windows can be arranged based on availability and route requirements.",
+    },
+    {
+      question: "How do partner rates work?",
+      answer:
+        "Send an enquiry with your agency details, expected volume and activity interests. NUR will confirm STO or net rates for suitable products.",
+    },
+    {
+      question: "Which Zanzibar activity types are available?",
+      answer:
+        "The catalogue covers marine, culture, nature and short safari-style extensions, including half-day and full-day options.",
+    },
   ];
 
   return (
     <div className="mx-auto mt-[76px] max-w-[846px] text-center">
-      <SectionLabel>Overline Text</SectionLabel>
+      <SectionLabel>Partner Questions</SectionLabel>
       <h2 className="mt-4 text-[34px] font-extrabold leading-[44px] text-[#2e3138] sm:text-[44px] sm:leading-[64px]">
         Frequently asked questions
       </h2>
       <p className="mx-auto mt-1 text-[20px] leading-[30px] text-[#5e6573]">
-        A short and simple subheading can be added here
+        Clear answers for hotels, DMCs, agents and travel partners.
       </p>
-      <div className="mt-9 space-y-4 text-left">
-        {faqs.map((faq, index) => (
-          <details
-            key={index}
-            open={faq.open}
-            className="group rounded-[10px] border border-[#c9d2d9] bg-white p-6"
-          >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[16px] font-medium leading-6 text-[#2e3138] [&::-webkit-details-marker]:hidden">
-              <span>{faq.question}</span>
-              <span className="grid size-8 shrink-0 place-items-center rounded-[4px] bg-coral text-white">
-                <span className="transition-transform group-open:rotate-180">
-                  <ChevronIcon />
-                </span>
-              </span>
-            </summary>
-            {faq.answer ? (
-              <p className="mt-2 text-[16px] leading-6 text-[#5e6573]">
-                {faq.answer}
-              </p>
-            ) : null}
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </div>
   );
 }
 
-function SiteFooter() {
+export function SiteFooter() {
   return (
     <footer
       id="contact"
@@ -716,12 +643,12 @@ function SiteFooter() {
                 </h2>
                 <ul className="mt-7 space-y-[10px]">
                   {column.links.map((link) => (
-                    <li key={link}>
+                    <li key={link.label}>
                       <Link
-                        href={link === "Home" ? "/" : `#${link.toLowerCase().replaceAll(" ", "-")}`}
+                        href={link.href}
                         className="text-[15px] font-medium leading-[22px] text-[rgba(17,62,60,0.49)]"
                       >
-                        {link}
+                        {link.label}
                       </Link>
                     </li>
                   ))}
@@ -738,7 +665,7 @@ function SiteFooter() {
               options.
             </p>
             <Button asChild variant="footer" className="mt-[18px]">
-              <Link href="#partners">Send enquiry</Link>
+              <Link href="/contact">Send enquiry</Link>
             </Button>
           </div>
         </div>
