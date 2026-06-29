@@ -169,7 +169,7 @@ export default function PartnersPage() {
               requests.
             </p>
           </div>
-          <ContactForm title="Partner enquiry" />
+          <ContactForm variant="partner" />
         </div>
       </section>
       </InnerPageShell>

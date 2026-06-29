@@ -5,22 +5,76 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 type FormState = {
-  name: string;
-  email: string;
-  company: string;
-  interest: string;
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  quaternary: string;
+  details: string;
   message: string;
 };
 
 const initialState: FormState = {
-  name: "",
-  email: "",
-  company: "",
-  interest: "Partner rates",
+  primary: "",
+  secondary: "",
+  tertiary: "",
+  quaternary: "",
+  details: "",
   message: "",
 };
 
-export function ContactForm({ title = "Activity enquiry" }: { title?: string }) {
+const formConfigs = {
+  activity: {
+    title: "Activity enquiry",
+    intro: "Send the details of the possible contact from hotels for production.",
+    submit: "Send trip enquiry",
+    fields: {
+      primary: "Your name",
+      secondary: "Email or WhatsApp",
+      tertiary: "Trip type",
+      quaternary: "Date or travel window",
+      details: "Guests and pickup area",
+      message: "Message",
+    },
+    placeholders: {
+      primary: "Full name",
+      secondary: "Best contact details",
+      tertiary: "Snorkelling, Stone Town, Spice Farm day",
+      quaternary: "Preferred date or month",
+      details: "2 adults, Nungwi hotel pickup, private or shared",
+      message: "Tell us what you want to do, group size, timing needs and any special requests.",
+    },
+    success: "Enquiry received. The local team will reply with availability and next steps.",
+  },
+  partner: {
+    title: "Partner enquiry",
+    intro: "Send the request of the partner sales team feeds for production.",
+    submit: "Send partner enquiry",
+    fields: {
+      primary: "Company name",
+      secondary: "Contact person",
+      tertiary: "Partner type",
+      quaternary: "Expected monthly guests",
+      details: "Activity interests",
+      message: "Partner message",
+    },
+    placeholders: {
+      primary: "Hotel / DMC / agency / STO / concierge",
+      secondary: "Name, role and email",
+      tertiary: "Hotel desk, agency, STO, concierge",
+      quaternary: "Approximate activity volume",
+      details: "Stone Town, spice farm, sandbank, custom groups, white-label",
+      message: "Tell us about guest profile, white-label needs, booking lead time and allocation rules.",
+    },
+    success: "Partner enquiry received. The team will reply with availability and rate next steps.",
+  },
+};
+
+export function ContactForm({
+  variant = "activity",
+}: {
+  variant?: keyof typeof formConfigs;
+}) {
+  const config = formConfigs[variant];
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -34,11 +88,13 @@ export function ContactForm({ title = "Activity enquiry" }: { title?: string }) 
   function validate(nextValues: FormState) {
     const nextErrors: Partial<FormState> = {};
 
-    if (!nextValues.name.trim()) nextErrors.name = "Enter your name.";
-    if (!nextValues.company.trim()) nextErrors.company = "Enter your company.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nextValues.email)) {
-      nextErrors.email = "Enter a valid email address.";
+    if (!nextValues.primary.trim()) nextErrors.primary = "This field is required.";
+    if (!nextValues.secondary.trim()) {
+      nextErrors.secondary = "Add a contact detail.";
     }
+    if (!nextValues.tertiary.trim()) nextErrors.tertiary = "This field is required.";
+    if (!nextValues.quaternary.trim()) nextErrors.quaternary = "This field is required.";
+    if (!nextValues.details.trim()) nextErrors.details = "This field is required.";
     if (nextValues.message.trim().length < 12) {
       nextErrors.message = "Tell us a little more about the request.";
     }
@@ -51,10 +107,11 @@ export function ContactForm({ title = "Activity enquiry" }: { title?: string }) 
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const nextValues = {
-      name: String(formData.get("name") ?? ""),
-      email: String(formData.get("email") ?? ""),
-      company: String(formData.get("company") ?? ""),
-      interest: String(formData.get("interest") ?? "Partner rates"),
+      primary: String(formData.get("primary") ?? ""),
+      secondary: String(formData.get("secondary") ?? ""),
+      tertiary: String(formData.get("tertiary") ?? ""),
+      quaternary: String(formData.get("quaternary") ?? ""),
+      details: String(formData.get("details") ?? ""),
       message: String(formData.get("message") ?? ""),
     };
 
@@ -67,67 +124,76 @@ export function ContactForm({ title = "Activity enquiry" }: { title?: string }) 
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-[12px] border border-[rgba(17,62,60,0.12)] bg-white p-6 shadow-[0_12px_36px_rgba(15,31,28,0.06)]"
+      className="rounded-[8px] border border-[rgba(17,62,60,0.12)] bg-white p-6 shadow-[0_18px_45px_rgba(15,31,28,0.1)]"
       noValidate
     >
       <div className="mb-5">
-        <h2 className="text-[22px] font-extrabold leading-[28px] text-teal">
-          {title}
+        <h2 className="text-[22px] font-extrabold leading-[28px] text-teal-deep">
+          {config.title}
         </h2>
         <p className="mt-1 text-[14px] leading-5 text-muted-copy">
-          Share the request details so the local team can confirm fit and next
-          steps.
+          {config.intro}
         </p>
       </div>
-      <div className="grid gap-5 md:grid-cols-2">
-        <Field label="Name" error={errors.name}>
+      <div className="grid gap-4 md:grid-cols-2">
+        <Field label={config.fields.primary} error={errors.primary}>
           <input
-            name="name"
+            name="primary"
             required
-            value={values.name}
-            onChange={(event) => update("name", event.target.value)}
-            aria-invalid={Boolean(errors.name)}
-            className="h-12 w-full rounded-[6px] border border-[#d9d2c8] px-4 text-[16px] outline-none focus:border-coral"
+            value={values.primary}
+            onChange={(event) => update("primary", event.target.value)}
+            aria-invalid={Boolean(errors.primary)}
+            placeholder={config.placeholders.primary}
+            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
             autoComplete="name"
           />
         </Field>
-        <Field label="Email" error={errors.email}>
+        <Field label={config.fields.secondary} error={errors.secondary}>
           <input
-            name="email"
-            type="email"
+            name="secondary"
             required
-            value={values.email}
-            onChange={(event) => update("email", event.target.value)}
-            aria-invalid={Boolean(errors.email)}
-            className="h-12 w-full rounded-[6px] border border-[#d9d2c8] px-4 text-[16px] outline-none focus:border-coral"
+            value={values.secondary}
+            onChange={(event) => update("secondary", event.target.value)}
+            aria-invalid={Boolean(errors.secondary)}
+            placeholder={config.placeholders.secondary}
+            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
             autoComplete="email"
           />
         </Field>
-        <Field label="Company" error={errors.company}>
+        <Field label={config.fields.tertiary} error={errors.tertiary}>
           <input
-            name="company"
+            name="tertiary"
             required
-            value={values.company}
-            onChange={(event) => update("company", event.target.value)}
-            aria-invalid={Boolean(errors.company)}
-            className="h-12 w-full rounded-[6px] border border-[#d9d2c8] px-4 text-[16px] outline-none focus:border-coral"
-            autoComplete="organization"
+            value={values.tertiary}
+            onChange={(event) => update("tertiary", event.target.value)}
+            aria-invalid={Boolean(errors.tertiary)}
+            placeholder={config.placeholders.tertiary}
+            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
           />
         </Field>
-        <Field label="Interest">
-          <select
-            name="interest"
-            value={values.interest}
-            onChange={(event) => update("interest", event.target.value)}
-            className="h-12 w-full rounded-[6px] border border-[#d9d2c8] bg-white px-4 text-[16px] outline-none focus:border-coral"
-          >
-            <option>Partner rates</option>
-            <option>Private group</option>
-            <option>White-label supply</option>
-            <option>Guest activity enquiry</option>
-          </select>
+        <Field label={config.fields.quaternary} error={errors.quaternary}>
+          <input
+            name="quaternary"
+            required
+            value={values.quaternary}
+            onChange={(event) => update("quaternary", event.target.value)}
+            aria-invalid={Boolean(errors.quaternary)}
+            placeholder={config.placeholders.quaternary}
+            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+          />
         </Field>
       </div>
+      <Field label={config.fields.details} error={errors.details} className="mt-4">
+        <input
+          name="details"
+          required
+          value={values.details}
+          onChange={(event) => update("details", event.target.value)}
+          aria-invalid={Boolean(errors.details)}
+          placeholder={config.placeholders.details}
+          className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+        />
+      </Field>
       <Field label="Message" error={errors.message} className="mt-5">
         <textarea
           name="message"
@@ -136,17 +202,17 @@ export function ContactForm({ title = "Activity enquiry" }: { title?: string }) 
           value={values.message}
           onChange={(event) => update("message", event.target.value)}
           aria-invalid={Boolean(errors.message)}
-          className="min-h-[138px] w-full resize-y rounded-[6px] border border-[#d9d2c8] px-4 py-3 text-[16px] leading-6 outline-none focus:border-coral"
+          placeholder={config.placeholders.message}
+          className="min-h-[118px] w-full resize-y rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 py-3 text-[14px] leading-6 outline-none focus:border-coral"
         />
       </Field>
-      <div className="mt-6 flex flex-wrap items-center gap-4">
+      <div className="mt-5 flex flex-wrap items-center gap-4">
         <Button type="submit" size="wide">
-          Send enquiry
+          {config.submit}
         </Button>
         {submitted ? (
           <p className="text-[15px] font-medium leading-6 text-teal">
-            Enquiry received. The local team will reply with availability and
-            next steps.
+            {config.success}
           </p>
         ) : null}
       </div>
@@ -167,7 +233,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-2 block text-[13px] font-bold uppercase tracking-[2px] text-teal">
+      <span className="mb-2 block text-[12px] font-bold text-teal">
         {label}
       </span>
       {children}
