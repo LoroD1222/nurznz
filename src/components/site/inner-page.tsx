@@ -3,6 +3,7 @@ import Link from "next/link";
 import type React from "react";
 import { Button } from "@/components/ui/button";
 import { SectionLabel, SiteFooter, SiteHeader } from "@/components/home/home-page";
+import { cn } from "@/lib/utils";
 
 export type PageCard = {
   id?: string;
@@ -21,6 +22,12 @@ export function InnerPageShell({
   imageAlt,
   aside,
   proofs,
+  proofsBeforeDescription = false,
+  heroClassName,
+  imageClassName,
+  overlayClassName = "bg-[linear-gradient(90deg,rgba(17,62,60,0.72)_0%,rgba(17,62,60,0.46)_48%,rgba(17,62,60,0.16)_100%)]",
+  contentClassName,
+  descriptionClassName,
   children,
 }: {
   overline: string;
@@ -30,42 +37,66 @@ export function InnerPageShell({
   imageAlt: string;
   aside?: React.ReactNode;
   proofs?: string[];
+  proofsBeforeDescription?: boolean;
+  heroClassName?: string;
+  imageClassName?: string;
+  overlayClassName?: string;
+  contentClassName?: string;
+  descriptionClassName?: string;
   children: React.ReactNode;
 }) {
+  const proofList = proofs?.length ? (
+    <div className="mt-[30px] flex max-w-[720px] flex-wrap gap-3">
+      {proofs.map((proof) => (
+        <span
+          key={proof}
+          className="rounded-full border border-white/20 bg-white/5 px-5 py-[9px] text-[13px] font-semibold leading-[18px] text-white shadow-[0_8px_9px_rgba(0,0,0,0.06)] backdrop-blur"
+        >
+          {proof}
+        </span>
+      ))}
+    </div>
+  ) : null;
+
   return (
     <main className="bg-white">
       <SiteHeader />
-      <section className="relative overflow-hidden bg-teal px-5 py-16 sm:px-8 lg:px-0">
+      <section
+        className={cn(
+          "relative overflow-hidden bg-teal px-5 py-16 sm:px-8 lg:px-0",
+          heroClassName,
+        )}
+      >
         <Image
           src={image}
           alt={imageAlt}
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className={cn("object-cover", imageClassName)}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.72)_0%,rgba(17,62,60,0.46)_48%,rgba(17,62,60,0.16)_100%)]" />
-        <div className="relative mx-auto grid max-w-[1136px] gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
+        <div className={cn("absolute inset-0", overlayClassName)} />
+        <div
+          className={cn(
+            "relative mx-auto grid max-w-[1136px] gap-8 lg:grid-cols-[1fr_360px] lg:items-center",
+            contentClassName,
+          )}
+        >
           <div>
             <SectionLabel>{overline}</SectionLabel>
             <h1 className="type-display mt-5 max-w-[760px] text-white">
               {title}
             </h1>
-            <p className="mt-5 max-w-[680px] text-[18px] font-medium leading-8 text-white/80 sm:text-[20px]">
+            {proofsBeforeDescription ? proofList : null}
+            <p
+              className={cn(
+                "mt-5 max-w-[680px] text-[18px] font-medium leading-8 text-white/80 sm:text-[20px]",
+                descriptionClassName,
+              )}
+            >
               {description}
             </p>
-            {proofs?.length ? (
-              <div className="mt-[30px] flex max-w-[720px] flex-wrap gap-3">
-                {proofs.map((proof) => (
-                  <span
-                    key={proof}
-                    className="rounded-full border border-white/20 bg-white/5 px-5 py-[9px] text-[13px] font-semibold leading-[18px] text-white shadow-[0_8px_9px_rgba(0,0,0,0.06)] backdrop-blur"
-                  >
-                    {proof}
-                  </span>
-                ))}
-              </div>
-            ) : null}
+            {proofsBeforeDescription ? null : proofList}
           </div>
           {aside ? <div className="relative hidden lg:block">{aside}</div> : null}
         </div>
@@ -113,16 +144,20 @@ export function CtaBand({
   title,
   body,
   primaryHref = "/contact",
+  primaryLabel = "Send enquiry",
   image = "/assets/figma/cta-boat.png",
   imageAlt = "Guests and a local guide on a Zanzibar boat activity",
+  imageClassName,
   reverse = false,
   label = "Activity Catalogue",
 }: {
   title: string;
   body: string;
   primaryHref?: string;
+  primaryLabel?: string;
   image?: string;
   imageAlt?: string;
+  imageClassName?: string;
   reverse?: boolean;
   label?: string;
 }) {
@@ -143,7 +178,7 @@ export function CtaBand({
         fill
         sizes="(min-width: 1024px) 660px, 100vw"
         loading="eager"
-        className="object-cover"
+        className={cn("object-cover", imageClassName)}
       />
     </div>
   );
@@ -176,7 +211,7 @@ export function CtaBand({
           </p>
           <div className="mt-[30px] flex flex-wrap gap-[17px]">
             <Button asChild size="wide">
-              <Link href={primaryHref}>Send enquiry</Link>
+              <Link href={primaryHref}>{primaryLabel}</Link>
             </Button>
             <Button asChild variant="secondary-dark">
               <Link href="/experience">Open Trips</Link>

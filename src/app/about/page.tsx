@@ -81,14 +81,20 @@ export default function AboutPage() {
       <InnerPageShell
         overline="About NUR Zanzibar"
         title="Local Zanzibar operators behind partner-ready activities"
-        description="For direct travellers, hotels, DMCs and agencies, NUR supports short Zanzibar activity supply with clear coordination and guest-ready operations."
-        image="/assets/figma/about-hero-bg.png"
+        description="NUR is a Zanzibar-based activity provider helping hotels, DMCs, agents and travel partners sell reliable short activities with clear coordination and guest-ready operations."
+        image="/assets/figma/about-hero-bg-exact.png"
         imageAlt="Local Zanzibar guide operation with coastal activity background"
+        heroClassName="py-[111px] lg:min-h-[550px]"
+        imageClassName="object-[center_46%]"
+        overlayClassName="bg-[linear-gradient(93deg,rgba(17,62,60,0.95)_11%,rgba(17,62,60,0.44)_55%,rgba(17,62,60,0)_90%)]"
+        contentClassName="max-w-[1218px] lg:grid-cols-[701px_412px] lg:gap-[93px]"
+        descriptionClassName="max-w-[683px] text-[#ecf7f3]"
+        proofsBeforeDescription
         proofs={["10+ years experience", "2,400+ guests hosted", "3-4h and day trips", "Zanzibar-based team"]}
         aside={
           <div className="relative h-[383px] overflow-hidden rounded-[10px] border border-white/20 shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
             <Image
-              src="/assets/figma/about-hero-card.png"
+              src="/assets/figma/about-hero-card-exact.png"
               alt="Local guide and guest activity handoff"
               fill
               priority
@@ -295,10 +301,12 @@ export default function AboutPage() {
         </div>
       </section>
       <CtaBand
-        label="Enquiries"
+        label="Activity Catalogue"
         title="Looking for a dependable Zanzibar activity partner?"
         body="Hotels, DMCs, STOs and agents can discuss partner rates, white-label options and activity agreements with the NUR partner desk."
-        image="/assets/figma/cta-boat.png"
+        primaryHref="/partners#rates"
+        primaryLabel="Partner rates"
+        image="/assets/figma/about-final-cta-exact.png"
         imageAlt="Guests on a Zanzibar boat activity with local guide"
       />
       </InnerPageShell>

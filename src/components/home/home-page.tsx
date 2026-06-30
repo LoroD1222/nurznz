@@ -174,7 +174,7 @@ function Logo() {
   return (
     <div className="relative h-[40px] w-[156px] shrink-0 lg:h-[50px] lg:w-[198px]">
       <Image
-        src="/assets/figma/logo.png"
+        src="/assets/brand/nurzanzibar-logo-transparent.png"
         alt="NURZANZIBAR Tours and Safari logo"
         width={2426}
         height={612}

@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     url: "/partners",
     siteName: SITE_NAME,
     type: "website",
-    images: [{ url: "/assets/figma/partner-logo-breakthrough.png", width: 1200, height: 630, alt: "NUR Zanzibar partner supply page" }],
+    images: [{ url: "/assets/figma/partners-hero-bg.png", width: 1200, height: 630, alt: "Aerial Zanzibar coast for partner activity supply" }],
   },
-  twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/hero-beach.png"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/partners-hero-bg.png"] },
 };
 
 const benefitCards = [
@@ -47,16 +47,6 @@ const processSteps = [
   ["Sell, NUR operates", "Your team sells to guests while NUR delivers locally in Zanzibar."],
 ];
 
-const agencyLogos = [
-  { src: "/assets/figma/partner-logo-wish.jpg", alt: "WISH partner logo", width: 130, height: 61 },
-  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 133, height: 44 },
-  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 155, height: 45 },
-  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
-  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 154, height: 45 },
-  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
-  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 134, height: 44 },
-];
-
 export default function PartnersPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -76,73 +66,79 @@ export default function PartnersPage() {
     <>
       <InnerPageShell
         overline="Contact NUR Zanzibar"
-        title="White-label Zanzibar activity partner for B2B travel sales"
-        description="NUR operates reliable half-day and full-day activity supply for hotels, DMCs, agents, STOs and receptive brands."
-        image="/assets/figma/hero-beach.png"
-        imageAlt="Zanzibar beach used for partner activity supply"
+        title="Whitelabel Zanzibar activity partner for B2B travel sales"
+        description="NUR operates reliable half-day, 3-4 hour and single-day activities across Zanzibar for hotels, DMCs, agents, STOs and travel partners, with white-label delivery available when partners sell under their own brand."
+        image="/assets/figma/partners-hero-bg.png"
+        imageAlt="Bright aerial Zanzibar beach and palms used for partner activity supply"
+        heroClassName="py-[83px] lg:min-h-[610px]"
+        imageClassName="object-[center_48%] scale-[1.12]"
+        overlayClassName="bg-[linear-gradient(80deg,rgba(17,62,60,0.95)_4%,rgba(17,62,60,0.58)_47%,rgba(17,62,60,0.06)_99%)]"
+        contentClassName="max-w-[1226px] lg:grid-cols-[730px_442px] lg:items-start lg:gap-[57px]"
+        descriptionClassName="max-w-[720px] text-white/90"
         proofs={["3-4h & day trips", "STO rates", "White-label ready", "Zanzibar-based operations"]}
         aside={
-          <div className="rounded-[10px] bg-[rgba(17,62,60,0.92)] p-6 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
-            <SectionLabel>White-label group partner</SectionLabel>
-            <h2 className="mt-4 text-[24px] font-extrabold leading-[30px]">
+          <div className="relative flex min-h-[440px] flex-col rounded-[9px] border border-white bg-[linear-gradient(241deg,rgba(17,62,60,0.41)_8%,rgba(17,62,60,0.8)_98%)] p-[34px] text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-[9.5px]">
+            <SectionLabel>White-label ground partner</SectionLabel>
+            <h2 className="mt-4 text-[28px] font-extrabold leading-[30px]">
               Behind-the-scenes delivery for partner brands
             </h2>
-            <p className="mt-3 text-[14px] leading-6 text-white/75">
-              For hotels and agencies that want local activity supply without
-              carrying the operational load.
+            <div className="mt-4 h-px bg-white/20" />
+            <p className="mt-5 max-w-[352px] text-[15px] leading-[23px] text-white">
+              NUR supplies and operates local Zanzibar activities while your
+              team sells under agreed partner terms.
             </p>
-            <div className="mt-5 grid grid-cols-2 gap-3 text-[13px] font-bold">
-              <span className="rounded-[6px] bg-white/10 p-3">
+            <div className="mt-auto grid grid-cols-2 gap-4 border-t border-white/20 pt-[26px] text-[13px] font-bold">
+              <span className="border-l border-coral pl-3">
                 Net / STO rates
                 <span className="mt-1 block text-[11px] font-medium text-white/55">
                   partner terms
                 </span>
               </span>
-              <span className="rounded-[6px] bg-white/10 p-3">
+              <span className="border-l border-coral pl-3">
                 White-label ops
                 <span className="mt-1 block text-[11px] font-medium text-white/55">
                   delivery + support
                 </span>
               </span>
             </div>
-            <Button asChild className="mt-5 w-full" size="wide">
+            <Button asChild className="mt-[26px] h-12 w-full rounded-[8px]" size="wide">
               <Link href="#partner-enquiry">Request partner rates</Link>
             </Button>
           </div>
         }
       >
       <section className="relative bg-cream px-5 pb-[66px] pt-0 sm:px-8 lg:px-0">
-        <div className="mx-auto max-w-[1136px]">
-          <div className="relative z-10 -mt-[42px] mb-16 grid gap-7 lg:grid-cols-[0.53fr_0.47fr] lg:items-start">
-            <div className="space-y-4">
+        <div className="mx-auto max-w-[1226px]">
+          <div className="relative z-10 -mt-[68px] mb-[88px] grid gap-10 lg:grid-cols-[643px_533px] lg:items-start lg:gap-[77px]">
+            <div className="space-y-[22px]">
               {benefitCards.map(([id, icon, heading, body]) => (
                 <article
                   id={id}
                   key={heading}
-                  className="flex min-h-[112px] gap-4 rounded-[8px] border border-[#e3d7c6] bg-white p-5 shadow-[0_10px_30px_rgba(15,31,28,0.08)]"
+                  className="flex min-h-[131px] gap-[22px] rounded-[8px] border border-[rgba(17,62,60,0.16)] bg-white px-[22px] py-[17px] shadow-[0_2px_14px_rgba(0,0,0,0.05)]"
                 >
                   <Image src={icon} alt="" width={58} height={58} className="size-[58px] shrink-0" />
                   <div>
-                    <h2 className="text-[18px] font-extrabold leading-[24px] text-teal">
+                    <h2 className="text-[22px] font-extrabold leading-7 text-teal">
                       {heading}
                     </h2>
-                    <p className="mt-2 text-[14px] leading-[22px] text-muted-copy">
+                    <p className="mt-1 text-[16px] leading-6 text-muted-copy">
                       {body}
                     </p>
                   </div>
                 </article>
               ))}
             </div>
-            <article className="rounded-[10px] bg-white p-7 shadow-[0_10px_30px_rgba(15,31,28,0.06)] lg:mt-[58px]">
+            <article className="pt-[120px]">
               <SectionLabel>Contact NUR Zanzibar</SectionLabel>
               <h2 className="type-h2 mt-4 text-teal">Partner benefits</h2>
-              <p className="mt-3 text-[16px] leading-[25px] text-muted-copy">
+              <p className="mt-4 text-[18px] leading-7 text-muted-copy">
                 Commercial terms, white-label delivery and local operations
                 support for partners selling short Zanzibar activities.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-[22px] flex flex-wrap gap-4">
                 <Button asChild>
-                  <Link href="tel:+255555144222">+255 555 144 222</Link>
+                  <Link href="tel:+255553144222">+255 553 144 222</Link>
                 </Button>
                 <Button asChild variant="secondary">
                   <Link href="mailto:info@gmail.com">info@gmail.com</Link>
@@ -150,58 +146,44 @@ export default function PartnersPage() {
               </div>
             </article>
           </div>
-          <div className="grid gap-5 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
+          <div className="grid gap-5 lg:grid-cols-[520px_542px] lg:items-end lg:gap-[131px]">
             <div>
               <SectionLabel>Contact NUR Zanzibar</SectionLabel>
               <h2 className="type-h2 mt-4 text-teal">Partnership options</h2>
             </div>
-            <p className="text-[15px] leading-6 text-muted-copy">
+            <p className="text-right text-[18px] leading-7 text-muted-copy">
               A compact model for different B2B sellers, from guest desks to
               international operators.
             </p>
           </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <div className="mt-9 grid gap-[22px] md:grid-cols-3">
             {partnerOptions.map(([id, heading, body, color]) => (
               <article
                 key={id}
                 id={id}
-                className="rounded-[8px] border border-[#e3d7c6] bg-white/75 p-6"
-                style={{ borderLeft: `4px solid ${color}` }}
+                className="min-h-[138px] rounded-[8px] border border-[#e4d6bf] bg-white py-5 pl-6 pr-5 shadow-[0_12px_14px_rgba(0,0,0,0.05)]"
+                style={{ borderLeft: `6px solid ${color}` }}
               >
-                <h2 className="text-[24px] font-extrabold leading-[30px] text-teal">
+                <h2 className="text-[22px] font-extrabold leading-7 text-teal">
                   {heading}
                 </h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-muted-copy">
+                <p className="mt-2 text-[16px] leading-6 text-muted-copy">
                   {body}
                 </p>
               </article>
             ))}
           </div>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-10">
-            {agencyLogos.map((logo, index) => (
-              <Image
-                key={`${logo.src}-${index}`}
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-                loading="eager"
-                className="shrink-0 object-contain"
-                style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
-              />
-            ))}
-          </div>
         </div>
       </section>
-      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_55%,#153b3a_55%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
-        <div className="mx-auto max-w-[1136px]">
+      <section className="bg-[linear-gradient(to_bottom,#fffaf3_0%,#fffaf3_51%,#113e3c_51%,#113e3c_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
+        <div className="mx-auto max-w-[1207px]">
           <SectionLabel>How it works</SectionLabel>
           <h2 className="type-h2 mt-5 text-teal">Whats our operational process</h2>
           <div className="relative z-10 mt-9 grid gap-4 md:grid-cols-4">
             {processSteps.map(([heading, body], index) => (
               <article
                 key={heading}
-                className="rounded-[6px] border border-[#e5dbcf] bg-white p-5 shadow-[0_8px_22px_rgba(15,31,28,0.04)]"
+                className="min-h-[112px] rounded-[6px] border border-[#e5dbcf] bg-white p-5 shadow-[0_8px_22px_rgba(15,31,28,0.04)]"
               >
                 <span
                   className={`grid size-7 place-items-center rounded-full text-[13px] font-bold text-white ${
@@ -221,36 +203,40 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
-      <section className="bg-teal px-5 pb-[58px] pt-0 sm:px-8 lg:px-0">
-        <div className="relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_rgba(0,0,0,0.1)] lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="relative z-10 p-8 sm:p-12">
-            <SectionLabel>Agreements and availability</SectionLabel>
-            <h2 className="type-h2 mt-5 text-white">
+      <section className="bg-[#113e3c] px-5 pb-[70px] pt-[42px] sm:px-8 lg:px-0">
+        <div className="relative mx-auto min-h-[331px] max-w-[1207px] overflow-hidden rounded-[9px] border border-white/45 bg-white/[0.05] shadow-[0_4px_17px_rgba(0,0,0,0.1)] backdrop-blur-[9.5px]">
+          <div className="relative z-10 max-w-[586px] px-8 py-[38px] sm:px-[42px]">
+            <h2 className="text-[28px] font-extrabold leading-9 text-white">
               Agreements and availability
             </h2>
-            <p className="mt-5 text-[16px] leading-[26px] text-white/70">
+            <p className="mt-4 text-[16px] leading-[27px] text-white/60">
               For recurring partners, NUR can discuss STO terms, seasonal
-              availability, group request handling and repeatable activity
-              supply.
+              availability, group requests, private departures, priority
+              support and custom activity planning across Zanzibar.
             </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {["Agreement opportunities", "Private groups and white-label"].map((item) => (
-                <div key={item} className="rounded-[8px] border border-white/15 bg-white/5 p-4 text-[15px] font-bold text-white">
-                  {item}
+            <div className="mt-[22px] grid gap-4 sm:grid-cols-2">
+              {[
+                ["Agreement opportunities", "Rates, allocations and seasonal terms for trusted trade partners."],
+                ["Private groups and white-label", "Custom timings, branded delivery and operational notes for special requests."],
+              ].map(([item, body]) => (
+                <div key={item} className="border-l-[3px] border-coral pl-3">
+                  <h3 className="text-[16px] font-extrabold leading-[22px] text-white">
+                    {item}
+                  </h3>
+                  <p className="mt-1 text-[15px] leading-[22px] text-white/75">
+                    {body}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-          <div
-            className="relative min-h-[276px] overflow-hidden lg:min-h-[360px]"
-            style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
-          >
+          <div className="absolute bottom-0 right-0 top-0 hidden w-[517px] overflow-hidden md:block">
             <Image
-              src="/assets/figma/proof-snorkling.png"
+              src="/assets/figma/partners-agreements-snorkel.png"
               alt="Snorkelling guests in turquoise Zanzibar water"
               fill
               sizes="(min-width: 1024px) 600px, 100vw"
-              className="object-cover object-[center_36%]"
+              className="object-cover"
             />
           </div>
           <Image
@@ -259,27 +245,30 @@ export default function PartnersPage() {
             width={156}
             height={305}
             loading="eager"
-            className="pointer-events-none absolute left-[43%] top-[52px] z-10 hidden w-[156px] md:block"
+            className="pointer-events-none absolute left-[51%] top-[168px] z-10 hidden w-[132px] md:block"
           />
         </div>
       </section>
-      <section id="partner-enquiry" className="bg-teal px-5 pb-[66px] pt-8 sm:px-8 lg:px-0">
-        <div className="mx-auto grid max-w-[1136px] gap-10 lg:grid-cols-[1fr_360px]">
-          <div>
-            <SectionLabel>Partner Enquiry</SectionLabel>
-            <h2 className="mt-5 text-[34px] font-extrabold leading-[42px] text-white sm:text-[42px] sm:leading-[50px]">
-              Start a partner enquiry
-            </h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[28px] text-white/70">
-              Share your company, guest profile and likely activity needs. The
-              same validated enquiry form is used for partner and contact
-              requests.
+      <section id="partner-enquiry" className="bg-[#113e3c] px-5 pb-[92px] pt-0 sm:px-8 lg:px-0">
+        <div className="mx-auto max-w-[1207px]">
+          <div className="grid gap-6 md:grid-cols-[760px_1fr] md:items-end">
+            <div>
+              <SectionLabel>How it works</SectionLabel>
+              <h2 className="mt-5 text-[34px] font-extrabold leading-[42px] text-white sm:text-[42px] sm:leading-[50px]">
+                Start a partner enquiry
+              </h2>
+            </div>
+            <p className="max-w-[430px] text-[15px] leading-6 text-white/70 md:text-right">
+              For hotels, DMCs, agencies, STOs and partner brands: share your
+              activity supply needs, white-label requirements and expected
+              guest volumes.
             </p>
-            <div className="mt-8">
+          </div>
+          <div className="mt-[27px] grid gap-[30px] lg:grid-cols-[760px_417px]">
+            <div>
               <ContactForm variant="partner" />
             </div>
-          </div>
-          <aside className="space-y-4 self-end">
+            <aside className="space-y-8 self-start">
             {[
               ["Partner desk channels", "WhatsApp for urgent operations, email for rates, contracts and clear handoff notes for confirmed activities."],
               ["What to include", "Partner type, guest profile, expected volume, preferred pickup areas, white-label needs and language requirements."],
@@ -287,14 +276,28 @@ export default function PartnersPage() {
             ].map(([heading, body], index) => (
               <article
                 key={heading}
-                className="rounded-[8px] border border-white/10 bg-white p-5 shadow-[0_10px_28px_rgba(0,0,0,0.12)]"
-                style={{ borderLeft: `4px solid ${["#37c6c7", "#e96855", "#ffd166"][index]}` }}
+                className="flex min-h-[190px] gap-[22px] rounded-[8px] border border-[#e3d5bd] bg-white px-[28px] py-[27px] shadow-[0_12px_14px_rgba(0,0,0,0.05)]"
+                style={{ borderLeft: `6px solid ${["#17a7a6", "#e96855", "#f4c35b"][index]}` }}
               >
-                <h3 className="text-[18px] font-extrabold text-teal">{heading}</h3>
-                <p className="mt-2 text-[14px] leading-[22px] text-muted-copy">{body}</p>
+                <Image
+                  src={[
+                    "/assets/figma/partner-ops-desk.svg",
+                    "/assets/figma/partner-sto-rates.svg",
+                    "/assets/figma/partner-private-groups.svg",
+                  ][index]}
+                  alt=""
+                  width={58}
+                  height={58}
+                  className="size-[58px] shrink-0"
+                />
+                <div>
+                  <h3 className="text-[22px] font-extrabold leading-7 text-teal">{heading}</h3>
+                  <p className="mt-2 text-[16px] leading-[25px] text-muted-copy">{body}</p>
+                </div>
               </article>
             ))}
-          </aside>
+            </aside>
+          </div>
         </div>
       </section>
       </InnerPageShell>
