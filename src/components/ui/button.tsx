@@ -11,11 +11,11 @@ const buttonVariants = cva(
         primary:
           "bg-coral text-white shadow-[0_8px_18px_0_rgba(15,31,28,0.07)] hover:bg-[#dc5f4e]",
         secondary:
-          "border border-coral bg-white text-teal hover:bg-[rgba(233,104,85,0.08)]",
+          "border border-transparent bg-[rgba(233,104,85,0.22)] text-coral hover:bg-[rgba(233,104,85,0.3)]",
         "secondary-dark":
           "border border-white/80 bg-transparent text-white hover:bg-white/10",
         footer:
-          "h-11 rounded-[8px] bg-coral px-6 text-white shadow-[0_8px_18px_-8px_rgba(0,0,0,0.18)] hover:bg-[#df5f52]",
+          "h-11 rounded-[8px] bg-coral px-6 text-teal-deep shadow-[0_8px_18px_-8px_rgba(0,0,0,0.18)] hover:bg-[#df5f52]",
       },
       size: {
         default: "min-w-[119px]",

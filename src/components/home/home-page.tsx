@@ -172,14 +172,14 @@ const footerColumns = [
 
 function Logo() {
   return (
-    <div className="relative h-[62px] w-[156px] overflow-hidden">
+    <div className="relative h-[40px] w-[156px] shrink-0 lg:h-[50px] lg:w-[198px]">
       <Image
-        src="/assets/figma/logo.png"
-        alt="NURZANZI Tours and Safaris logo"
-        width={348}
-        height={232}
+        src="/assets/brand/nurzanzibar-logo-transparent.png"
+        alt="NURZANZIBAR Tours and Safari logo"
+        width={2426}
+        height={612}
         priority
-        className="absolute left-[-187px] top-[-19px] h-[232px] w-[348px] max-w-none object-cover"
+        className="h-full w-full object-contain"
       />
     </div>
   );
@@ -246,9 +246,9 @@ function HeroSection() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[rgba(17,62,60,0.62)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.72)_0%,rgba(17,62,60,0.46)_48%,rgba(17,62,60,0.16)_100%)]" />
         <div className="relative mx-auto flex min-h-[488px] max-w-[1234px] items-center px-5 py-16 sm:px-8 lg:px-0">
-          <div className="max-w-[656px]">
+          <div className="max-w-[760px]">
             <p className="text-[15px] font-black uppercase leading-[19px] tracking-[2px] text-coral-bright sm:text-[18px]">
               B2B Zanzibar Activity Provider
             </p>
@@ -278,7 +278,7 @@ function HeroSection() {
             width={270}
             height={530}
             priority
-            className="pointer-events-none absolute bottom-[-66px] right-[2%] hidden w-[230px] md:block lg:right-[-30px] lg:w-[270px]"
+            className="pointer-events-none absolute bottom-[-30px] right-[5%] hidden w-[180px] md:block lg:right-[40px] lg:w-[200px]"
           />
         </div>
       </div>
@@ -344,11 +344,11 @@ function PartnerSection() {
           White-label Zanzibar activities
           <br className="hidden sm:block" /> for travel partners
         </h2>
-        <div className="mx-auto mt-[62px] grid max-w-[706px] gap-x-[26px] gap-y-[56px] md:grid-cols-2">
+        <div className="mx-auto mt-[62px] grid max-w-[1115px] gap-x-[14px] gap-y-[56px] sm:grid-cols-2 md:grid-cols-4">
           {partnerCards.map((card) => (
             <article
               key={card.title}
-              className="relative rounded-[8px] border border-[#e3d7c6] bg-white/75 px-5 pb-6 pt-[52px]"
+              className="relative min-h-[167px] rounded-[8px] border border-[#e3d7c6] bg-white/75 px-4 pb-6 pt-[52px]"
             >
               <Image
                 src={card.icon}
@@ -398,7 +398,7 @@ function CheckIcon() {
   );
 }
 
-function SplitCta({
+export function SplitCta({
   image,
   map,
   imageAlt,
@@ -413,30 +413,35 @@ function SplitCta({
   copy?: string;
   reverse?: boolean;
 }) {
+  const imagePanel = (
+    <div
+      className={`relative min-h-[238px] overflow-hidden md:min-h-[422px] ${
+        reverse ? "md:order-1" : "md:order-2"
+      }`}
+      style={{
+        clipPath: reverse
+          ? "polygon(0 0, 100% 0, 82% 100%, 0 100%)"
+          : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
+      }}
+    >
+      <Image
+        src={image}
+        alt={imageAlt}
+        fill
+        sizes="(min-width: 1024px) 660px, 100vw"
+        loading="eager"
+        className="object-cover"
+      />
+    </div>
+  );
+
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
-      <div className="relative mx-auto min-h-[422px] max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)]">
+      <div className="relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2">
+        {reverse ? imagePanel : null}
         <div
-          className={`absolute inset-y-0 hidden w-[58%] overflow-hidden md:block ${
-            reverse ? "left-0" : "right-0"
-          }`}
-          style={{
-            clipPath: reverse
-              ? "polygon(0 0, 82% 0, 100% 100%, 0 100%)"
-              : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
-          }}
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 1024px) 660px, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div
-          className={`relative z-10 flex min-h-[422px] max-w-[500px] flex-col justify-center px-7 py-10 sm:px-12 ${
-            reverse ? "ml-auto md:mr-8" : ""
+          className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
+            reverse ? "md:order-2 md:pl-16" : "md:order-1"
           }`}
         >
           <SectionLabel dark>Activity Catalogue</SectionLabel>
@@ -469,13 +474,15 @@ function SplitCta({
             </Button>
           </div>
         </div>
+        {reverse ? null : imagePanel}
         <Image
           src={map}
           alt="Coral silhouette map of Zanzibar"
           width={156}
           height={305}
-          className={`pointer-events-none absolute top-[82px] z-10 hidden w-[156px] md:block ${
-            reverse ? "left-[43%]" : "left-[38%]"
+          loading="eager"
+          className={`pointer-events-none absolute top-[82px] z-20 hidden w-[156px] md:block ${
+            reverse ? "left-[41%]" : "left-[39%]"
           }`}
         />
       </div>
@@ -497,14 +504,15 @@ function LogoStrip() {
           What agencies are we working with?
         </h2>
         <div className="relative mt-8 overflow-hidden">
-          <div className="flex animate-[logo-roll_22s_linear_infinite] items-center gap-[46px] opacity-95">
-            {[...partnerLogos, ...partnerLogos].map((logo, index) => (
+          <div className="flex items-center justify-center gap-[38px] opacity-100">
+            {[...partnerLogos, partnerLogos[2], partnerLogos[3], partnerLogos[1]].map((logo, index) => (
               <Image
                 key={`${logo.alt}-${index}`}
                 src={logo.src}
                 alt={logo.alt}
                 width={logo.width}
                 height={logo.height}
+                loading="eager"
                 className="shrink-0 object-contain"
                 style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
               />
@@ -551,6 +559,7 @@ function ReviewsAndFaq() {
                   alt="Guests posing beside safari vehicles after a NUR Zanzibar partner activity"
                   fill
                   sizes="(min-width: 1024px) 332px, 90vw"
+                  loading="eager"
                   className="object-cover"
                 />
               </div>
@@ -619,6 +628,9 @@ function FaqSection() {
 }
 
 export function SiteFooter() {
+  const linkColor = (heading: string) =>
+    heading === "Explore" ? "text-[#61716e]" : "text-[rgba(17,62,60,0.49)]";
+
   return (
     <footer
       id="contact"
@@ -627,7 +639,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1248px]">
         <div className="grid gap-10 lg:grid-cols-[360px_1fr_220px]">
           <div>
-            <p className="text-[20px] font-bold leading-6 text-[#fff8ea]">
+            <p className="text-[20px] font-bold leading-6 text-teal-deep">
               NUR ZANZIBAR
             </p>
             <p className="mt-10 max-w-[360px] text-[15px] leading-6 text-teal-deep">
@@ -646,7 +658,7 @@ export function SiteFooter() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-[15px] font-medium leading-[22px] text-[rgba(17,62,60,0.49)]"
+                        className={`text-[15px] font-medium leading-[22px] ${linkColor(column.heading)}`}
                       >
                         {link.label}
                       </Link>
@@ -671,7 +683,7 @@ export function SiteFooter() {
         </div>
         <div className="mt-10 border-t border-[rgba(17,62,60,0.22)] pt-[19px]">
           <p className="text-[13px] leading-[18px] text-teal-deep">
-            © 2026 NUR Zanzibar. Short Zanzibar activities for guests and
+            &copy; 2026 NUR Zanzibar. Short Zanzibar activities for guests and
             travel partners.
           </p>
         </div>

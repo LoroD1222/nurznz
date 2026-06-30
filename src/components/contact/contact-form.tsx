@@ -25,8 +25,9 @@ const initialState: FormState = {
 const formConfigs = {
   activity: {
     title: "Activity enquiry",
-    intro: "Send the details of the possible contact from hotels for production.",
+    intro: "Static mockup of the public contact form fields for production.",
     submit: "Send trip enquiry",
+    helper: "Response routed to the activity team.",
     fields: {
       primary: "Your name",
       secondary: "Email or WhatsApp",
@@ -36,9 +37,9 @@ const formConfigs = {
       message: "Message",
     },
     placeholders: {
-      primary: "Lead guest or requester name",
+      primary: "Full name",
       secondary: "Best contact details",
-      tertiary: "Snorkelling, Stone Town, Spice Farm day",
+      tertiary: "Snorkelling / Stone Town / spice / beach day",
       quaternary: "Preferred date or month",
       details: "2 adults, Nungwi hotel pickup, private or shared",
       message: "Tell us what you want to do, group size, timing needs and any special requests.",
@@ -47,8 +48,9 @@ const formConfigs = {
   },
   partner: {
     title: "Partner enquiry",
-    intro: "Send the request of the partner sales team feeds for production.",
+    intro: "Static mockup of the partner sales form fields for production.",
     submit: "Send partner enquiry",
+    helper: "Response routed to partner sales and operations.",
     fields: {
       primary: "Company name",
       secondary: "Contact person",
@@ -58,12 +60,12 @@ const formConfigs = {
       message: "Partner message",
     },
     placeholders: {
-      primary: "Hotel / DMC / agency / STO / concierge",
+      primary: "Company or agency name",
       secondary: "Name, role and email",
-      tertiary: "Hotel desk, agency, STO, concierge",
+      tertiary: "Hotel / DMC / Agency / STO / concierge",
       quaternary: "Approximate activity volume",
-      details: "Stone Town, spice farm, sandbank, custom groups, white-label",
-      message: "Tell us about guest profile, white-label needs, booking lead time and allocation rules.",
+      details: "Stone Town, spice farm, sandbank, custom group, white-label",
+      message: "Tell us about guest profile, white-label needs, booking lead time and preferred contact channel.",
     },
     success: "Partner enquiry received. The team will reply with availability and rate next steps.",
   },
@@ -124,18 +126,18 @@ export function ContactForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-[8px] border border-[rgba(17,62,60,0.12)] bg-white p-6 shadow-[0_18px_45px_rgba(15,31,28,0.1)]"
+      className="rounded-[8px] border border-[rgba(17,62,60,0.19)] bg-white p-7 shadow-[0_18px_45px_rgba(15,31,28,0.1)] sm:p-[34px]"
       noValidate
     >
-      <div className="mb-5">
-        <h2 className="text-[22px] font-extrabold leading-[28px] text-teal-deep">
+      <div className="mb-[25px]">
+        <h2 className="text-[28px] font-extrabold leading-9 text-teal-deep">
           {config.title}
         </h2>
-        <p className="mt-1 text-[14px] leading-5 text-muted-copy">
+        <p className="mt-1 text-[15px] leading-[23px] text-muted-copy">
           {config.intro}
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2 md:gap-x-[52px]">
         <Field label={config.fields.primary} error={errors.primary}>
           <input
             name="primary"
@@ -144,7 +146,7 @@ export function ContactForm({
             onChange={(event) => update("primary", event.target.value)}
             aria-invalid={Boolean(errors.primary)}
             placeholder={config.placeholders.primary}
-            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-14 w-full rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] text-[15px] outline-none focus:border-coral"
             autoComplete="name"
           />
         </Field>
@@ -156,7 +158,7 @@ export function ContactForm({
             onChange={(event) => update("secondary", event.target.value)}
             aria-invalid={Boolean(errors.secondary)}
             placeholder={config.placeholders.secondary}
-            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-14 w-full rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] text-[15px] outline-none focus:border-coral"
             autoComplete="email"
           />
         </Field>
@@ -168,7 +170,7 @@ export function ContactForm({
             onChange={(event) => update("tertiary", event.target.value)}
             aria-invalid={Boolean(errors.tertiary)}
             placeholder={config.placeholders.tertiary}
-            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-14 w-full rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] text-[12px] outline-none focus:border-coral"
           />
         </Field>
         <Field label={config.fields.quaternary} error={errors.quaternary}>
@@ -179,11 +181,11 @@ export function ContactForm({
             onChange={(event) => update("quaternary", event.target.value)}
             aria-invalid={Boolean(errors.quaternary)}
             placeholder={config.placeholders.quaternary}
-            className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-14 w-full rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] text-[15px] outline-none focus:border-coral"
           />
         </Field>
       </div>
-      <Field label={config.fields.details} error={errors.details} className="mt-4">
+      <Field label={config.fields.details} error={errors.details} className="mt-[21px]">
         <input
           name="details"
           required
@@ -191,10 +193,10 @@ export function ContactForm({
           onChange={(event) => update("details", event.target.value)}
           aria-invalid={Boolean(errors.details)}
           placeholder={config.placeholders.details}
-          className="h-11 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+          className="h-14 w-full rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] text-[15px] outline-none focus:border-coral"
         />
       </Field>
-      <Field label="Message" error={errors.message} className="mt-5">
+      <Field label={config.fields.message} error={errors.message} className="mt-[21px]">
         <textarea
           name="message"
           required
@@ -203,10 +205,10 @@ export function ContactForm({
           onChange={(event) => update("message", event.target.value)}
           aria-invalid={Boolean(errors.message)}
           placeholder={config.placeholders.message}
-          className="min-h-[118px] w-full resize-y rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 py-3 text-[14px] leading-6 outline-none focus:border-coral"
+          className="min-h-28 w-full resize-y rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] py-[14px] text-[15px] leading-[21px] outline-none focus:border-coral"
         />
       </Field>
-      <div className="mt-5 flex flex-wrap items-center gap-4">
+      <div className="mt-[25px] flex flex-wrap items-center gap-4">
         <Button type="submit" size="wide">
           {config.submit}
         </Button>
@@ -214,7 +216,11 @@ export function ContactForm({
           <p className="text-[15px] font-medium leading-6 text-teal">
             {config.success}
           </p>
-        ) : null}
+        ) : (
+          <p className="text-[13px] leading-[18px] text-[#7b8987]">
+            {config.helper}
+          </p>
+        )}
       </div>
     </form>
   );
@@ -233,7 +239,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-2 block text-[12px] font-bold text-teal">
+      <span className="mb-[6px] block text-[13px] font-bold leading-[18px] text-[#006c67]">
         {label}
       </span>
       {children}
