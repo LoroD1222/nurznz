@@ -27,7 +27,7 @@ export function FaqAccordion({ faqs }: { faqs: Faq[] }) {
               aria-expanded={open}
             >
               <span>{faq.question}</span>
-              <span className="grid size-8 shrink-0 place-items-center rounded-[4px] text-[28px] font-light leading-none text-coral">
+              <span className="grid size-8 shrink-0 place-items-center rounded-[4px] bg-coral text-[22px] font-medium leading-none text-white">
                 {open ? "-" : "+"}
               </span>
             </button>

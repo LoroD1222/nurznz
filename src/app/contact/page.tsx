@@ -51,6 +51,28 @@ const steps = [
   ["Confirm details", "Agree timing, inclusions, private or shared format and final booking notes."],
 ];
 
+function SupportIcon({ index }: { index: number }) {
+  const paths = [
+    "M5 5.5h10v7H8l-3 2v-9Zm2.5 2h5M7.5 10h4",
+    "M4 6.2 10 10l6-3.8M4 6h12v8H4V6Z",
+    "M10 3.8a4.2 4.2 0 0 0-4.2 4.2v1.3A3.2 3.2 0 0 0 9 12.5h2a3.2 3.2 0 0 0 3.2-3.2V8A4.2 4.2 0 0 0 10 3.8Zm-2 10.4h4",
+  ];
+
+  return (
+    <span className="grid size-[46px] shrink-0 place-items-center rounded-full border border-[#e3d7c6] bg-[#f4faf6] text-[#006c67]">
+      <svg width="23" height="23" viewBox="0 0 20 20" fill="none" aria-hidden>
+        <path
+          d={paths[index] ?? paths[0]}
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+        />
+      </svg>
+    </span>
+  );
+}
+
 export default function ContactPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -68,7 +90,7 @@ export default function ContactPage() {
   return (
     <main className="bg-white">
       <SiteHeader />
-      <section className="relative min-h-[374px] overflow-hidden px-5 pb-[148px] pt-[74px] sm:px-8 lg:px-0">
+      <section className="relative min-h-[300px] overflow-hidden px-5 pb-[58px] pt-[58px] sm:px-8 lg:px-0">
         <Image
           src="/assets/figma/hero-beach.png"
           alt="Aerial Zanzibar coast and turquoise water"
@@ -91,14 +113,19 @@ export default function ContactPage() {
       </section>
 
       <section className="relative z-10 -mt-[112px] px-5 pb-[62px] sm:px-8 lg:px-0">
-        <div className="mx-auto grid max-w-[1136px] gap-6 lg:grid-cols-[1fr_318px]">
+        <div className="mx-auto grid max-w-[1136px] gap-6 lg:grid-cols-[1fr_360px]">
           <ContactForm />
           <aside className="grid gap-4">
-            <div className="rounded-[8px] bg-teal p-5 text-white shadow-[0_18px_45px_rgba(15,31,28,0.14)]">
+            <div className="rounded-[8px] bg-[rgba(17,62,60,0.94)] p-5 text-white shadow-[0_18px_45px_rgba(15,31,28,0.14)] backdrop-blur">
               <SectionLabel>Activity Help</SectionLabel>
               <h2 className="mt-3 text-[21px] font-extrabold leading-[27px]">
                 Quick reply for trip enquiries
               </h2>
+              <p className="mt-3 text-[13px] leading-5 text-white/72">
+                Share what you want to do, where you are staying, group size
+                and preferred timing. NUR can suggest suitable short activities
+                and next steps.
+              </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 <div className="rounded-[6px] bg-coral p-3">
                   <p className="text-[22px] font-extrabold leading-6">3-4h</p>
@@ -109,31 +136,42 @@ export default function ContactPage() {
                   <p className="text-[12px] text-white/75">full-day options</p>
                 </div>
               </div>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <Button asChild size="compact">
+                  <Link href="tel:+255555144222">+255 555 144 222</Link>
+                </Button>
+                <Button asChild variant="secondary-dark" size="compact">
+                  <Link href="mailto:info@gmail.com">info@gmail.com</Link>
+                </Button>
+              </div>
             </div>
-            {helpCards.slice(1).map(([heading, body]) => (
+            {helpCards.slice(1).map(([heading, body], index) => (
               <article
                 key={heading}
-                className="rounded-[8px] border border-[#e9dfd2] bg-white p-5 shadow-[0_8px_28px_rgba(15,31,28,0.06)]"
+                className="flex gap-4 rounded-[8px] border border-[#e9dfd2] bg-white p-5 shadow-[0_8px_28px_rgba(15,31,28,0.06)]"
               >
-                <h3 className="text-[16px] font-extrabold text-teal">
-                  {heading}
-                </h3>
-                <p className="mt-2 text-[13px] leading-5 text-muted-copy">
-                  {body}
-                </p>
+                <SupportIcon index={index} />
+                <div>
+                  <h3 className="text-[16px] font-extrabold text-teal">
+                    {heading}
+                  </h3>
+                  <p className="mt-2 text-[13px] leading-5 text-muted-copy">
+                    {body}
+                  </p>
+                </div>
               </article>
             ))}
           </aside>
         </div>
       </section>
 
-      <section className="px-5 py-[58px] sm:px-8 lg:px-0">
+      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_70%,#153b3a_70%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px] text-center">
           <SectionLabel>Whats Next</SectionLabel>
           <h2 className="mt-4 text-[34px] font-extrabold leading-[42px] text-teal sm:text-[42px] sm:leading-[50px]">
             What is our operational process
           </h2>
-          <div className="mt-9 grid gap-4 md:grid-cols-3">
+          <div className="relative z-10 mt-9 grid gap-4 md:grid-cols-3">
             {steps.map(([heading, body], index) => (
               <article
                 key={heading}
@@ -151,21 +189,18 @@ export default function ContactPage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-teal px-5 py-[36px] text-center sm:px-8 lg:px-0">
-        <p className="mx-auto max-w-[720px] text-[14px] leading-6 text-white/70">
-          NUR checks availability, recommends a suitable Zanzibar activity,
-          confirms pickup details and sends the next booking step.
-        </p>
-        <div className="mt-5 flex justify-center gap-4">
-          <Button asChild>
-            <Link href="/contact">+255 000 000 000</Link>
-          </Button>
-          <Button asChild variant="secondary-dark">
-            <Link href="/partners">info@nurznz.com</Link>
-          </Button>
+          <p className="mx-auto mt-[54px] max-w-[720px] text-[14px] leading-6 text-white/70">
+            NUR checks availability, recommends a suitable Zanzibar activity,
+            confirms pickup details and sends the next booking step.
+          </p>
+          <div className="mt-5 flex justify-center gap-4">
+            <Button asChild>
+              <Link href="tel:+255000000000">+255 000 000 000</Link>
+            </Button>
+            <Button asChild variant="secondary-dark">
+              <Link href="mailto:info@nurznz.com">info@nurznz.com</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

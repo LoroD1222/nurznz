@@ -56,10 +56,12 @@ export function ActivityRail({ activities }: { activities: Activity[] }) {
         ref={railRef}
         className="mt-[30px] flex snap-x gap-[17px] overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {activities.map((activity) => (
+        {activities.map((activity, index) => (
           <article
-            key={activity.title}
-            className="relative w-[289px] shrink-0 snap-start rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-[9px] shadow-[0_2px_26px_0_rgba(0,0,0,0.04)]"
+            key={`${activity.title}-${index}`}
+            className={`relative w-[289px] shrink-0 snap-start rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-[9px] shadow-[0_2px_26px_0_rgba(0,0,0,0.04)] ${
+              index === 3 ? "opacity-35" : ""
+            }`}
           >
             <div className="relative h-[162px] overflow-hidden rounded-[7px]">
               <Image
@@ -90,11 +92,11 @@ export function ActivityRail({ activities }: { activities: Activity[] }) {
           horizontally and exposes more products without making the section
           feel heavy.
         </p>
-        <div className="flex gap-[15px]">
+        <div className="flex gap-[15px] pb-[5px]">
           <button
             type="button"
             onClick={() => scrollByCard(-1)}
-            className="grid size-[42px] place-items-center rounded-full bg-coral text-white transition-colors hover:bg-[#dc5f4e]"
+            className="grid size-[38px] place-items-center rounded-full bg-coral text-white transition-colors hover:bg-[#dc5f4e]"
             aria-label="Scroll activities left"
           >
             <ArrowLeftIcon />
@@ -102,7 +104,7 @@ export function ActivityRail({ activities }: { activities: Activity[] }) {
           <button
             type="button"
             onClick={() => scrollByCard(1)}
-            className="grid size-[42px] place-items-center rounded-full bg-coral text-white transition-colors hover:bg-[#dc5f4e]"
+            className="grid size-[38px] place-items-center rounded-full bg-coral text-white transition-colors hover:bg-[#dc5f4e]"
             aria-label="Scroll activities right"
           >
             <ArrowRightIcon />

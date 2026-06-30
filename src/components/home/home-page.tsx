@@ -278,7 +278,7 @@ function HeroSection() {
             width={270}
             height={530}
             priority
-            className="pointer-events-none absolute bottom-[-66px] right-[2%] hidden w-[230px] md:block lg:right-[-30px] lg:w-[270px]"
+            className="pointer-events-none absolute bottom-[-42px] right-[5%] hidden w-[190px] md:block lg:right-[20px] lg:w-[218px]"
           />
         </div>
       </div>
@@ -344,11 +344,11 @@ function PartnerSection() {
           White-label Zanzibar activities
           <br className="hidden sm:block" /> for travel partners
         </h2>
-        <div className="mx-auto mt-[62px] grid max-w-[706px] gap-x-[26px] gap-y-[56px] md:grid-cols-2">
+        <div className="mx-auto mt-[62px] grid max-w-[1115px] gap-x-[14px] gap-y-[56px] sm:grid-cols-2 lg:grid-cols-4">
           {partnerCards.map((card) => (
             <article
               key={card.title}
-              className="relative rounded-[8px] border border-[#e3d7c6] bg-white/75 px-5 pb-6 pt-[52px]"
+              className="relative min-h-[167px] rounded-[8px] border border-[#e3d7c6] bg-white/75 px-4 pb-6 pt-[52px]"
             >
               <Image
                 src={card.icon}
@@ -398,7 +398,7 @@ function CheckIcon() {
   );
 }
 
-function SplitCta({
+export function SplitCta({
   image,
   map,
   imageAlt,
@@ -431,12 +431,13 @@ function SplitCta({
             alt={imageAlt}
             fill
             sizes="(min-width: 1024px) 660px, 100vw"
+            loading="eager"
             className="object-cover"
           />
         </div>
         <div
           className={`relative z-10 flex min-h-[422px] max-w-[500px] flex-col justify-center px-7 py-10 sm:px-12 ${
-            reverse ? "ml-auto md:mr-8" : ""
+            reverse ? "ml-auto md:mr-4" : ""
           }`}
         >
           <SectionLabel dark>Activity Catalogue</SectionLabel>
@@ -497,14 +498,15 @@ function LogoStrip() {
           What agencies are we working with?
         </h2>
         <div className="relative mt-8 overflow-hidden">
-          <div className="flex animate-[logo-roll_22s_linear_infinite] items-center gap-[46px] opacity-95">
-            {[...partnerLogos, ...partnerLogos].map((logo, index) => (
+          <div className="flex items-center justify-center gap-[38px] opacity-100">
+            {[...partnerLogos, partnerLogos[2], partnerLogos[3], partnerLogos[1]].map((logo, index) => (
               <Image
                 key={`${logo.alt}-${index}`}
                 src={logo.src}
                 alt={logo.alt}
                 width={logo.width}
                 height={logo.height}
+                loading="eager"
                 className="shrink-0 object-contain"
                 style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
               />
@@ -551,6 +553,7 @@ function ReviewsAndFaq() {
                   alt="Guests posing beside safari vehicles after a NUR Zanzibar partner activity"
                   fill
                   sizes="(min-width: 1024px) 332px, 90vw"
+                  loading="eager"
                   className="object-cover"
                 />
               </div>
@@ -627,7 +630,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1248px]">
         <div className="grid gap-10 lg:grid-cols-[360px_1fr_220px]">
           <div>
-            <p className="text-[20px] font-bold leading-6 text-[#fff8ea]">
+            <p className="text-[20px] font-bold leading-6 text-teal-deep">
               NUR ZANZIBAR
             </p>
             <p className="mt-10 max-w-[360px] text-[15px] leading-6 text-teal-deep">
