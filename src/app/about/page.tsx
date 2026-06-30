@@ -24,6 +24,16 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/cta-boat.png"] },
 };
 
+const agencyLogos = [
+  { src: "/assets/figma/partner-logo-wish.jpg", alt: "WISH partner logo", width: 130, height: 61 },
+  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 133, height: 44 },
+  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 155, height: 45 },
+  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
+  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 154, height: 45 },
+  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
+  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 134, height: 44 },
+];
+
 export default function AboutPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -164,19 +174,16 @@ export default function AboutPage() {
             What agencies are we working with?
           </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-9">
-            {[
-              ["/assets/figma/partner-logo-wish.jpg", "WISH partner logo"],
-              ["/assets/figma/partner-logo-breakthrough.png", "Breakthrough ACTION partner logo"],
-              ["/assets/figma/partner-logo-unicef.png", "UNICEF partner logo"],
-              ["/assets/figma/partner-logo-dtree.png", "D-tree partner logo"],
-            ].map(([src, alt]) => (
+            {agencyLogos.map((logo, index) => (
               <Image
-                key={src}
-                src={src}
-                alt={alt}
-                width={138}
-                height={58}
-                className="max-h-[58px] w-auto object-contain"
+                key={`${logo.src}-${index}`}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                loading="eager"
+                className="shrink-0 object-contain"
+                style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
               />
             ))}
           </div>

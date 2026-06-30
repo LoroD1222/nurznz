@@ -27,17 +27,34 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/hero-beach.png"] },
 };
 
-const partnerFeatures = [
-  ["white-label", "White-Label Delivery", "Descriptions, route notes and guest flow can sit behind your own sales brand.", "#006c67"],
-  ["groups", "Ready-to-Sell Activity Catalogue", "Custom group requests, shared departures and adjusted pickup windows are supported.", "#37c6c7"],
-  ["rates", "STO partner rates", "Net rates and seasonal terms are available for active travel sellers.", "#e96855"],
+const benefitCards = [
+  ["white-label", "/assets/figma/partner-white-label.svg", "White-Label Delivery", "Activities can be sold under the partner brand while NUR handles local guides, logistics and guest delivery."],
+  ["groups", "/assets/figma/partner-ops-desk.svg", "Ready-to-Sell Activity Catalogue", "Concise product copy, inclusions, durations, images and partner notes for quick sales enablement."],
+  ["rates", "/assets/figma/partner-sto-rates.svg", "Special Partner / STO Rates", "Net rates, repeat-volume terms and seasonal agreement options for hotels, DMCs, agents and STOs."],
+  ["operations", "/assets/figma/partner-private-groups.svg", "Reliable Zanzibar Operations", "Pickup windows, timing checks, guide communication and fast same-day WhatsApp/email support."],
 ];
 
-const benefitCards = [
-  ["/assets/figma/partner-white-label.svg", "White-Label Delivery", "Activities can be sold under the partner brand while NUR handles local guides, logistics and guest delivery."],
-  ["/assets/figma/partner-ops-desk.svg", "Ready-to-Sell Activity Catalogue", "Concise product copy, inclusions, durations, images and partner notes for quick sales enablement."],
-  ["/assets/figma/partner-sto-rates.svg", "Special Partner / STO Rates", "Net rates, repeat-volume terms and seasonal agreement options for hotels, DMCs, agents and STOs."],
-  ["/assets/figma/partner-private-groups.svg", "Reliable Zanzibar Operations", "Pickup windows, timing checks, guide communication and fast same-day WhatsApp/email support."],
+const partnerOptions = [
+  ["hotels-resorts", "Hotels & Resorts", "Concierge desks, guest activity desks and repeat half-day sales for beach-stay guests.", "#006c67"],
+  ["dmcs", "DMCs & Travel Agents", "Add Zanzibar activities to itineraries, cruise calls, incentives and beach extensions.", "#37c6c7"],
+  ["tour-operators", "STOs / Tour Operators", "Agreement-based rates, allocations, white-label handling and private custom groups.", "#e96855"],
+];
+
+const processSteps = [
+  ["Talk with NUR", "Share partner type, guest profile and expected activity volume."],
+  ["Agree rates & terms", "Set STO or partner rates, inclusions, seasonality and cancellation rules."],
+  ["Choose activities", "Use ready-made options or configure white-label/private group handling."],
+  ["Sell, NUR operates", "Your team sells to guests while NUR delivers locally in Zanzibar."],
+];
+
+const agencyLogos = [
+  { src: "/assets/figma/partner-logo-wish.jpg", alt: "WISH partner logo", width: 130, height: 61 },
+  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 133, height: 44 },
+  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 155, height: 45 },
+  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
+  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 154, height: 45 },
+  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
+  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 134, height: 44 },
 ];
 
 export default function PartnersPage() {
@@ -86,26 +103,27 @@ export default function PartnersPage() {
       >
       <section className="relative bg-cream px-5 pb-[66px] pt-0 sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px]">
-          <div className="relative z-10 -mt-[42px] mb-14 grid gap-4 md:grid-cols-2">
-            {benefitCards.map(([icon, heading, body]) => (
-              <article
-                key={heading}
-                className="flex gap-4 rounded-[8px] border border-[#e3d7c6] bg-white p-5 shadow-[0_10px_30px_rgba(15,31,28,0.08)]"
-              >
-                <Image src={icon} alt="" width={58} height={58} className="size-[58px] shrink-0" />
-                <div>
-                  <h2 className="text-[18px] font-extrabold leading-[24px] text-teal">
-                    {heading}
-                  </h2>
-                  <p className="mt-2 text-[14px] leading-[22px] text-muted-copy">
-                    {body}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="mb-12 grid gap-5 md:grid-cols-[0.72fr_1fr]">
-            <article className="rounded-[10px] bg-white p-7 shadow-[0_10px_30px_rgba(15,31,28,0.06)]">
+          <div className="relative z-10 -mt-[42px] mb-16 grid gap-7 lg:grid-cols-[0.53fr_0.47fr] lg:items-start">
+            <div className="space-y-4">
+              {benefitCards.map(([id, icon, heading, body]) => (
+                <article
+                  id={id}
+                  key={heading}
+                  className="flex min-h-[112px] gap-4 rounded-[8px] border border-[#e3d7c6] bg-white p-5 shadow-[0_10px_30px_rgba(15,31,28,0.08)]"
+                >
+                  <Image src={icon} alt="" width={58} height={58} className="size-[58px] shrink-0" />
+                  <div>
+                    <h2 className="text-[18px] font-extrabold leading-[24px] text-teal">
+                      {heading}
+                    </h2>
+                    <p className="mt-2 text-[14px] leading-[22px] text-muted-copy">
+                      {body}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <article className="rounded-[10px] bg-white p-7 shadow-[0_10px_30px_rgba(15,31,28,0.06)] lg:mt-[58px]">
               <SectionLabel>Contact NUR Zanzibar</SectionLabel>
               <h2 className="type-h2 mt-4 text-teal">Partner benefits</h2>
               <p className="mt-3 text-[16px] leading-[25px] text-muted-copy">
@@ -121,21 +139,19 @@ export default function PartnersPage() {
                 </Button>
               </div>
             </article>
-            {["Behind-the-scenes delivery for partner brands", "Partner benefits"].map((heading, index) => (
-              <article key={heading} className="rounded-[10px] bg-white p-7 shadow-[0_10px_30px_rgba(15,31,28,0.06)]">
-                <SectionLabel>{index === 0 ? "Why it helps" : "Contract NUR Zanzibar"}</SectionLabel>
-                <h2 className="type-h3 mt-4 text-teal">{heading}</h2>
-                <p className="mt-3 text-[16px] leading-[25px] text-muted-copy">
-                  {index === 0
-                    ? "Your brand keeps the guest relationship while NUR handles routing, allocation, pickup timing and local supplier communication."
-                    : "Commercial terms, activity descriptions and repeatable logistics are prepared for partner sales teams."}
-                </p>
-              </article>
-            ))}
           </div>
-          <SectionLabel>Partnership options</SectionLabel>
+          <div className="grid gap-5 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
+            <div>
+              <SectionLabel>Contact NUR Zanzibar</SectionLabel>
+              <h2 className="type-h2 mt-4 text-teal">Partnership options</h2>
+            </div>
+            <p className="text-[15px] leading-6 text-muted-copy">
+              A compact model for different B2B sellers, from guest desks to
+              international operators.
+            </p>
+          </div>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {partnerFeatures.map(([id, heading, body, color]) => (
+            {partnerOptions.map(([id, heading, body, color]) => (
               <article
                 key={id}
                 id={id}
@@ -152,29 +168,44 @@ export default function PartnersPage() {
             ))}
           </div>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-10">
-            {[
-              ["/assets/figma/partner-logo-wish.jpg", "WISH partner logo"],
-              ["/assets/figma/partner-logo-breakthrough.png", "Breakthrough ACTION partner logo"],
-              ["/assets/figma/partner-logo-unicef.png", "UNICEF partner logo"],
-              ["/assets/figma/partner-logo-dtree.png", "D-tree partner logo"],
-              ["/assets/figma/partner-logo-unicef.png", "UNICEF partner logo"],
-              ["/assets/figma/partner-logo-dtree.png", "D-tree partner logo"],
-              ["/assets/figma/partner-logo-breakthrough.png", "Breakthrough ACTION partner logo"],
-            ].map(([src, alt], index) => (
-              <Image key={`${src}-${index}`} src={src} alt={alt} width={142} height={62} loading="eager" className="max-h-[62px] w-auto object-contain" />
+            {agencyLogos.map((logo, index) => (
+              <Image
+                key={`${logo.src}-${index}`}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                loading="eager"
+                className="shrink-0 object-contain"
+                style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
+              />
             ))}
           </div>
         </div>
       </section>
-      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_70%,#153b3a_70%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
+      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_64%,#153b3a_64%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px]">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="type-h2 mt-5 text-teal">What is our operational process</h2>
-          <div className="mt-9 grid gap-4 md:grid-cols-4">
-            {["Talk with NUR", "Agree rates & terms", "Choose activities", "Sell, NUR operates"].map((heading, index) => (
-              <article key={heading} className="border-l-4 border-coral bg-cream p-5">
-                <span className="text-[13px] font-black text-coral">0{index + 1}</span>
-                <h3 className="mt-2 text-[18px] font-bold text-teal">{heading}</h3>
+          <h2 className="type-h2 mt-5 text-teal">Whats our operational process</h2>
+          <div className="relative z-10 mt-9 grid gap-4 md:grid-cols-4">
+            {processSteps.map(([heading, body], index) => (
+              <article
+                key={heading}
+                className="rounded-[6px] border border-[#e5dbcf] bg-white p-5 shadow-[0_8px_22px_rgba(15,31,28,0.04)]"
+              >
+                <span
+                  className={`grid size-7 place-items-center rounded-full text-[13px] font-bold text-white ${
+                    index === 1 ? "bg-[#37c6c7]" : index === 3 ? "bg-coral" : "bg-teal"
+                  }`}
+                >
+                  {index + 1}
+                </span>
+                <h3 className="mt-4 text-[17px] font-extrabold text-teal">
+                  {heading}
+                </h3>
+                <p className="mt-2 text-[13px] leading-5 text-muted-copy">
+                  {body}
+                </p>
               </article>
             ))}
           </div>

@@ -25,7 +25,7 @@ const initialState: FormState = {
 const formConfigs = {
   activity: {
     title: "Activity enquiry",
-    intro: "Send the details of the possible contact from hotels for production.",
+    intro: "Static mockup of the public contact form fields for production.",
     submit: "Send trip enquiry",
     fields: {
       primary: "Your name",
@@ -36,7 +36,7 @@ const formConfigs = {
       message: "Message",
     },
     placeholders: {
-      primary: "Lead guest or requester name",
+      primary: "Full name",
       secondary: "Best contact details",
       tertiary: "Snorkelling, Stone Town, Spice Farm day",
       quaternary: "Preferred date or month",
@@ -47,7 +47,7 @@ const formConfigs = {
   },
   partner: {
     title: "Partner enquiry",
-    intro: "Send the request of the partner sales team feeds for production.",
+    intro: "Static mockup of the partner sales form fields for production.",
     submit: "Send partner enquiry",
     fields: {
       primary: "Company name",
@@ -58,12 +58,12 @@ const formConfigs = {
       message: "Partner message",
     },
     placeholders: {
-      primary: "Hotel / DMC / agency / STO / concierge",
+      primary: "Blue Coast Resort",
       secondary: "Name, role and email",
-      tertiary: "Hotel desk, agency, STO, concierge",
+      tertiary: "Hotel / DMC / Agency / STO / concierge",
       quaternary: "Approximate activity volume",
-      details: "Stone Town, spice farm, sandbank, custom groups, white-label",
-      message: "Tell us about guest profile, white-label needs, booking lead time and allocation rules.",
+      details: "Stone Town, spice farm, sandbank, custom group, white-label",
+      message: "Tell us about guest profile, white-label needs, booking lead time and preferred contact channel.",
     },
     success: "Partner enquiry received. The team will reply with availability and rate next steps.",
   },

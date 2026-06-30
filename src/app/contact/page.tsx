@@ -51,6 +51,8 @@ const steps = [
   ["Confirm details", "Agree timing, inclusions, private or shared format and final booking notes."],
 ];
 
+const stepColors = ["bg-teal", "bg-[#37c6c7]", "bg-coral"];
+
 function SupportIcon({ index }: { index: number }) {
   const paths = [
     "M5 5.5h10v7H8l-3 2v-9Zm2.5 2h5M7.5 10h4",
@@ -167,9 +169,9 @@ export default function ContactPage() {
 
       <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_70%,#153b3a_70%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px] text-center">
-          <SectionLabel>Whats Next</SectionLabel>
+          <SectionLabel>{`What's Next`}</SectionLabel>
           <h2 className="mt-4 text-[34px] font-extrabold leading-[42px] text-teal sm:text-[42px] sm:leading-[50px]">
-            What is our operational process
+            Whats our operational process
           </h2>
           <div className="relative z-10 mt-9 grid gap-4 md:grid-cols-3">
             {steps.map(([heading, body], index) => (
@@ -177,7 +179,7 @@ export default function ContactPage() {
                 key={heading}
                 className="rounded-[6px] border border-[#e5dbcf] bg-white p-5 text-left shadow-[0_8px_22px_rgba(15,31,28,0.04)]"
               >
-                <span className="grid size-7 place-items-center rounded-full bg-teal text-[13px] font-bold text-white">
+                <span className={`grid size-7 place-items-center rounded-full ${stepColors[index]} text-[13px] font-bold text-white`}>
                   {index + 1}
                 </span>
                 <h3 className="mt-4 text-[17px] font-extrabold text-teal">
@@ -195,10 +197,10 @@ export default function ContactPage() {
           </p>
           <div className="mt-5 flex justify-center gap-4">
             <Button asChild>
-              <Link href="tel:+255000000000">+255 000 000 000</Link>
+              <Link href="tel:+255555144222">+255 555 144 222</Link>
             </Button>
             <Button asChild variant="secondary-dark">
-              <Link href="mailto:info@nurznz.com">info@nurznz.com</Link>
+              <Link href="mailto:info@gmail.com">info@gmail.com</Link>
             </Button>
           </div>
         </div>
