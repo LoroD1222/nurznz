@@ -42,9 +42,9 @@ export function InnerPageShell({
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-35"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-[rgba(17,62,60,0.58)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.78)_0%,rgba(17,62,60,0.55)_48%,rgba(17,62,60,0.28)_100%)]" />
         <div className="relative mx-auto grid max-w-[1136px] gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
           <div>
             <SectionLabel>{overline}</SectionLabel>
@@ -115,37 +115,55 @@ export function CtaBand({
   primaryHref = "/contact",
   image = "/assets/figma/cta-boat.png",
   imageAlt = "Guests and a local guide on a Zanzibar boat activity",
+  reverse = false,
 }: {
   title: string;
   body: string;
   primaryHref?: string;
   image?: string;
   imageAlt?: string;
+  reverse?: boolean;
 }) {
+  const imagePanel = (
+    <div
+      className={`relative min-h-[238px] overflow-hidden md:min-h-[422px] ${
+        reverse ? "md:order-1" : "md:order-2"
+      }`}
+      style={{
+        clipPath: reverse
+          ? "polygon(0 0, 100% 0, 82% 100%, 0 100%)"
+          : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
+      }}
+    >
+      <Image
+        src={image}
+        alt={imageAlt}
+        fill
+        sizes="(min-width: 1024px) 660px, 100vw"
+        loading="eager"
+        className="object-cover"
+      />
+    </div>
+  );
+
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
-      <div className="relative mx-auto min-h-[422px] max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)]">
-        <div
-          className="absolute inset-y-0 right-0 hidden w-[58%] overflow-hidden md:block"
-          style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 1024px) 660px, 100vw"
-            loading="eager"
-            className="object-cover"
-          />
-        </div>
+      <div className="relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2">
+        {reverse ? imagePanel : null}
         <Image
           src="/assets/figma/map-coral-final.svg"
           alt="Coral silhouette map of Zanzibar"
           width={156}
           height={305}
-          className="pointer-events-none absolute left-[38%] top-[86px] z-10 hidden w-[156px] opacity-95 md:block"
+          className={`pointer-events-none absolute top-[86px] z-20 hidden w-[156px] opacity-95 md:block ${
+            reverse ? "left-[41%]" : "left-[39%]"
+          }`}
         />
-        <div className="relative z-10 flex min-h-[422px] max-w-[500px] flex-col justify-center px-7 py-10 sm:px-12">
+        <div
+          className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
+            reverse ? "md:order-2 md:pl-16" : "md:order-1"
+          }`}
+        >
           <SectionLabel>Activity Catalogue</SectionLabel>
           <h2 className="mt-5 max-w-[451px] text-[34px] font-extrabold leading-[42px] text-white sm:text-[38px] sm:leading-[44px]">
             {title}
@@ -162,6 +180,7 @@ export function CtaBand({
             </Button>
           </div>
         </div>
+        {reverse ? null : imagePanel}
       </div>
     </section>
   );

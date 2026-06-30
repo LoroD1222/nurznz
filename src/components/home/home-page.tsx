@@ -246,7 +246,7 @@ function HeroSection() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[rgba(17,62,60,0.62)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.72)_0%,rgba(17,62,60,0.46)_48%,rgba(17,62,60,0.16)_100%)]" />
         <div className="relative mx-auto flex min-h-[488px] max-w-[1234px] items-center px-5 py-16 sm:px-8 lg:px-0">
           <div className="max-w-[656px]">
             <p className="text-[15px] font-black uppercase leading-[19px] tracking-[2px] text-coral-bright sm:text-[18px]">
@@ -344,7 +344,7 @@ function PartnerSection() {
           White-label Zanzibar activities
           <br className="hidden sm:block" /> for travel partners
         </h2>
-        <div className="mx-auto mt-[62px] grid max-w-[1115px] gap-x-[14px] gap-y-[56px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-[62px] grid max-w-[1115px] gap-x-[14px] gap-y-[56px] sm:grid-cols-2 md:grid-cols-4">
           {partnerCards.map((card) => (
             <article
               key={card.title}
@@ -413,31 +413,35 @@ export function SplitCta({
   copy?: string;
   reverse?: boolean;
 }) {
+  const imagePanel = (
+    <div
+      className={`relative min-h-[238px] overflow-hidden md:min-h-[422px] ${
+        reverse ? "md:order-1" : "md:order-2"
+      }`}
+      style={{
+        clipPath: reverse
+          ? "polygon(0 0, 100% 0, 82% 100%, 0 100%)"
+          : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
+      }}
+    >
+      <Image
+        src={image}
+        alt={imageAlt}
+        fill
+        sizes="(min-width: 1024px) 660px, 100vw"
+        loading="eager"
+        className="object-cover"
+      />
+    </div>
+  );
+
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
-      <div className="relative mx-auto min-h-[422px] max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)]">
+      <div className="relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2">
+        {reverse ? imagePanel : null}
         <div
-          className={`absolute inset-y-0 hidden w-[58%] overflow-hidden md:block ${
-            reverse ? "left-0" : "right-0"
-          }`}
-          style={{
-            clipPath: reverse
-              ? "polygon(0 0, 82% 0, 100% 100%, 0 100%)"
-              : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
-          }}
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 1024px) 660px, 100vw"
-            loading="eager"
-            className="object-cover"
-          />
-        </div>
-        <div
-          className={`relative z-10 flex min-h-[422px] max-w-[500px] flex-col justify-center px-7 py-10 sm:px-12 ${
-            reverse ? "ml-auto md:mr-4" : ""
+          className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
+            reverse ? "md:order-2 md:pl-16" : "md:order-1"
           }`}
         >
           <SectionLabel dark>Activity Catalogue</SectionLabel>
@@ -470,13 +474,14 @@ export function SplitCta({
             </Button>
           </div>
         </div>
+        {reverse ? null : imagePanel}
         <Image
           src={map}
           alt="Coral silhouette map of Zanzibar"
           width={156}
           height={305}
-          className={`pointer-events-none absolute top-[82px] z-10 hidden w-[156px] md:block ${
-            reverse ? "left-[43%]" : "left-[38%]"
+          className={`pointer-events-none absolute top-[82px] z-20 hidden w-[156px] md:block ${
+            reverse ? "left-[41%]" : "left-[39%]"
           }`}
         />
       </div>

@@ -183,7 +183,7 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
-      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_64%,#153b3a_64%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
+      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_55%,#153b3a_55%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px]">
           <SectionLabel>How it works</SectionLabel>
           <h2 className="type-h2 mt-5 text-teal">Whats our operational process</h2>
@@ -236,11 +236,11 @@ export default function PartnersPage() {
             style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
           >
             <Image
-              src="/assets/figma/activity-fish.jpg"
+              src="/assets/figma/proof-snorkling.png"
               alt="Snorkelling guests in turquoise Zanzibar water"
               fill
               sizes="(min-width: 1024px) 600px, 100vw"
-              className="object-cover"
+              className="object-cover object-[center_36%]"
             />
           </div>
           <Image

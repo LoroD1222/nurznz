@@ -99,9 +99,9 @@ export default function ContactPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[center_72%]"
         />
-        <div className="absolute inset-0 bg-[rgba(17,62,60,0.58)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.68)_0%,rgba(17,62,60,0.38)_50%,rgba(17,62,60,0.12)_100%)]" />
         <div className="relative mx-auto max-w-[1136px]">
           <SectionLabel>Contact NUR Zanzibar</SectionLabel>
           <h1 className="mt-5 max-w-[680px] text-[42px] font-extrabold leading-[50px] text-white sm:text-[56px] sm:leading-[62px]">
@@ -167,9 +167,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_70%,#153b3a_70%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
+      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_54%,#153b3a_54%,#153b3a_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px] text-center">
-          <SectionLabel>{`What's Next`}</SectionLabel>
+          <SectionLabel>Whats Next</SectionLabel>
           <h2 className="mt-4 text-[34px] font-extrabold leading-[42px] text-teal sm:text-[42px] sm:leading-[50px]">
             Whats our operational process
           </h2>

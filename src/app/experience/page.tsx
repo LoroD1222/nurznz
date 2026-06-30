@@ -45,10 +45,10 @@ const highlights = [
 ];
 
 const infoItems = [
-  ["Duration and pickup window", "Share hotel area and preferred timing before availability is confirmed."],
-  ["Guest suitability", "Best for guests who are comfortable in open water with guided support."],
-  ["Inclusions and exclusions", "Route timing depends on sea state, tide and conservation-area rules."],
-  ["Private or shared options", "Swimwear, sun protection, towel and a dry change for the return."],
+  ["Number and pickup window", "Share hotel area and timing."],
+  ["Swim suitability", "Open-water comfort."],
+  ["Reef visibility", "Sea state and tide dependent."],
+  ["What to bring", "Towel, sun protection and dry change."],
 ];
 
 const activities = [
@@ -155,12 +155,18 @@ export default function ExperiencePage() {
                 <Link href="/contact">Ask about this trip</Link>
               </Button>
               <Button asChild variant="secondary">
-                <Link href="tel:+255000000000">+255 555 144 222</Link>
+                <Link
+                  href="https://wa.me/255555144222"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  +255 555 144 222
+                </Link>
               </Button>
             </div>
           </div>
           <div className="grid gap-3">
-            <div className="relative h-[310px] overflow-hidden rounded-[8px]">
+            <div className="relative h-[310px] overflow-hidden rounded-[8px] bg-cream shadow-[0_10px_34px_rgba(15,31,28,0.08)]">
               <Image
                 src="/assets/figma/activity-fish.jpg"
                 alt="Tropical fish in clear water at Mnemba Reef"
@@ -169,8 +175,10 @@ export default function ExperiencePage() {
                 sizes="(min-width: 1024px) 560px, 100vw"
                 className="object-cover"
               />
-              <div className="absolute bottom-4 right-4 flex gap-3">
+              <div className="absolute inset-y-0 left-4 flex items-center">
                 <CircleArrow direction="left" />
+              </div>
+              <div className="absolute inset-y-0 right-4 flex items-center">
                 <CircleArrow direction="right" />
               </div>
             </div>
@@ -192,13 +200,13 @@ export default function ExperiencePage() {
       </section>
 
       <section className="px-5 py-[54px] sm:px-8 lg:px-0">
-        <div className="relative mx-auto grid min-h-[286px] max-w-[1136px] overflow-hidden rounded-[10px] bg-teal lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative z-10 p-8 sm:p-12">
+        <div className="relative mx-auto grid min-h-[286px] max-w-[1136px] overflow-hidden rounded-[10px] bg-teal shadow-[0_4px_17px_rgba(0,0,0,0.1)] lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative z-10 p-8">
             <SectionLabel>Must have information</SectionLabel>
             <h2 className="mt-4 max-w-[420px] text-[34px] font-extrabold leading-[40px] text-white">
               What to know before you book
             </h2>
-            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {infoItems.map(([heading, body]) => (
                 <article key={heading} className="flex gap-3 text-white">
                   <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full bg-coral text-white">
@@ -214,14 +222,14 @@ export default function ExperiencePage() {
                   </span>
                   <div>
                     <h3 className="text-[15px] font-bold">{heading}</h3>
-                    <p className="mt-1 text-[13px] leading-5 text-white/65">
+                    <p className="mt-1 text-[12px] leading-4 text-white/62">
                       {body}
                     </p>
                   </div>
                 </article>
               ))}
             </div>
-            <div className="mt-7 flex flex-wrap gap-4">
+            <div className="mt-5 flex flex-wrap gap-4">
               <Button asChild>
                 <Link href="/contact">Partner rates</Link>
               </Button>
@@ -230,22 +238,25 @@ export default function ExperiencePage() {
               </Button>
             </div>
           </div>
-          <div className="relative min-h-[260px]">
+          <div
+            className="relative min-h-[260px] overflow-hidden lg:min-h-[342px]"
+            style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
+          >
             <Image
-              src="/assets/figma/activity-lagoon.jpg"
-              alt="Blue Zanzibar water and reef activity conditions"
+              src="/assets/figma/proof-snorkling.png"
+              alt="Snorkelling guests in clear blue Zanzibar water"
               fill
               sizes="(min-width: 1024px) 620px, 100vw"
-              className="object-cover"
+              className="object-cover object-[center_36%]"
             />
+          </div>
             <Image
               src="/assets/figma/map-coral-cta.svg"
               alt="Coral silhouette map of Zanzibar"
               width={156}
               height={305}
-              className="absolute bottom-[-30px] left-[-60px] w-[150px]"
+              className="pointer-events-none absolute bottom-[-30px] left-[43%] z-10 hidden w-[150px] md:block"
             />
-          </div>
         </div>
       </section>
 
