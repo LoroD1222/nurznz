@@ -89,8 +89,8 @@ export function ActivityRail({ activities }: { activities: Activity[] }) {
       <div className="mt-[26px] flex items-end justify-between gap-8">
         <p className="max-w-[688px] text-[17px] leading-[26px] text-[rgba(12,51,49,0.76)]">
           The Home page should show breadth quickly. This rail can scroll
-          horizontally and exposes more products without making the section
-          feel heavy.
+          horizontally and expose more than four products without making the
+          section feel heavy.
         </p>
         <div className="flex gap-[15px] pb-[5px]">
           <button

@@ -53,9 +53,9 @@ const infoItems = [
 
 const activities = [
   ["/assets/figma/activity-fish.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Tropical fish at Mnemba Reef"],
-  ["/assets/figma/activity-monkey.jpg", "Nature", "Jozani forest walk", "4h", "Zanzibar forest wildlife"],
-  ["/assets/figma/cta-sunset.png", "Culture", "Stone Town route", "3h", "Warm Zanzibar cultural evening"],
-  ["/assets/figma/activity-elephant.jpg", "Wildlife", "Safari extension", "1 day", "Safari wildlife extension"],
+  ["/assets/figma/activity-monkey.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Monkey in a Zanzibar forest activity image"],
+  ["/assets/figma/activity-lagoon.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Zanzibar coastal lagoon activity image"],
+  ["/assets/figma/activity-elephant.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Elephants in a green safari landscape"],
 ];
 
 function FactIcon({ index }: { index: number }) {
@@ -200,10 +200,10 @@ export default function ExperiencePage() {
       </section>
 
       <section className="px-5 py-[54px] sm:px-8 lg:px-0">
-        <div className="relative mx-auto grid min-h-[286px] max-w-[1136px] overflow-hidden rounded-[10px] bg-teal shadow-[0_4px_17px_rgba(0,0,0,0.1)] lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative z-10 p-8">
+        <div className="relative mx-auto grid min-h-[286px] max-w-[1170px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_rgba(0,0,0,0.1)] lg:min-h-[422px] lg:grid-cols-[507px_1fr]">
+          <div className="relative z-10 p-8 lg:px-[46px] lg:py-[46px]">
             <SectionLabel>Must have information</SectionLabel>
-            <h2 className="mt-4 max-w-[420px] text-[34px] font-extrabold leading-[40px] text-white">
+            <h2 className="mt-4 max-w-[388px] text-[34px] font-extrabold leading-[40px] text-white sm:text-[40px] sm:leading-[48px]">
               What to know before you book
             </h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -229,6 +229,11 @@ export default function ExperiencePage() {
                 </article>
               ))}
             </div>
+            <p className="mt-5 max-w-[430px] text-[13px] leading-5 text-white/70">
+              Check the practical details before choosing a trip: duration,
+              pickup options, inclusions, guest suitability and private or
+              shared formats.
+            </p>
             <div className="mt-5 flex flex-wrap gap-4">
               <Button asChild>
                 <Link href="/contact">Partner rates</Link>
@@ -239,15 +244,14 @@ export default function ExperiencePage() {
             </div>
           </div>
           <div
-            className="relative min-h-[260px] overflow-hidden lg:min-h-[342px]"
-            style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
+            className="relative min-h-[260px] overflow-hidden lg:min-h-[422px]"
           >
             <Image
-              src="/assets/figma/proof-snorkling.png"
-              alt="Snorkelling guests in clear blue Zanzibar water"
+              src="/assets/figma/experience-ocean-dolphins.png"
+              alt="Dolphins swimming in clear blue ocean water near Zanzibar"
               fill
-              sizes="(min-width: 1024px) 620px, 100vw"
-              className="object-cover object-[center_36%]"
+              sizes="(min-width: 1024px) 663px, 100vw"
+              className="object-cover object-left"
             />
           </div>
             <Image
@@ -255,7 +259,8 @@ export default function ExperiencePage() {
               alt="Coral silhouette map of Zanzibar"
               width={156}
               height={305}
-              className="pointer-events-none absolute bottom-[-30px] left-[43%] z-10 hidden w-[150px] md:block"
+              loading="eager"
+              className="pointer-events-none absolute bottom-[38px] left-[42%] z-10 hidden w-[156px] md:block"
             />
         </div>
       </section>
@@ -289,8 +294,8 @@ export default function ExperiencePage() {
           </div>
           <p className="mt-7 max-w-[720px] text-[15px] leading-6 text-muted-copy">
             The Home page should show breadth quickly. This rail can scroll
-            horizontally and expose more products without making the section
-            feel heavy.
+            horizontally and expose more than four products without making the
+            section feel heavy.
           </p>
           <div className="mt-2 flex justify-end gap-3">
             <CircleArrow direction="left" />

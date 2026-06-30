@@ -258,6 +258,7 @@ export default function PartnersPage() {
             alt="Coral silhouette map of Zanzibar"
             width={156}
             height={305}
+            loading="eager"
             className="pointer-events-none absolute left-[43%] top-[52px] z-10 hidden w-[156px] md:block"
           />
         </div>

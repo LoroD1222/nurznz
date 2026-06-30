@@ -172,14 +172,14 @@ const footerColumns = [
 
 function Logo() {
   return (
-    <div className="relative h-[62px] w-[156px] overflow-hidden">
+    <div className="relative h-[40px] w-[156px] shrink-0 lg:h-[50px] lg:w-[198px]">
       <Image
         src="/assets/figma/logo.png"
-        alt="NURZANZI Tours and Safaris logo"
-        width={348}
-        height={232}
+        alt="NURZANZIBAR Tours and Safari logo"
+        width={2426}
+        height={612}
         priority
-        className="absolute left-[-187px] top-[-19px] h-[232px] w-[348px] max-w-none object-cover"
+        className="h-full w-full object-contain"
       />
     </div>
   );
@@ -248,7 +248,7 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.72)_0%,rgba(17,62,60,0.46)_48%,rgba(17,62,60,0.16)_100%)]" />
         <div className="relative mx-auto flex min-h-[488px] max-w-[1234px] items-center px-5 py-16 sm:px-8 lg:px-0">
-          <div className="max-w-[656px]">
+          <div className="max-w-[760px]">
             <p className="text-[15px] font-black uppercase leading-[19px] tracking-[2px] text-coral-bright sm:text-[18px]">
               B2B Zanzibar Activity Provider
             </p>
@@ -278,7 +278,7 @@ function HeroSection() {
             width={270}
             height={530}
             priority
-            className="pointer-events-none absolute bottom-[-42px] right-[5%] hidden w-[190px] md:block lg:right-[20px] lg:w-[218px]"
+            className="pointer-events-none absolute bottom-[-30px] right-[5%] hidden w-[180px] md:block lg:right-[40px] lg:w-[200px]"
           />
         </div>
       </div>
@@ -480,6 +480,7 @@ export function SplitCta({
           alt="Coral silhouette map of Zanzibar"
           width={156}
           height={305}
+          loading="eager"
           className={`pointer-events-none absolute top-[82px] z-20 hidden w-[156px] md:block ${
             reverse ? "left-[41%]" : "left-[39%]"
           }`}
@@ -627,6 +628,9 @@ function FaqSection() {
 }
 
 export function SiteFooter() {
+  const linkColor = (heading: string) =>
+    heading === "Explore" ? "text-[#61716e]" : "text-[rgba(17,62,60,0.49)]";
+
   return (
     <footer
       id="contact"
@@ -654,7 +658,7 @@ export function SiteFooter() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-[15px] font-medium leading-[22px] text-[rgba(17,62,60,0.49)]"
+                        className={`text-[15px] font-medium leading-[22px] ${linkColor(column.heading)}`}
                       >
                         {link.label}
                       </Link>
@@ -679,7 +683,7 @@ export function SiteFooter() {
         </div>
         <div className="mt-10 border-t border-[rgba(17,62,60,0.22)] pt-[19px]">
           <p className="text-[13px] leading-[18px] text-teal-deep">
-            © 2026 NUR Zanzibar. Short Zanzibar activities for guests and
+            &copy; 2026 NUR Zanzibar. Short Zanzibar activities for guests and
             travel partners.
           </p>
         </div>

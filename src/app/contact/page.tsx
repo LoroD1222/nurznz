@@ -101,7 +101,7 @@ export default function ContactPage() {
           sizes="100vw"
           className="object-cover object-[center_72%]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.68)_0%,rgba(17,62,60,0.38)_50%,rgba(17,62,60,0.12)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.62)_0%,rgba(17,62,60,0.32)_50%,rgba(17,62,60,0.08)_100%)]" />
         <div className="relative mx-auto max-w-[1136px]">
           <SectionLabel>Contact NUR Zanzibar</SectionLabel>
           <h1 className="mt-5 max-w-[680px] text-[42px] font-extrabold leading-[50px] text-white sm:text-[56px] sm:leading-[62px]">

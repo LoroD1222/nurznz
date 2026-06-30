@@ -36,9 +36,9 @@ const formConfigs = {
       message: "Message",
     },
     placeholders: {
-      primary: "Full name",
+      primary: "Lead guest or requester name",
       secondary: "Best contact details",
-      tertiary: "Snorkelling, Stone Town, Spice Farm day",
+      tertiary: "Snorkelling / Stone Town / spice / beach day",
       quaternary: "Preferred date or month",
       details: "2 adults, Nungwi hotel pickup, private or shared",
       message: "Tell us what you want to do, group size, timing needs and any special requests.",
@@ -124,7 +124,7 @@ export function ContactForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-[8px] border border-[rgba(17,62,60,0.12)] bg-white p-7 shadow-[0_18px_45px_rgba(15,31,28,0.1)]"
+      className="rounded-[8px] border border-[rgba(17,62,60,0.12)] bg-white p-7 shadow-[0_18px_45px_rgba(15,31,28,0.1)] sm:p-8"
       noValidate
     >
       <div className="mb-5">
@@ -135,7 +135,7 @@ export function ContactForm({
           {config.intro}
         </p>
       </div>
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2 md:gap-x-6">
         <Field label={config.fields.primary} error={errors.primary}>
           <input
             name="primary"
@@ -144,7 +144,7 @@ export function ContactForm({
             onChange={(event) => update("primary", event.target.value)}
             aria-invalid={Boolean(errors.primary)}
             placeholder={config.placeholders.primary}
-            className="h-12 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-[50px] w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
             autoComplete="name"
           />
         </Field>
@@ -156,7 +156,7 @@ export function ContactForm({
             onChange={(event) => update("secondary", event.target.value)}
             aria-invalid={Boolean(errors.secondary)}
             placeholder={config.placeholders.secondary}
-            className="h-12 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-[50px] w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
             autoComplete="email"
           />
         </Field>
@@ -168,7 +168,7 @@ export function ContactForm({
             onChange={(event) => update("tertiary", event.target.value)}
             aria-invalid={Boolean(errors.tertiary)}
             placeholder={config.placeholders.tertiary}
-            className="h-12 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-[50px] w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
           />
         </Field>
         <Field label={config.fields.quaternary} error={errors.quaternary}>
@@ -179,7 +179,7 @@ export function ContactForm({
             onChange={(event) => update("quaternary", event.target.value)}
             aria-invalid={Boolean(errors.quaternary)}
             placeholder={config.placeholders.quaternary}
-            className="h-12 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+            className="h-[50px] w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
           />
         </Field>
       </div>
@@ -191,7 +191,7 @@ export function ContactForm({
           onChange={(event) => update("details", event.target.value)}
           aria-invalid={Boolean(errors.details)}
           placeholder={config.placeholders.details}
-          className="h-12 w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
+          className="h-[50px] w-full rounded-[5px] border border-[#e9dfd2] bg-cream/50 px-3 text-[14px] outline-none focus:border-coral"
         />
       </Field>
       <Field label="Message" error={errors.message} className="mt-5">

@@ -44,7 +44,7 @@ export function InnerPageShell({
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.78)_0%,rgba(17,62,60,0.55)_48%,rgba(17,62,60,0.28)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,62,60,0.72)_0%,rgba(17,62,60,0.46)_48%,rgba(17,62,60,0.16)_100%)]" />
         <div className="relative mx-auto grid max-w-[1136px] gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
           <div>
             <SectionLabel>{overline}</SectionLabel>
@@ -157,6 +157,7 @@ export function CtaBand({
           alt="Coral silhouette map of Zanzibar"
           width={156}
           height={305}
+          loading="eager"
           className={`pointer-events-none absolute top-[86px] z-20 hidden w-[156px] opacity-95 md:block ${
             reverse ? "left-[41%]" : "left-[39%]"
           }`}

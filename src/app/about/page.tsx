@@ -34,6 +34,34 @@ const agencyLogos = [
   { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 134, height: 44 },
 ];
 
+const proofThumbnails = [
+  {
+    src: "/assets/figma/proof-stone-town.png",
+    label: "Stone Town",
+    className: "md:w-[190px]",
+  },
+  {
+    src: "/assets/figma/proof-spice.png",
+    label: "Spice farm",
+    className: "md:w-[190px]",
+  },
+  {
+    src: "/assets/figma/proof-sandbank.png",
+    label: "Prison island",
+    className: "md:w-[204px]",
+  },
+  {
+    src: "/assets/figma/proof-group-pickup.png",
+    label: "Group pickup",
+    className: "md:w-[300px]",
+  },
+  {
+    src: "/assets/figma/proof-snorkling.png",
+    label: "Snorkling",
+    className: "md:w-[304px]",
+  },
+];
+
 export default function AboutPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -190,7 +218,7 @@ export default function AboutPage() {
         </div>
       </section>
       <section className="bg-cream px-5 py-[58px] sm:px-8 lg:px-0">
-        <div className="mx-auto max-w-[1136px]">
+        <div className="mx-auto max-w-[1248px]">
           <SectionLabel>Past trip proof</SectionLabel>
           <h2 className="type-h2 mt-5 text-teal">Proof from past Zanzibar experiences</h2>
           <p className="mt-4 max-w-[620px] text-[16px] leading-[25px] text-muted-copy">
@@ -211,7 +239,7 @@ export default function AboutPage() {
               </span>
             ))}
           </div>
-          <div className="mt-7 grid gap-5 md:grid-cols-[600px_1fr]">
+          <div className="mt-7 grid gap-6 md:grid-cols-[600px_1fr]">
             <div className="relative min-h-[300px] overflow-hidden rounded-[10px]">
               <Image
                 src="/assets/figma/proof-marine.png"
@@ -224,18 +252,21 @@ export default function AboutPage() {
                 Marine, culture and group operations
               </div>
             </div>
-            <div className="grid gap-5 sm:grid-cols-3 md:grid-cols-2">
-              {[
-                ["/assets/figma/proof-stone-town.png", "Stone Town"],
-                ["/assets/figma/proof-spice.png", "Spice farm"],
-                ["/assets/figma/proof-sandbank.png", "Prison island"],
-                ["/assets/figma/proof-group-pickup.png", "Group pickup"],
-                ["/assets/figma/proof-snorkling.png", "Snorkling"],
-              ].map(([src, alt]) => (
-                <div key={src} className="relative min-h-[140px] overflow-hidden rounded-[10px]">
-                  <Image src={src} alt={alt} fill sizes="240px" className="object-cover" />
+            <div className="flex flex-wrap gap-5">
+              {proofThumbnails.map((item) => (
+                <div
+                  key={item.src}
+                  className={`relative min-h-[140px] w-full overflow-hidden rounded-[10px] sm:w-[calc(50%_-_10px)] ${item.className}`}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    sizes="(min-width: 768px) 304px, 50vw"
+                    className="object-cover"
+                  />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(17,62,60,0.82)] to-transparent px-4 py-3 text-[13px] font-semibold text-white">
-                    {alt}
+                    {item.label}
                   </div>
                 </div>
               ))}
@@ -251,9 +282,9 @@ export default function AboutPage() {
           </h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
-              ["Close timing", "Pickup windows, trip duration and day plans are shaped around the partner or guest flow."],
-              ["Flexible local guides", "Local routing knowledge supports last-minute coordination and practical guest handling."],
-              ["Partner communication", "Clear answers keep product teams, hotel desks and guests aligned."],
+              ["Clear timings", "Pickup windows, trip duration and day-plan expectations are kept practical for partner selling."],
+              ["Friendly local guides", "Guest-facing guides balance local warmth with dependable professional handling."],
+              ["Partner communication", "Trade partners get direct coordination around rates, availability and handoff details."],
             ].map(([heading, body]) => (
               <article key={heading} className="border-l-4 border-coral bg-cream p-5">
                 <h3 className="text-[18px] font-bold text-teal">{heading}</h3>
