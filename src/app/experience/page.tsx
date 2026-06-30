@@ -45,10 +45,10 @@ const highlights = [
 ];
 
 const infoItems = [
-  ["Number and pickup window", "Share hotel area and timing."],
-  ["Swim suitability", "Open-water comfort."],
-  ["Reef visibility", "Sea state and tide dependent."],
-  ["What to bring", "Towel, sun protection and dry change."],
+  ["Duration and pickup window", "Share hotel area and timing."],
+  ["Guest suitability", "Best for open-water comfort."],
+  ["Inclusions and exclusions", "Confirm what is included."],
+  ["Private or shared options", "Ask about private handling."],
 ];
 
 const activities = [

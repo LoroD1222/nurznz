@@ -116,6 +116,7 @@ export function CtaBand({
   image = "/assets/figma/cta-boat.png",
   imageAlt = "Guests and a local guide on a Zanzibar boat activity",
   reverse = false,
+  label = "Activity Catalogue",
 }: {
   title: string;
   body: string;
@@ -123,6 +124,7 @@ export function CtaBand({
   image?: string;
   imageAlt?: string;
   reverse?: boolean;
+  label?: string;
 }) {
   const imagePanel = (
     <div
@@ -164,7 +166,7 @@ export function CtaBand({
             reverse ? "md:order-2 md:pl-16" : "md:order-1"
           }`}
         >
-          <SectionLabel>Activity Catalogue</SectionLabel>
+          <SectionLabel>{label}</SectionLabel>
           <h2 className="mt-5 max-w-[451px] text-[34px] font-extrabold leading-[42px] text-white sm:text-[38px] sm:leading-[44px]">
             {title}
           </h2>

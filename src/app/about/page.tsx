@@ -264,6 +264,7 @@ export default function AboutPage() {
         </div>
       </section>
       <CtaBand
+        label="Enquiries"
         title="Looking for a dependable Zanzibar activity partner?"
         body="Hotels, DMCs, STOs and agents can discuss partner rates, white-label options and activity agreements with the NUR partner desk."
         image="/assets/figma/cta-boat.png"

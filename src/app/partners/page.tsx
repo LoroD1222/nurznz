@@ -75,7 +75,7 @@ export default function PartnersPage() {
   return (
     <>
       <InnerPageShell
-        overline="Wholesale & Group Partners"
+        overline="Contact NUR Zanzibar"
         title="White-label Zanzibar activity partner for B2B travel sales"
         description="NUR operates reliable half-day and full-day activity supply for hotels, DMCs, agents, STOs and receptive brands."
         image="/assets/figma/hero-beach.png"
@@ -83,7 +83,7 @@ export default function PartnersPage() {
         proofs={["3-4h & day trips", "STO rates", "White-label ready", "Zanzibar-based operations"]}
         aside={
           <div className="rounded-[10px] bg-[rgba(17,62,60,0.92)] p-6 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
-            <SectionLabel>Partner Layer</SectionLabel>
+            <SectionLabel>White-label group partner</SectionLabel>
             <h2 className="mt-4 text-[24px] font-extrabold leading-[30px]">
               Behind-the-scenes delivery for partner brands
             </h2>
@@ -92,8 +92,18 @@ export default function PartnersPage() {
               carrying the operational load.
             </p>
             <div className="mt-5 grid grid-cols-2 gap-3 text-[13px] font-bold">
-              <span className="rounded-[6px] bg-white/10 p-3">Net / STO rates</span>
-              <span className="rounded-[6px] bg-white/10 p-3">White-label ops</span>
+              <span className="rounded-[6px] bg-white/10 p-3">
+                Net / STO rates
+                <span className="mt-1 block text-[11px] font-medium text-white/55">
+                  partner terms
+                </span>
+              </span>
+              <span className="rounded-[6px] bg-white/10 p-3">
+                White-label ops
+                <span className="mt-1 block text-[11px] font-medium text-white/55">
+                  delivery + support
+                </span>
+              </span>
             </div>
             <Button asChild className="mt-5 w-full" size="wide">
               <Link href="#partner-enquiry">Request partner rates</Link>
