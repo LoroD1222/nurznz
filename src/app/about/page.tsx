@@ -87,12 +87,12 @@ export default function AboutPage() {
         heroClassName="py-[111px] lg:min-h-[550px]"
         imageClassName="object-[center_46%]"
         overlayClassName="bg-[linear-gradient(93deg,rgba(17,62,60,0.95)_11%,rgba(17,62,60,0.44)_55%,rgba(17,62,60,0)_90%)]"
-        contentClassName="max-w-[1218px] lg:grid-cols-[701px_412px] lg:gap-[93px]"
+        contentClassName="max-w-[1218px] lg:grid-cols-[701px_412px] lg:items-stretch lg:gap-[93px]"
         descriptionClassName="max-w-[683px] text-[#ecf7f3]"
         proofsBeforeDescription
         proofs={["10+ years experience", "2,400+ guests hosted", "3-4h and day trips", "Zanzibar-based team"]}
         aside={
-          <div className="relative h-[383px] overflow-hidden rounded-[10px] border border-white/20 shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
+          <div className="relative h-full min-h-[383px] overflow-hidden rounded-[10px] border border-white/20 shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
             <Image
               src="/assets/figma/about-hero-card-exact.png"
               alt="Local guide and guest activity handoff"
@@ -231,20 +231,6 @@ export default function AboutPage() {
             Use the existing depth of the activity archive as credibility
             without turning the About page into a long image dump.
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            {["Marine", "Culture", "Spice", "Groups"].map((item, index) => (
-              <span
-                key={item}
-                className={`rounded-full px-5 py-2 text-[13px] font-semibold ${
-                  index === 0
-                    ? "bg-[#006c67] text-white"
-                    : "border border-[rgba(0,108,103,0.2)] bg-white/80 text-[#006c67]"
-                }`}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
           <div className="mt-7 grid gap-6 md:grid-cols-[600px_1fr]">
             <div className="relative min-h-[300px] overflow-hidden rounded-[10px]">
               <Image

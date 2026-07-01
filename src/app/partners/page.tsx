@@ -70,14 +70,14 @@ export default function PartnersPage() {
         description="NUR operates reliable half-day, 3-4 hour and single-day activities across Zanzibar for hotels, DMCs, agents, STOs and travel partners, with white-label delivery available when partners sell under their own brand."
         image="/assets/figma/partners-hero-bg.png"
         imageAlt="Bright aerial Zanzibar beach and palms used for partner activity supply"
-        heroClassName="py-[83px] lg:min-h-[610px]"
+        heroClassName="pb-[110px] pt-[65px] lg:min-h-[610px]"
         imageClassName="object-[center_48%] scale-[1.12]"
         overlayClassName="bg-[linear-gradient(80deg,rgba(17,62,60,0.95)_4%,rgba(17,62,60,0.58)_47%,rgba(17,62,60,0.06)_99%)]"
         contentClassName="max-w-[1226px] lg:grid-cols-[730px_442px] lg:items-start lg:gap-[57px]"
         descriptionClassName="max-w-[720px] text-white/90"
         proofs={["3-4h & day trips", "STO rates", "White-label ready", "Zanzibar-based operations"]}
         aside={
-          <div className="relative flex min-h-[440px] flex-col rounded-[9px] border border-white bg-[linear-gradient(241deg,rgba(17,62,60,0.41)_8%,rgba(17,62,60,0.8)_98%)] p-[34px] text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-[9.5px]">
+          <div className="relative flex min-h-[440px] flex-col rounded-[9px] border border-white/40 bg-[linear-gradient(241deg,rgba(17,62,60,0.41)_8%,rgba(17,62,60,0.8)_98%)] p-[34px] text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-[9.5px]">
             <SectionLabel>White-label ground partner</SectionLabel>
             <h2 className="mt-4 text-[28px] font-extrabold leading-[30px]">
               Behind-the-scenes delivery for partner brands
@@ -109,7 +109,7 @@ export default function PartnersPage() {
       >
       <section className="relative bg-cream px-5 pb-[66px] pt-0 sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1226px]">
-          <div className="relative z-10 -mt-[68px] mb-[88px] grid gap-10 lg:grid-cols-[643px_533px] lg:items-start lg:gap-[77px]">
+          <div className="relative z-[100] -mt-[50px] mb-[88px] grid gap-10 lg:grid-cols-[643px_533px] lg:items-start lg:gap-[77px]">
             <div className="space-y-[22px]">
               {benefitCards.map(([id, icon, heading, body]) => (
                 <article
@@ -129,7 +129,7 @@ export default function PartnersPage() {
                 </article>
               ))}
             </div>
-            <article className="pt-[120px]">
+            <article className="pt-[50px] lg:self-center">
               <SectionLabel>Contact NUR Zanzibar</SectionLabel>
               <h2 className="type-h2 mt-4 text-teal">Partner benefits</h2>
               <p className="mt-4 text-[18px] leading-7 text-muted-copy">
@@ -264,11 +264,11 @@ export default function PartnersPage() {
               guest volumes.
             </p>
           </div>
-          <div className="mt-[27px] grid gap-[30px] lg:grid-cols-[760px_417px]">
-            <div>
+          <div className="mt-[27px] grid gap-[30px] lg:grid-cols-[760px_417px] lg:items-stretch">
+            <div className="h-full [&>form]:h-full">
               <ContactForm variant="partner" />
             </div>
-            <aside className="space-y-8 self-start">
+            <aside className="flex h-full flex-col gap-8">
             {[
               ["Partner desk channels", "WhatsApp for urgent operations, email for rates, contracts and clear handoff notes for confirmed activities."],
               ["What to include", "Partner type, guest profile, expected volume, preferred pickup areas, white-label needs and language requirements."],
@@ -276,7 +276,7 @@ export default function PartnersPage() {
             ].map(([heading, body], index) => (
               <article
                 key={heading}
-                className="flex min-h-[190px] gap-[22px] rounded-[8px] border border-[#e3d5bd] bg-white px-[28px] py-[27px] shadow-[0_12px_14px_rgba(0,0,0,0.05)]"
+                className="flex min-h-[190px] flex-1 gap-[22px] rounded-[8px] border border-[#e3d5bd] bg-white px-[28px] py-[27px] shadow-[0_12px_14px_rgba(0,0,0,0.05)]"
                 style={{ borderLeft: `6px solid ${["#17a7a6", "#e96855", "#f4c35b"][index]}` }}
               >
                 <Image

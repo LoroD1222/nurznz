@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ActivityRail } from "@/components/home/activity-rail";
+import { ExperienceGallery } from "@/components/experience/experience-gallery";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SectionLabel, SiteFooter, SiteHeader } from "@/components/home/home-page";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { experienceGalleryImages, trips } from "@/lib/trips";
 
 const title = "Mnemba Reef Snorkelling | NUR Zanzibar";
 const description =
@@ -51,13 +54,6 @@ const infoItems = [
   ["Private or shared options", "Ask about private handling."],
 ];
 
-const activities = [
-  ["/assets/figma/activity-fish.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Tropical fish at Mnemba Reef"],
-  ["/assets/figma/activity-monkey.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Monkey in a Zanzibar forest activity image"],
-  ["/assets/figma/activity-lagoon.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Zanzibar coastal lagoon activity image"],
-  ["/assets/figma/activity-elephant.jpg", "Marine", "Mnemba snorkelling", "3-4h", "Elephants in a green safari landscape"],
-];
-
 function FactIcon({ index }: { index: number }) {
   const icons = [
     <path key="pickup" d="M5 15h10l1.5-4.5H3.5L5 15Zm1.2 0a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Zm7.6 0a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM5.5 10.5V6h7.8l2.3 4.5" />,
@@ -82,26 +78,6 @@ function FactIcon({ index }: { index: number }) {
   );
 }
 
-function CircleArrow({ direction }: { direction: "left" | "right" }) {
-  return (
-    <button
-      type="button"
-      className="grid size-[36px] place-items-center rounded-full bg-coral text-white shadow-[0_8px_16px_rgba(15,31,28,0.12)]"
-      aria-label={`Gallery ${direction} arrow`}
-    >
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-        <path
-          d={direction === "left" ? "M11 4 6 9l5 5M6.8 9H14" : "m7 4 5 5-5 5M11.2 9H4"}
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        />
-      </svg>
-    </button>
-  );
-}
-
 export default function ExperiencePage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -121,7 +97,7 @@ export default function ExperiencePage() {
     <main className="bg-white">
       <SiteHeader />
       <section className="px-5 py-[54px] sm:px-8 lg:px-0">
-        <div className="mx-auto grid max-w-[1136px] gap-10 lg:grid-cols-[0.95fr_1fr] lg:items-start">
+        <div className="mx-auto grid max-w-[1136px] gap-10 lg:grid-cols-[0.95fr_1fr] lg:items-stretch">
           <div className="pt-2">
             <SectionLabel>Zanzibar Activity & Snorkelling</SectionLabel>
             <h1 className="mt-4 max-w-[470px] text-[42px] font-extrabold leading-[46px] text-teal-deep sm:text-[56px] sm:leading-[60px]">
@@ -165,36 +141,8 @@ export default function ExperiencePage() {
               </Button>
             </div>
           </div>
-          <div className="grid gap-3">
-            <div className="relative h-[310px] overflow-hidden rounded-[8px] bg-cream shadow-[0_10px_34px_rgba(15,31,28,0.08)]">
-              <Image
-                src="/assets/figma/activity-fish.jpg"
-                alt="Tropical fish in clear water at Mnemba Reef"
-                fill
-                priority
-                sizes="(min-width: 1024px) 560px, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-y-0 left-4 flex items-center">
-                <CircleArrow direction="left" />
-              </div>
-              <div className="absolute inset-y-0 right-4 flex items-center">
-                <CircleArrow direction="right" />
-              </div>
-            </div>
-            <div className="grid grid-cols-3 gap-3">
-              {["/assets/figma/activity-fish.jpg", "/assets/figma/activity-fish.jpg", "/assets/figma/activity-fish.jpg"].map((src, index) => (
-                <div key={`${src}-${index}`} className="relative h-[92px] overflow-hidden rounded-[6px]">
-                  <Image
-                    src={src}
-                    alt={`Mnemba snorkelling gallery image ${index + 1}`}
-                    fill
-                    sizes="180px"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="lg:min-h-full">
+            <ExperienceGallery images={experienceGalleryImages} />
           </div>
         </div>
       </section>
@@ -239,7 +187,7 @@ export default function ExperiencePage() {
                 <Link href="/contact">Partner rates</Link>
               </Button>
               <Button asChild variant="secondary-dark">
-                <Link href="/experience">Open Trips</Link>
+                <Link href="/trips">Open Trips</Link>
               </Button>
             </div>
           </div>
@@ -271,36 +219,7 @@ export default function ExperiencePage() {
           <h2 className="mt-4 text-[36px] font-extrabold leading-[44px] text-teal">
             Other Exciting Zanzibar Activities We Offer
           </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-4">
-            {activities.map(([src, category, cardTitle, duration, alt]) => (
-              <article
-                key={cardTitle}
-                className="rounded-[9px] border border-[rgba(17,62,60,0.08)] bg-cream p-2 shadow-[0_2px_22px_rgba(0,0,0,0.04)]"
-              >
-                <div className="relative h-[154px] overflow-hidden rounded-[6px]">
-                  <Image src={src} alt={alt} fill sizes="260px" className="object-cover" />
-                  <span className="absolute right-2 top-2 rounded-full bg-coral px-3 py-1 text-[12px] font-bold text-white">
-                    {duration}
-                  </span>
-                </div>
-                <p className="mt-2 text-[12px] font-black uppercase tracking-[3px] text-coral">
-                  {category}
-                </p>
-                <h3 className="mt-1 text-[20px] font-extrabold leading-[25px] text-teal">
-                  {cardTitle}
-                </h3>
-              </article>
-            ))}
-          </div>
-          <p className="mt-7 max-w-[720px] text-[15px] leading-6 text-muted-copy">
-            The Home page should show breadth quickly. This rail can scroll
-            horizontally and expose more than four products without making the
-            section feel heavy.
-          </p>
-          <div className="mt-2 flex justify-end gap-3">
-            <CircleArrow direction="left" />
-            <CircleArrow direction="right" />
-          </div>
+          <ActivityRail activities={trips} intro={null} />
         </div>
       </section>
       <SiteFooter />

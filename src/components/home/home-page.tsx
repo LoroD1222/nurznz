@@ -3,55 +3,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ActivityRail } from "@/components/home/activity-rail";
 import { FaqAccordion } from "@/components/home/faq-accordion";
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Trips", href: "/experience" },
-  { label: "Partners", href: "/partners" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { SiteNavLinks } from "@/components/site/site-nav-links";
+import { trips } from "@/lib/trips";
 
 const stats = [
   { value: "3-4h", label: "half-day activities" },
   { value: "1 day", label: "full-day operations" },
   { value: "for B2B", label: "hotels, DMCs, agents" },
   { value: "Daily ops", label: "guest-ready logistics" },
-];
-
-const activities = [
-  {
-    title: "Mnemba snorkelling",
-    category: "Marine",
-    duration: "3-4h",
-    durationClass: "bg-coral text-white",
-    image: "/assets/figma/activity-fish.jpg",
-    alt: "Tropical fish in clear water during a Mnemba snorkelling activity",
-  },
-  {
-    title: "Mnemba snorkelling",
-    category: "Marine",
-    duration: "4h",
-    durationClass: "bg-[#153b3a] text-white",
-    image: "/assets/figma/activity-monkey.jpg",
-    alt: "Monkey in a Zanzibar forest visited during nature routes",
-  },
-  {
-    title: "Mnemba snorkelling",
-    category: "Marine",
-    duration: "1 day",
-    durationClass: "bg-[#fffaf3] text-teal-deep",
-    image: "/assets/figma/activity-lagoon.jpg",
-    alt: "Zanzibar coastal lodge and turquoise water on a marine activity route",
-  },
-  {
-    title: "Mnemba snorkelling",
-    category: "Marine",
-    duration: "Full day",
-    durationClass: "bg-coral text-teal-deep",
-    image: "/assets/figma/activity-elephant.jpg",
-    alt: "Elephants in a green safari landscape connected to activity planning",
-  },
 ];
 
 const partnerCards = [
@@ -144,7 +103,7 @@ const footerColumns = [
     heading: "Explore",
     links: [
       { label: "Home", href: "/" },
-      { label: "Trips", href: "/experience" },
+      { label: "Trips", href: "/trips" },
       { label: "Partners", href: "/partners" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
@@ -153,10 +112,10 @@ const footerColumns = [
   {
     heading: "Activities",
     links: [
-      { label: "Mnemba snorkelling", href: "/experience#mnemba" },
-      { label: "Stone Town walk", href: "/experience#stone-town" },
-      { label: "Spice farm visit", href: "/experience#spice-farm" },
-      { label: "Safari Blue day", href: "/experience#safari-blue" },
+      { label: "Mnemba snorkelling", href: "/trips" },
+      { label: "Stone Town walk", href: "/trips" },
+      { label: "Spice farm visit", href: "/trips" },
+      { label: "Safari Blue day", href: "/trips" },
     ],
   },
   {
@@ -190,46 +149,25 @@ export function SiteHeader() {
     <header className="relative z-20 border-b border-[rgba(217,217,217,0.53)] bg-white">
       <div className="mx-auto flex min-h-[76px] w-full max-w-[1234px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-0">
         <div className="flex items-center gap-8 lg:gap-[33px]">
-          <Logo />
+          <Link href="/" aria-label="Go to NUR Zanzibar home">
+            <Logo />
+          </Link>
           <div className="hidden h-[76px] w-px bg-[rgba(217,217,217,0.3)] lg:block" />
-          <nav
-            aria-label="Primary navigation"
-            className="hidden items-center gap-7 text-[14px] font-medium leading-[18px] text-teal md:flex lg:gap-10"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={item.label === "Home" ? "font-bold text-coral" : ""}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <SiteNavLinks className="hidden items-center gap-7 text-[14px] font-medium leading-[18px] text-teal md:flex lg:gap-10" />
         </div>
         <div className="hidden items-center gap-[10px] sm:flex sm:gap-[11px]">
           <Button asChild variant="secondary" size="compact">
-            <Link href="/experience">Open Trips</Link>
+            <Link href="/trips">Open Trips</Link>
           </Button>
           <Button asChild size="wide">
             <Link href="/partners#rates">Partner rates</Link>
           </Button>
         </div>
       </div>
-      <nav
-        aria-label="Mobile navigation"
+      <SiteNavLinks
+        mobile
         className="flex gap-6 overflow-x-auto border-t border-[rgba(217,217,217,0.35)] px-5 py-3 text-[14px] font-medium text-teal md:hidden"
-      >
-        {navItems.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={item.label === "Home" ? "font-bold text-coral" : "shrink-0"}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      />
     </header>
   );
 }
@@ -268,7 +206,7 @@ function HeroSection() {
                 <Link href="/partners#rates">Partner rates</Link>
               </Button>
               <Button asChild variant="secondary-dark" size="default">
-                <Link href="/experience">Open Trips</Link>
+                <Link href="/trips">Open Trips</Link>
               </Button>
             </div>
           </div>
@@ -322,7 +260,7 @@ function ActivityCatalogue() {
         >
           Exciting Zanzibar Activities We Offer
         </h2>
-        <ActivityRail activities={activities} />
+        <ActivityRail activities={trips} />
       </div>
     </section>
   );
@@ -470,7 +408,7 @@ export function SplitCta({
               <Link href="/partners#rates">Partner rates</Link>
             </Button>
             <Button asChild variant="secondary-dark" size="default">
-              <Link href="/experience">Open Trips</Link>
+              <Link href="/trips">Open Trips</Link>
             </Button>
           </div>
         </div>

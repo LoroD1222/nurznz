@@ -98,7 +98,7 @@ export function InnerPageShell({
             </p>
             {proofsBeforeDescription ? null : proofList}
           </div>
-          {aside ? <div className="relative hidden lg:block">{aside}</div> : null}
+          {aside ? <div className="relative hidden h-full lg:block">{aside}</div> : null}
         </div>
       </section>
       {children}
@@ -214,7 +214,7 @@ export function CtaBand({
               <Link href={primaryHref}>{primaryLabel}</Link>
             </Button>
             <Button asChild variant="secondary-dark">
-              <Link href="/experience">Open Trips</Link>
+              <Link href="/trips">Open Trips</Link>
             </Button>
           </div>
         </div>

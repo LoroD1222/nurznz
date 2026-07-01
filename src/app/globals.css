@@ -20,7 +20,7 @@
   --color-teal: var(--teal);
   --color-teal-deep: var(--teal-deep);
   --color-muted-copy: var(--muted);
-  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   --text-overline: 14px;
   --text-overline--line-height: 18px;
   --text-display: 58px;
@@ -48,7 +48,7 @@ body {
   overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Satoshi", "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   text-rendering: geometricPrecision;
 }
 
