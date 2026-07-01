@@ -120,7 +120,7 @@ export default function ContactPage() {
           <div className="max-w-[760px]">
             <ContactForm />
           </div>
-          <aside className="mt-8 grid gap-[13px] lg:absolute lg:right-0 lg:top-[-321px] lg:mt-0 lg:w-[442px]">
+          <aside className="mt-8 grid gap-[13px] lg:absolute lg:bottom-0 lg:right-0 lg:mt-0 lg:w-[442px]">
             <div className="min-h-[363px] rounded-[9px] border border-white/45 bg-[rgba(17,62,60,0.7)] p-[30px_35px] text-white shadow-[0_18px_45px_rgba(15,31,28,0.14)] backdrop-blur-[17px]">
               <SectionLabel>Activity Help</SectionLabel>
               <h2 className="mt-4 text-[26px] font-extrabold leading-[34px]">
@@ -170,13 +170,13 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_52%,#113e3c_52%,#113e3c_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
+      <section className="bg-[linear-gradient(to_bottom,#fff_0%,#fff_52%,#113e3c_52%,#113e3c_100%)] px-5 py-[70px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1181px] text-center">
           <SectionLabel>Whats Next</SectionLabel>
-          <h2 className="mt-4 text-[34px] font-extrabold leading-[42px] text-teal sm:text-[42px] sm:leading-[50px]">
+          <h2 className="mt-5 text-[34px] font-extrabold leading-[42px] text-teal sm:text-[42px] sm:leading-[50px]">
             Whats our operational process
           </h2>
-          <div className="relative z-10 mt-11 grid gap-[23px] md:grid-cols-3">
+          <div className="relative z-10 mt-14 grid gap-[23px] md:grid-cols-3">
             {steps.map(([heading, body], index) => (
               <article
                 key={heading}
@@ -195,7 +195,7 @@ export default function ContactPage() {
               </article>
             ))}
           </div>
-          <p className="mx-auto mt-[54px] max-w-[900px] text-[18px] leading-7 text-white">
+          <p className="mx-auto mt-[64px] max-w-[900px] text-[18px] leading-7 text-white/80">
             NUR checks availability, recommends a suitable Zanzibar activity,
             confirms pickup details and sends the next booking step.
           </p>
