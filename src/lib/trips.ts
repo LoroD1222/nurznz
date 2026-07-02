@@ -19,7 +19,6 @@ export const trips: Trip[] = [
     title: "Mnemba snorkelling",
     category: "Marine",
     duration: "3-4h",
-    durationClass: "bg-coral text-white",
     image: "/assets/figma/activity-fish.jpg",
     alt: "Tropical fish in clear water during a Mnemba snorkelling activity",
     excerpt:
@@ -30,7 +29,6 @@ export const trips: Trip[] = [
     title: "Jozani forest walk",
     category: "Nature",
     duration: "4h",
-    durationClass: "bg-[#153b3a] text-white",
     image: "/assets/figma/activity-monkey.jpg",
     alt: "Monkey in a Zanzibar forest visited during nature routes",
     excerpt:
@@ -41,7 +39,6 @@ export const trips: Trip[] = [
     title: "Blue lagoon coast",
     category: "Marine",
     duration: "Half day",
-    durationClass: "bg-[#fffaf3] text-teal-deep",
     image: "/assets/figma/activity-lagoon.jpg",
     alt: "Zanzibar coastal lodge and turquoise water on a marine activity route",
     excerpt:
@@ -52,7 +49,6 @@ export const trips: Trip[] = [
     title: "Nature day trip",
     category: "Nature",
     duration: "Full day",
-    durationClass: "bg-coral text-teal-deep",
     image: "/assets/figma/activity-elephant.jpg",
     alt: "Elephants in a green safari landscape connected to activity planning",
     excerpt:
@@ -63,7 +59,6 @@ export const trips: Trip[] = [
     title: "Stone Town walk",
     category: "Culture",
     duration: "3h",
-    durationClass: "bg-coral text-white",
     image: "/assets/figma/proof-stone-town.png",
     alt: "Stone Town street and local culture route in Zanzibar",
     excerpt:
@@ -74,7 +69,6 @@ export const trips: Trip[] = [
     title: "Spice farm visit",
     category: "Culture",
     duration: "3h",
-    durationClass: "bg-[#153b3a] text-white",
     image: "/assets/figma/proof-spice.png",
     alt: "Spice farm visit and local Zanzibar activity proof",
     excerpt:
@@ -85,7 +79,6 @@ export const trips: Trip[] = [
     title: "Prison Island sandbank",
     category: "Marine",
     duration: "4h",
-    durationClass: "bg-[#fffaf3] text-teal-deep",
     image: "/assets/figma/proof-sandbank.png",
     alt: "Boat and sandbank activity near Prison Island",
     excerpt:
@@ -96,7 +89,6 @@ export const trips: Trip[] = [
     title: "Private group pickup",
     category: "Groups",
     duration: "Custom",
-    durationClass: "bg-coral text-teal-deep",
     image: "/assets/figma/proof-group-pickup.png",
     alt: "Group pickup coordination for Zanzibar activity guests",
     excerpt:
@@ -107,7 +99,6 @@ export const trips: Trip[] = [
     title: "Marine reef day",
     category: "Marine",
     duration: "Half day",
-    durationClass: "bg-coral text-white",
     image: "/assets/figma/proof-marine.png",
     alt: "Marine, culture and group operations activity proof",
     excerpt:
@@ -118,7 +109,6 @@ export const trips: Trip[] = [
     title: "Snorkelling boat trip",
     category: "Marine",
     duration: "3-4h",
-    durationClass: "bg-[#153b3a] text-white",
     image: "/assets/figma/proof-snorkling.png",
     alt: "Guests snorkelling during a Zanzibar marine activity",
     excerpt:
@@ -129,7 +119,6 @@ export const trips: Trip[] = [
     title: "Dolphin ocean morning",
     category: "Marine",
     duration: "3-4h",
-    durationClass: "bg-[#fffaf3] text-teal-deep",
     image: "/assets/figma/experience-ocean-dolphins.png",
     alt: "Dolphins swimming in clear blue ocean water near Zanzibar",
     excerpt:
@@ -140,7 +129,6 @@ export const trips: Trip[] = [
     title: "Sunset beach plan",
     category: "Coast",
     duration: "Evening",
-    durationClass: "bg-coral text-teal-deep",
     image: "/assets/figma/cta-sunset.png",
     alt: "Beach sunset with performers and warm lights in Zanzibar",
     excerpt:
@@ -151,7 +139,6 @@ export const trips: Trip[] = [
     title: "Boat activity day",
     category: "Marine",
     duration: "Half day",
-    durationClass: "bg-coral text-white",
     image: "/assets/figma/cta-boat.png",
     alt: "Travel guests and a local guide smiling on a Zanzibar boat activity",
     excerpt:
@@ -162,7 +149,6 @@ export const trips: Trip[] = [
     title: "Partner group activity",
     category: "Groups",
     duration: "Custom",
-    durationClass: "bg-[#153b3a] text-white",
     image: "/assets/figma/review-group.png",
     alt: "Guests posing beside safari vehicles after a NUR Zanzibar partner activity",
     excerpt:

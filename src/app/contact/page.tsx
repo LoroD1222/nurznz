@@ -145,7 +145,7 @@ export default function ContactPage() {
                 <Button asChild className="h-12 rounded-[7px]" size="default">
                   <Link href="tel:+255553144222">+255 553 144 222</Link>
                 </Button>
-                <Button asChild className="h-12 rounded-[7px] bg-[rgba(233,104,85,0.47)] text-white hover:bg-[rgba(233,104,85,0.57)]" variant="secondary-dark" size="default">
+                <Button asChild className="h-12 rounded-[7px]" variant="secondary-dark" size="default">
                   <Link href="mailto:info@gmail.com">info@gmail.com</Link>
                 </Button>
               </div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
             <Button asChild>
               <Link href="tel:+255553144222">+255 553 144 222</Link>
             </Button>
-            <Button asChild className="bg-[rgba(233,104,85,0.47)] text-white hover:bg-[rgba(233,104,85,0.57)]" variant="secondary-dark">
+            <Button asChild variant="secondary-dark">
               <Link href="mailto:info@gmail.com">info@gmail.com</Link>
             </Button>
           </div>

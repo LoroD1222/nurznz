@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     url: "/about",
     siteName: SITE_NAME,
     type: "website",
-    images: [{ url: "/assets/figma/cta-boat.png", width: 1200, height: 630, alt: "NUR Zanzibar guests and local guide on a boat" }],
+    images: [{ url: "/assets/figma/cta-image-partners.png", width: 1200, height: 630, alt: "NUR Zanzibar guests and local guide on a boat" }],
   },
-  twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/cta-boat.png"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/cta-image-partners.png"] },
 };
 
 const agencyLogos = [
@@ -292,7 +292,7 @@ export default function AboutPage() {
         body="Hotels, DMCs, STOs and agents can discuss partner rates, white-label options and activity agreements with the NUR partner desk."
         primaryHref="/partners#rates"
         primaryLabel="Partner rates"
-        image="/assets/figma/about-final-cta-exact.png"
+        image="/assets/figma/cta-image-partners.png"
         imageAlt="Guests on a Zanzibar boat activity with local guide"
       />
       </InnerPageShell>

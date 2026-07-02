@@ -232,8 +232,8 @@ export default function PartnersPage() {
           </div>
           <div className="absolute bottom-0 right-0 top-0 hidden w-[517px] overflow-hidden md:block">
             <Image
-              src="/assets/figma/partners-agreements-snorkel.png"
-              alt="Snorkelling guests in turquoise Zanzibar water"
+              src="/assets/figma/cta-image-partners.png"
+              alt="Guests on a Zanzibar boat activity with local guide"
               fill
               sizes="(min-width: 1024px) 600px, 100vw"
               className="object-cover"

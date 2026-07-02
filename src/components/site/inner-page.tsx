@@ -145,7 +145,7 @@ export function CtaBand({
   body,
   primaryHref = "/contact",
   primaryLabel = "Send enquiry",
-  image = "/assets/figma/cta-boat.png",
+  image = "/assets/figma/cta-image-home.png",
   imageAlt = "Guests and a local guide on a Zanzibar boat activity",
   imageClassName,
   reverse = false,
@@ -185,7 +185,11 @@ export function CtaBand({
 
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
-      <div className="relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2">
+      <div
+        className={`relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
+          reverse ? "lg:grid-cols-[599px_1fr]" : "lg:grid-cols-[473px_1fr]"
+        }`}
+      >
         {reverse ? imagePanel : null}
         <Image
           src="/assets/figma/map-coral-final.svg"
@@ -193,8 +197,8 @@ export function CtaBand({
           width={156}
           height={305}
           loading="eager"
-          className={`pointer-events-none absolute top-[86px] z-20 hidden w-[156px] opacity-95 md:block ${
-            reverse ? "left-[41%]" : "left-[39%]"
+          className={`pointer-events-none absolute z-20 hidden w-[156px] opacity-95 md:block ${
+            reverse ? "left-[40.5%] top-[62px]" : "left-[41%] top-[90px]"
           }`}
         />
         <div

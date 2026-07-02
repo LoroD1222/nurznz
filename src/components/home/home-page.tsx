@@ -375,7 +375,11 @@ export function SplitCta({
 
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
-      <div className="relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2">
+      <div
+        className={`relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
+          reverse ? "lg:grid-cols-[599px_1fr]" : "lg:grid-cols-[473px_1fr]"
+        }`}
+      >
         {reverse ? imagePanel : null}
         <div
           className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
@@ -419,8 +423,8 @@ export function SplitCta({
           width={156}
           height={305}
           loading="eager"
-          className={`pointer-events-none absolute top-[82px] z-20 hidden w-[156px] md:block ${
-            reverse ? "left-[41%]" : "left-[39%]"
+          className={`pointer-events-none absolute z-20 hidden w-[156px] md:block ${
+            reverse ? "left-[40.5%] top-[62px]" : "left-[41%] top-[90px]"
           }`}
         />
       </div>
@@ -638,16 +642,16 @@ export function HomePage() {
       <ActivityCatalogue />
       <PartnerSection />
       <SplitCta
-        image="/assets/figma/cta-boat.png"
+        image="/assets/figma/cta-image-home.png"
         map="/assets/figma/map-coral-cta.svg"
         imageAlt="Travel guests and a local guide smiling on a Zanzibar boat activity"
         title="Short-trip operations that are easy to sell"
       />
       <LogoStrip />
       <ReviewsAndFaq />
-      <div className="bg-cream pt-[140px]">
+      <div className="-mt-[200px] bg-cream pt-[340px]">
         <SplitCta
-          image="/assets/figma/cta-sunset.png"
+          image="/assets/figma/cta-image-footer.png"
           map="/assets/figma/map-coral-final.svg"
           imageAlt="Beach sunset with performers and warm lights in Zanzibar"
           title="Plan a short Zanzibar experience"

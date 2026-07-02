@@ -154,10 +154,13 @@ export default function ExperiencePage() {
             <h2 className="mt-4 max-w-[388px] text-[34px] font-extrabold leading-[40px] text-white sm:text-[40px] sm:leading-[48px]">
               What to know before you book
             </h2>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {infoItems.map(([heading, body]) => (
-                <article key={heading} className="flex gap-3 text-white">
-                  <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full bg-coral text-white">
+            <div className="mt-5 grid max-w-[452px] gap-x-[14px] gap-y-[9px] sm:grid-cols-2">
+              {infoItems.map(([heading]) => (
+                <article
+                  key={heading}
+                  className="flex items-center gap-[7px] text-[14px] font-medium leading-5 text-white/75"
+                >
+                  <span className="grid size-[18px] shrink-0 place-items-center rounded-full bg-coral text-white">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
                       <path
                         d="M2.2 5.1 4 6.8 7.8 3"
@@ -168,21 +171,16 @@ export default function ExperiencePage() {
                       />
                     </svg>
                   </span>
-                  <div>
-                    <h3 className="text-[15px] font-bold">{heading}</h3>
-                    <p className="mt-1 text-[12px] leading-4 text-white/62">
-                      {body}
-                    </p>
-                  </div>
+                  <h3 className="sm:whitespace-nowrap">{heading}</h3>
                 </article>
               ))}
             </div>
-            <p className="mt-5 max-w-[430px] text-[13px] leading-5 text-white/70">
+            <p className="mt-[18px] max-w-[452px] text-[13px] leading-[22px] text-white/85">
               Check the practical details before choosing a trip: duration,
               pickup options, inclusions, guest suitability and private or
               shared formats.
             </p>
-            <div className="mt-5 flex flex-wrap gap-4">
+            <div className="mt-[23px] flex flex-wrap gap-[17px]">
               <Button asChild>
                 <Link href="/contact">Partner rates</Link>
               </Button>
@@ -193,13 +191,14 @@ export default function ExperiencePage() {
           </div>
           <div
             className="relative min-h-[260px] overflow-hidden lg:min-h-[422px]"
+            style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
           >
             <Image
-              src="/assets/figma/experience-ocean-dolphins.png"
+              src="/assets/figma/cta-image-experiences.png"
               alt="Dolphins swimming in clear blue ocean water near Zanzibar"
               fill
               sizes="(min-width: 1024px) 663px, 100vw"
-              className="object-cover object-left"
+              className="object-cover object-center"
             />
           </div>
             <Image
@@ -208,7 +207,7 @@ export default function ExperiencePage() {
               width={156}
               height={305}
               loading="eager"
-              className="pointer-events-none absolute bottom-[38px] left-[42%] z-10 hidden w-[156px] md:block"
+              className="pointer-events-none absolute left-[42%] top-[78px] z-10 hidden w-[156px] md:block"
             />
         </div>
       </section>
