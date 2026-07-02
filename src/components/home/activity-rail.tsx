@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { Trip } from "@/lib/trips";
 
 const defaultIntro =
-  "The Home page should show breadth quickly. This rail can scroll horizontally and expose more than four products without making the section feel heavy.";
+  "Choose from marine, culture, nature and coastal experiences with practical timings and clear partner-ready details.";
 
 function ArrowLeftIcon() {
   return (

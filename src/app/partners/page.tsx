@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { InnerPageShell } from "@/components/site/inner-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SectionLabel } from "@/components/home/home-page";
+import { WHATSAPP_LABEL, WHATSAPP_URL } from "@/lib/contact";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Partner Rates & White-Label Supply | NUR Zanzibar";
@@ -109,8 +110,8 @@ export default function PartnersPage() {
       >
       <section className="relative bg-cream px-5 pb-[66px] pt-0 sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1226px]">
-          <div className="relative z-[100] -mt-[50px] mb-[88px] grid gap-10 lg:grid-cols-[643px_533px] lg:items-start lg:gap-[77px]">
-            <div className="space-y-[22px]">
+          <div className="relative z-[100] -mt-[60px] mb-[88px] grid gap-10 lg:grid-cols-[643px_533px] lg:items-start lg:gap-[77px]">
+            <div className="space-y-[22px] pt-[50px]">
               {benefitCards.map(([id, icon, heading, body]) => (
                 <article
                   id={id}
@@ -138,7 +139,13 @@ export default function PartnersPage() {
               </p>
               <div className="mt-[22px] flex flex-wrap gap-4">
                 <Button asChild>
-                  <Link href="tel:+255553144222">+255 553 144 222</Link>
+                  <Link
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {WHATSAPP_LABEL}
+                  </Link>
                 </Button>
                 <Button asChild variant="secondary">
                   <Link href="mailto:info@gmail.com">info@gmail.com</Link>

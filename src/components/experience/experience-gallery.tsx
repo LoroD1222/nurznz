@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { GalleryImage } from "@/lib/trips";
+import type { GalleryImage } from "@/lib/experiences";
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   return (

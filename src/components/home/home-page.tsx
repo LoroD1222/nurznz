@@ -112,10 +112,10 @@ const footerColumns = [
   {
     heading: "Activities",
     links: [
-      { label: "Mnemba snorkelling", href: "/trips" },
-      { label: "Stone Town walk", href: "/trips" },
-      { label: "Spice farm visit", href: "/trips" },
-      { label: "Safari Blue day", href: "/trips" },
+      { label: "Mnemba Snorkeling", href: "/experience/mnemba-snorkeling" },
+      { label: "Stone Town", href: "/experience/stone-town" },
+      { label: "Spice Tour", href: "/experience/spice-tour" },
+      { label: "Safari Blue", href: "/experience/safari-blue" },
     ],
   },
   {
@@ -432,7 +432,7 @@ export function SplitCta({
   );
 }
 
-function LogoStrip() {
+export function LogoStrip() {
   return (
     <section
       className="px-5 pb-[76px] pt-2 sm:px-8 lg:px-0"
@@ -481,7 +481,7 @@ function StarIcon() {
 
 function ReviewsAndFaq() {
   return (
-    <section className="px-5 pb-[58px] sm:px-8 lg:px-0">
+    <section className="relative z-[100] px-5 pb-[58px] sm:px-8 lg:px-0">
       <div className="mx-auto max-w-[1209px]">
         <div className="text-center">
           <SectionLabel>Our Reviews</SectionLabel>
@@ -556,7 +556,7 @@ function FaqSection() {
   ];
 
   return (
-    <div className="mx-auto mt-[76px] max-w-[846px] text-center">
+    <div className="relative z-[100] mx-auto mt-[76px] max-w-[846px] text-center">
       <SectionLabel>Partner Questions</SectionLabel>
       <h2 className="mt-4 text-[34px] font-extrabold leading-[44px] text-[#2e3138] sm:text-[44px] sm:leading-[64px]">
         Frequently asked questions
@@ -649,7 +649,7 @@ export function HomePage() {
       />
       <LogoStrip />
       <ReviewsAndFaq />
-      <div className="-mt-[200px] bg-cream pt-[340px]">
+      <div className="relative z-0 -mt-[200px] bg-cream pt-[340px]">
         <SplitCta
           image="/assets/figma/cta-image-footer.png"
           map="/assets/figma/map-coral-final.svg"

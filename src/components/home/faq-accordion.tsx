@@ -11,14 +11,14 @@ export function FaqAccordion({ faqs }: { faqs: Faq[] }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <div className="mt-9 space-y-4 text-left">
+    <div className="relative z-[100] mt-9 space-y-4 text-left">
       {faqs.map((faq, index) => {
         const open = openIndex === index;
 
         return (
           <div
             key={faq.question}
-            className="rounded-[10px] border border-[#c9d2d9] bg-white p-6"
+            className="relative z-[100] rounded-[10px] border border-[#c9d2d9] bg-white p-6"
           >
             <button
               type="button"

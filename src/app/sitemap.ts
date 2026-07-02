@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { experiences } from "@/lib/experiences";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -6,7 +7,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "", priority: 1 },
     { path: "/trips", priority: 0.9 },
-    { path: "/experience", priority: 0.9 },
+    ...experiences.map((experience) => ({
+      path: `/experience/${experience.slug}`,
+      priority: 0.9,
+    })),
     { path: "/partners", priority: 0.9 },
     { path: "/about", priority: 0.8 },
     { path: "/contact", priority: 0.8 },

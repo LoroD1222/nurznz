@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CtaBand, InnerPageShell } from "@/components/site/inner-page";
 import { JsonLd } from "@/components/seo/json-ld";
-import { SectionLabel } from "@/components/home/home-page";
+import { LogoStrip, SectionLabel } from "@/components/home/home-page";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "About NUR Zanzibar | Local Activity Operations";
@@ -23,16 +23,6 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image", title, description, images: ["/assets/figma/cta-image-partners.png"] },
 };
-
-const agencyLogos = [
-  { src: "/assets/figma/partner-logo-wish.jpg", alt: "WISH partner logo", width: 130, height: 61 },
-  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 133, height: 44 },
-  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 155, height: 45 },
-  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
-  { src: "/assets/figma/partner-logo-unicef.png", alt: "UNICEF partner logo", width: 154, height: 45 },
-  { src: "/assets/figma/partner-logo-dtree.png", alt: "D-tree partner logo", width: 124, height: 64 },
-  { src: "/assets/figma/partner-logo-breakthrough.png", alt: "Breakthrough ACTION partner logo", width: 134, height: 44 },
-];
 
 const proofThumbnails = [
   {
@@ -57,7 +47,7 @@ const proofThumbnails = [
   },
   {
     src: "/assets/figma/proof-snorkling.png",
-    label: "Snorkling",
+    label: "Snorkeling",
     className: "md:w-[304px]",
   },
 ];
@@ -202,27 +192,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="px-5 py-[42px] sm:px-8 lg:px-0">
-        <div className="mx-auto max-w-[1136px] text-center">
-          <h2 className="text-[13px] font-black uppercase leading-[18px] tracking-[4px] text-teal-deep">
-            What agencies are we working with?
-          </h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-9">
-            {agencyLogos.map((logo, index) => (
-              <Image
-                key={`${logo.src}-${index}`}
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-                loading="eager"
-                className="shrink-0 object-contain"
-                style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <LogoStrip />
       <section className="bg-cream px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1248px]">
           <SectionLabel>Past trip proof</SectionLabel>

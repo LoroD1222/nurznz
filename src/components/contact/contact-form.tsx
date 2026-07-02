@@ -25,7 +25,7 @@ const initialState: FormState = {
 const formConfigs = {
   activity: {
     title: "Activity enquiry",
-    intro: "Static mockup of the public contact form fields for production.",
+    intro: "Share the basics and the NUR team will reply with availability and next steps.",
     submit: "Send trip enquiry",
     helper: "Response routed to the activity team.",
     fields: {
@@ -39,7 +39,7 @@ const formConfigs = {
     placeholders: {
       primary: "Full name",
       secondary: "Best contact details",
-      tertiary: "Snorkelling / Stone Town / spice / beach day",
+      tertiary: "Snorkeling / Stone Town / spice / beach day",
       quaternary: "Preferred date or month",
       details: "2 adults, Nungwi hotel pickup, private or shared",
       message: "Tell us what you want to do, group size, timing needs and any special requests.",
@@ -48,7 +48,7 @@ const formConfigs = {
   },
   partner: {
     title: "Partner enquiry",
-    intro: "Static mockup of the partner sales form fields for production.",
+    intro: "Share partner details so NUR can respond with rates, terms and operating fit.",
     submit: "Send partner enquiry",
     helper: "Response routed to partner sales and operations.",
     fields: {

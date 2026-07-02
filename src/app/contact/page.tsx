@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/contact/contact-form";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SectionLabel, SiteFooter, SiteHeader } from "@/components/home/home-page";
+import { WHATSAPP_LABEL, WHATSAPP_URL } from "@/lib/contact";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Contact NUR Zanzibar | Activity Enquiries";
@@ -143,7 +144,13 @@ export default function ContactPage() {
               </div>
               <div className="mt-[28px] grid grid-cols-2 gap-4">
                 <Button asChild className="h-12 rounded-[7px]" size="default">
-                  <Link href="tel:+255553144222">+255 553 144 222</Link>
+                  <Link
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {WHATSAPP_LABEL}
+                  </Link>
                 </Button>
                 <Button asChild className="h-12 rounded-[7px]" variant="secondary-dark" size="default">
                   <Link href="mailto:info@gmail.com">info@gmail.com</Link>
@@ -201,7 +208,13 @@ export default function ContactPage() {
           </p>
           <div className="mt-5 flex justify-center gap-4">
             <Button asChild>
-              <Link href="tel:+255553144222">+255 553 144 222</Link>
+              <Link
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {WHATSAPP_LABEL}
+              </Link>
             </Button>
             <Button asChild variant="secondary-dark">
               <Link href="mailto:info@gmail.com">info@gmail.com</Link>
