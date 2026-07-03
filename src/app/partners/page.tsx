@@ -216,7 +216,7 @@ export default function PartnersPage() {
         </div>
       </section>
       <section className="bg-[#113e3c] px-5 pb-[70px] pt-[42px] sm:px-8 lg:px-0">
-        <div className="relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] border border-white/30 bg-teal shadow-[0_4px_17px_rgba(0,0,0,0.1)] md:grid-cols-[507px_1fr]">
+        <div className="relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] border border-white/30 bg-white/20 shadow-[0_4px_17px_rgba(0,0,0,0.1)] backdrop-blur-[9.5px] md:grid-cols-[507px_1fr]">
           <div className="relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px]">
             <h2 className="max-w-[420px] text-[34px] font-extrabold leading-[42px] text-white sm:text-[40px] sm:leading-[48px]">
               Agreements and availability

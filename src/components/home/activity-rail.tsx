@@ -54,7 +54,7 @@ export function ActivityRail({
 
   return (
     <>
-      <div className="relative left-1/2 mt-[30px] w-screen -translate-x-1/2 overflow-hidden">
+      <div className="edge-carousel-shell mt-[30px] overflow-hidden">
         <div
           ref={railRef}
           className="edge-carousel-padding flex gap-[17px] overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -63,7 +63,7 @@ export function ActivityRail({
             <Link
               key={`${activity.title}-${index}`}
               href={activity.href}
-              className="relative w-[292px] shrink-0 rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-3 shadow-[0_2px_26px_0_rgba(0,0,0,0.04)] transition-transform hover:-translate-y-1 sm:w-[300px]"
+              className="relative w-[292px] shrink-0 rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-3 text-left shadow-[0_2px_26px_0_rgba(0,0,0,0.04)] transition-transform hover:-translate-y-1 sm:w-[300px]"
             >
               <div className="relative h-[168px] overflow-hidden rounded-[7px] sm:h-[174px]">
                 <Image

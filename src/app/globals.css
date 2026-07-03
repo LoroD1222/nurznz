@@ -44,6 +44,7 @@ html {
 }
 
 body {
+  container-type: inline-size;
   min-height: 100vh;
   overflow-x: hidden;
   background: var(--background);
@@ -57,22 +58,44 @@ a {
 }
 
 @layer components {
+  .edge-carousel-shell {
+    position: relative;
+    width: calc(100% + 20px);
+  }
+
   .edge-carousel-padding {
-    padding-left: max(20px, calc((100vw - 1234px) / 2));
-    padding-right: max(20px, calc((100vw - 1234px) / 2));
+    padding-right: 20px;
   }
 
   @media (min-width: 640px) {
+    .edge-carousel-shell {
+      width: calc(100% + 32px);
+    }
+
     .edge-carousel-padding {
-      padding-left: max(32px, calc((100vw - 1234px) / 2));
-      padding-right: max(32px, calc((100vw - 1234px) / 2));
+      padding-right: 32px;
     }
   }
 
   @media (min-width: 1024px) {
+    .edge-carousel-shell {
+      width: calc(100% + max(0px, calc((100vw - 1234px) / 2)));
+    }
+
     .edge-carousel-padding {
-      padding-left: max(0px, calc((100vw - 1234px) / 2));
       padding-right: max(0px, calc((100vw - 1234px) / 2));
+    }
+  }
+
+  @supports (width: 100cqw) {
+    @media (min-width: 1024px) {
+      .edge-carousel-shell {
+        width: calc(100% + max(0px, calc((100cqw - 1234px) / 2)));
+      }
+
+      .edge-carousel-padding {
+        padding-right: max(0px, calc((100cqw - 1234px) / 2));
+      }
     }
   }
 

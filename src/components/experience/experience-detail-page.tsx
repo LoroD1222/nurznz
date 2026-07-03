@@ -187,9 +187,9 @@ export function ExperienceDetailPage({
       </section>
 
       <section className="px-5 py-[54px] sm:px-8 lg:px-0">
-        <div className="mx-auto max-w-[1234px]">
+        <div className="mx-auto max-w-[1234px] text-center">
           <SectionLabel>Activity Catalogue</SectionLabel>
-          <h2 className="mt-4 text-[36px] font-extrabold leading-[44px] text-teal">
+          <h2 className="mx-auto mt-4 max-w-[970px] text-[36px] font-extrabold leading-[44px] text-teal">
             Other Exciting Zanzibar Activities We Offer
           </h2>
           <ActivityRail activities={relatedTrips} intro={null} />

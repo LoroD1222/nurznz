@@ -4,6 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ActivityRail } from "@/components/home/activity-rail";
 import { FaqAccordion } from "@/components/home/faq-accordion";
 import { SiteNavLinks } from "@/components/site/site-nav-links";
+import {
+  EMAIL_ADDRESS,
+  EMAIL_URL,
+  WHATSAPP_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/contact";
 import { trips } from "@/lib/trips";
 
 const stats = [
@@ -343,6 +349,7 @@ export function SplitCta({
   title,
   copy,
   reverse = false,
+  compactTop = false,
 }: {
   image: string;
   map: string;
@@ -350,6 +357,7 @@ export function SplitCta({
   title: string;
   copy?: string;
   reverse?: boolean;
+  compactTop?: boolean;
 }) {
   const imagePanel = (
     <div
@@ -373,7 +381,11 @@ export function SplitCta({
   );
 
   return (
-    <section className="px-5 py-[60px] sm:px-8 lg:px-0">
+    <section
+      className={`px-5 pb-[60px] sm:px-8 lg:px-0 ${
+        compactTop ? "pt-8 sm:pt-[60px]" : "pt-[60px]"
+      }`}
+    >
       <div
         className={`relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
           reverse ? "lg:grid-cols-[663px_1fr]" : "lg:grid-cols-[507px_1fr]"
@@ -444,8 +456,23 @@ export function LogoStrip() {
         >
           What agencies are we working with?
         </h2>
-        <div className="relative mt-8 overflow-hidden">
-          <div className="flex items-center justify-center gap-[38px] opacity-100">
+        <div className="relative mt-8 sm:overflow-hidden">
+          <div className="grid grid-cols-3 items-center justify-items-center gap-x-5 gap-y-7 sm:hidden">
+            {partnerLogos.map((logo, index) => (
+              <Image
+                key={logo.alt}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                loading="eager"
+                className={`max-h-[54px] w-auto max-w-[96px] object-contain ${
+                  index === 3 ? "col-start-2" : ""
+                }`}
+              />
+            ))}
+          </div>
+          <div className="hidden items-center justify-center gap-[38px] opacity-100 sm:flex">
             {[...partnerLogos, partnerLogos[2], partnerLogos[3], partnerLogos[1]].map((logo, index) => (
               <Image
                 key={`${logo.alt}-${index}`}
@@ -459,8 +486,8 @@ export function LogoStrip() {
               />
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-[150px] bg-gradient-to-r from-white to-white/0" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-[150px] bg-gradient-to-l from-white to-white/0" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[150px] bg-gradient-to-r from-white to-white/0 sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[150px] bg-gradient-to-l from-white to-white/0 sm:block" />
         </div>
       </div>
     </section>
@@ -554,6 +581,22 @@ function FaqSection() {
         Clear answers for hotels, DMCs, agents and travel partners.
       </p>
       <FaqAccordion faqs={faqs} />
+      <p className="mx-auto mt-8 max-w-[680px] text-[16px] leading-7 text-[#5e6573]">
+        For more questions you can contact us on{" "}
+        <Link href={EMAIL_URL} className="font-semibold text-teal">
+          {EMAIL_ADDRESS}
+        </Link>{" "}
+        or{" "}
+        <Link
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-teal"
+        >
+          {WHATSAPP_LABEL}
+        </Link>
+        .
+      </p>
     </div>
   );
 }
@@ -638,7 +681,7 @@ export function HomePage() {
       />
       <LogoStrip />
       <ReviewsAndFaq />
-      <div className="relative z-0 -mt-[200px] bg-cream pt-[340px]">
+      <div className="relative z-0 bg-cream">
         <SplitCta
           image="/assets/figma/cta-image-footer-clean.webp"
           map="/assets/figma/map-coral-final.svg"
@@ -646,6 +689,7 @@ export function HomePage() {
           title="Plan a short Zanzibar experience"
           copy="Ask about availability, pickup, private group options or the right short activity for your stay."
           reverse
+          compactTop
         />
       </div>
       <SiteFooter />

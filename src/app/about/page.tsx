@@ -108,7 +108,7 @@ export default function AboutPage() {
       <section className="bg-cream px-5 py-[72px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px]">
           <div className="relative mx-auto grid max-w-[1052px] items-center gap-4 md:grid-cols-[0.8fr_1.2fr_0.8fr]">
-            <div className="relative h-[298px] overflow-hidden rounded-[10px] md:translate-y-10">
+            <div className="relative aspect-square overflow-hidden rounded-[10px] md:h-[298px] md:aspect-auto md:translate-y-10">
               <Image
                 src="/assets/figma/about-collage-left.png"
                 alt="Zanzibar local activity guest moment"
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative z-10 h-[365px] overflow-hidden rounded-[10px] shadow-[0_16px_38px_rgba(15,31,28,0.14)]">
+            <div className="relative z-10 aspect-square overflow-hidden rounded-[10px] shadow-[0_16px_38px_rgba(15,31,28,0.14)] md:h-[365px] md:aspect-auto">
               <Image
                 src="/assets/figma/about-collage-main.png"
                 alt="Guests and local team during Zanzibar operations"
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative h-[298px] overflow-hidden rounded-[10px] md:translate-y-10">
+            <div className="relative aspect-square overflow-hidden rounded-[10px] md:h-[298px] md:aspect-auto md:translate-y-10">
               <Image
                 src="/assets/figma/about-collage-right.png"
                 alt="Zanzibar activity support and beach operations"
@@ -152,14 +152,17 @@ export default function AboutPage() {
               trade-ready: clear timings, responsive communication and reliable
               guest handoffs from enquiry through pickup.
             </p>
-            <div className="mx-auto mt-[26px] grid max-w-[590px] grid-cols-2 rounded-[8px] border border-[rgba(0,108,103,0.1)] bg-white/80 px-5 py-3 sm:grid-cols-4">
+            <div className="mx-auto mt-[30px] grid max-w-[590px] grid-cols-2 gap-3 rounded-[8px] border border-[rgba(0,108,103,0.1)] bg-white/80 p-3 sm:grid-cols-4 sm:gap-0 sm:px-5 sm:py-3">
               {[
                 ["10+", "years"],
                 ["2,400+", "guests"],
                 ["18", "destinations"],
                 ["3-4h", "trips"],
               ].map(([value, label]) => (
-                <div key={value} className="text-left">
+                <div
+                  key={value}
+                  className="rounded-[6px] bg-cream/70 px-4 py-3 text-center sm:bg-transparent sm:px-0 sm:py-0 sm:text-left"
+                >
                   <p className="text-[21px] font-bold leading-[26px] text-[#006c67]">
                     {value}
                   </p>
