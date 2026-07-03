@@ -166,7 +166,7 @@ export function SiteHeader() {
       </div>
       <SiteNavLinks
         mobile
-        className="flex gap-6 overflow-x-auto border-t border-[rgba(217,217,217,0.35)] px-5 py-3 text-[14px] font-medium text-teal md:hidden"
+        className="flex gap-6 overflow-x-auto border-t border-[rgba(217,217,217,0.35)] px-5 py-3 text-[14px] font-medium text-teal [-ms-overflow-style:none] [scrollbar-width:none] md:hidden [&::-webkit-scrollbar]:hidden"
       />
     </header>
   );
@@ -252,7 +252,7 @@ function ActivityCatalogue() {
       className="relative border-b border-[rgba(17,62,60,0.09)] px-5 py-[62px] sm:px-8 lg:px-0"
       aria-labelledby="activities-title"
     >
-      <div className="mx-auto max-w-[1287px]">
+      <div className="mx-auto max-w-[1234px]">
         <SectionLabel>Activity Catalogue</SectionLabel>
         <h2
           id="activities-title"
@@ -355,12 +355,11 @@ export function SplitCta({
     <div
       className={`relative min-h-[238px] overflow-hidden md:min-h-[422px] ${
         reverse ? "md:order-1" : "md:order-2"
+      } ${
+        reverse
+          ? "md:[clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]"
+          : "md:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]"
       }`}
-      style={{
-        clipPath: reverse
-          ? "polygon(0 0, 100% 0, 82% 100%, 0 100%)"
-          : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
-      }}
     >
       <Image
         src={image}
@@ -376,18 +375,18 @@ export function SplitCta({
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
       <div
-        className={`relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
-          reverse ? "lg:grid-cols-[599px_1fr]" : "lg:grid-cols-[473px_1fr]"
+        className={`relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
+          reverse ? "lg:grid-cols-[663px_1fr]" : "lg:grid-cols-[507px_1fr]"
         }`}
       >
         {reverse ? imagePanel : null}
         <div
           className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
-            reverse ? "md:order-2 md:pl-16" : "md:order-1"
+            reverse ? "md:order-2 md:pl-16 md:pr-10" : "md:order-1"
           }`}
         >
           <SectionLabel dark>Activity Catalogue</SectionLabel>
-          <h2 className="mt-5 text-[34px] font-extrabold leading-[42px] text-white sm:text-[40px] sm:leading-[48px]">
+          <h2 className="mt-5 max-w-[420px] text-[34px] font-extrabold leading-[42px] text-white sm:text-[40px] sm:leading-[48px]">
             {title}
           </h2>
           {copy ? (
@@ -424,7 +423,7 @@ export function SplitCta({
           height={305}
           loading="eager"
           className={`pointer-events-none absolute z-20 hidden w-[156px] md:block ${
-            reverse ? "left-[40.5%] top-[62px]" : "left-[41%] top-[90px]"
+            reverse ? "left-[43%] top-[62px]" : "left-[42%] top-[78px]"
           }`}
         />
       </div>
@@ -435,7 +434,7 @@ export function SplitCta({
 export function LogoStrip() {
   return (
     <section
-      className="px-5 pb-[76px] pt-2 sm:px-8 lg:px-0"
+      className="px-5 pb-[96px] pt-4 sm:px-8 lg:px-0"
       aria-labelledby="agencies-title"
     >
       <div className="mx-auto max-w-[1137px] text-center">
@@ -481,7 +480,7 @@ function StarIcon() {
 
 function ReviewsAndFaq() {
   return (
-    <section className="relative z-[100] px-5 pb-[58px] sm:px-8 lg:px-0">
+    <section className="relative z-[100] px-5 pb-[58px] pt-[12px] sm:px-8 lg:px-0">
       <div className="mx-auto max-w-[1209px]">
         <div className="text-center">
           <SectionLabel>Our Reviews</SectionLabel>
@@ -493,20 +492,10 @@ function ReviewsAndFaq() {
           {reviews.map((review) => (
             <article
               key={review.id}
-              className="rounded-[10px] border border-[rgba(17,62,60,0.16)] bg-cream p-6"
+              className="rounded-[10px] border border-[rgba(17,62,60,0.16)] bg-cream p-7"
             >
-              <div className="relative h-[217px] overflow-hidden rounded-[10px] bg-[#f5f7f8]">
-                <Image
-                  src="/assets/figma/review-group.png"
-                  alt="Guests posing beside safari vehicles after a NUR Zanzibar partner activity"
-                  fill
-                  sizes="(min-width: 1024px) 332px, 90vw"
-                  loading="eager"
-                  className="object-cover"
-                />
-              </div>
               <div
-                className="mt-6 flex gap-2"
+                className="flex gap-2"
                 aria-label="Five star testimonial rating"
               >
                 {Array.from({ length: 5 }, (_, index) => (
@@ -642,7 +631,7 @@ export function HomePage() {
       <ActivityCatalogue />
       <PartnerSection />
       <SplitCta
-        image="/assets/figma/cta-image-home.png"
+        image="/assets/figma/cta-image-home-clean.webp"
         map="/assets/figma/map-coral-cta.svg"
         imageAlt="Travel guests and a local guide smiling on a Zanzibar boat activity"
         title="Short-trip operations that are easy to sell"
@@ -651,7 +640,7 @@ export function HomePage() {
       <ReviewsAndFaq />
       <div className="relative z-0 -mt-[200px] bg-cream pt-[340px]">
         <SplitCta
-          image="/assets/figma/cta-image-footer.png"
+          image="/assets/figma/cta-image-footer-clean.webp"
           map="/assets/figma/map-coral-final.svg"
           imageAlt="Beach sunset with performers and warm lights in Zanzibar"
           title="Plan a short Zanzibar experience"

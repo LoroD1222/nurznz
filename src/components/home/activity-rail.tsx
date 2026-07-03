@@ -47,47 +47,53 @@ export function ActivityRail({
 
   function scrollByCard(direction: -1 | 1) {
     railRef.current?.scrollBy({
-      left: direction * 326,
+      left: direction * 330,
       behavior: "smooth",
     });
   }
 
   return (
     <>
-      <div
-        ref={railRef}
-        className="mt-[30px] flex snap-x gap-[17px] overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {activities.map((activity, index) => (
-          <Link
-            key={`${activity.title}-${index}`}
-            href={activity.href}
-            className="relative w-[289px] shrink-0 snap-start rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-[9px] shadow-[0_2px_26px_0_rgba(0,0,0,0.04)] transition-transform hover:-translate-y-1"
-          >
-            <div className="relative h-[162px] overflow-hidden rounded-[7px]">
-              <Image
-                src={activity.image}
-                alt={activity.alt}
-                fill
-                sizes="289px"
-                className="object-cover"
-              />
-              <span
-                className={`absolute right-3 top-[9px] flex h-7 min-w-[62px] items-center justify-center rounded-full px-3 text-[12px] font-bold leading-4 ${activity.durationClass ?? "bg-coral text-white"}`}
-              >
-                {activity.duration}
-              </span>
-            </div>
-            <p className="mt-2 text-[15px] font-bold uppercase leading-[29px] tracking-[3px] text-coral">
-              {activity.category}
-            </p>
-            <h3 className="text-[25px] font-extrabold leading-[29px] text-teal-deep">
-              {activity.title}
-            </h3>
-          </Link>
-        ))}
+      <div className="relative left-1/2 mt-[30px] w-screen -translate-x-1/2 overflow-hidden">
+        <div
+          ref={railRef}
+          className="edge-carousel-padding flex gap-[17px] overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {activities.map((activity, index) => (
+            <Link
+              key={`${activity.title}-${index}`}
+              href={activity.href}
+              className="relative w-[292px] shrink-0 rounded-[11px] border border-[rgba(17,62,60,0.08)] bg-cream p-3 shadow-[0_2px_26px_0_rgba(0,0,0,0.04)] transition-transform hover:-translate-y-1 sm:w-[300px]"
+            >
+              <div className="relative h-[168px] overflow-hidden rounded-[7px] sm:h-[174px]">
+                <Image
+                  src={activity.image}
+                  alt={activity.alt}
+                  fill
+                  sizes="300px"
+                  className="object-cover"
+                />
+                <span
+                  className={`absolute right-3 top-[9px] flex h-7 min-w-[62px] items-center justify-center rounded-full px-3 text-[12px] font-bold leading-4 ${activity.durationClass ?? "bg-coral text-white"}`}
+                >
+                  {activity.duration}
+                </span>
+              </div>
+              <p className="mt-3 text-[14px] font-bold uppercase leading-5 tracking-[3px] text-coral">
+                {activity.category}
+              </p>
+              <h3 className="mt-1 text-[24px] font-extrabold leading-[29px] text-teal-deep">
+                {activity.title}
+              </h3>
+            </Link>
+          ))}
+        </div>
       </div>
-      <div className="mt-[26px] flex items-end justify-between gap-8">
+      <div
+        className={`mx-auto mt-[26px] flex max-w-[1234px] flex-col items-center gap-5 sm:flex-row sm:items-end ${
+          intro ? "sm:justify-between" : "sm:justify-center"
+        }`}
+      >
         {intro ? (
           <p className="max-w-[688px] text-[17px] leading-[26px] text-[rgba(12,51,49,0.76)]">
             {intro}

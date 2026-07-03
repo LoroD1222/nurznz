@@ -166,12 +166,9 @@ export function ExperienceDetailPage({
               </Button>
             </div>
           </div>
-          <div
-            className="relative min-h-[260px] overflow-hidden lg:min-h-[422px]"
-            style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
-          >
+          <div className="relative min-h-[260px] overflow-hidden lg:min-h-[422px] lg:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
             <Image
-              src="/assets/experiences/experience-cta.webp"
+              src="/assets/figma/experience-ocean-dolphins-clean.webp"
               alt="Dolphins swimming in clear blue ocean water near Zanzibar"
               fill
               sizes="(min-width: 1024px) 663px, 100vw"
@@ -190,7 +187,7 @@ export function ExperienceDetailPage({
       </section>
 
       <section className="px-5 py-[54px] sm:px-8 lg:px-0">
-        <div className="mx-auto max-w-[1136px]">
+        <div className="mx-auto max-w-[1234px]">
           <SectionLabel>Activity Catalogue</SectionLabel>
           <h2 className="mt-4 text-[36px] font-extrabold leading-[44px] text-teal">
             Other Exciting Zanzibar Activities We Offer

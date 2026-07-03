@@ -5,7 +5,12 @@ import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/contact/contact-form";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SectionLabel, SiteFooter, SiteHeader } from "@/components/home/home-page";
-import { WHATSAPP_LABEL, WHATSAPP_URL } from "@/lib/contact";
+import {
+  EMAIL_ADDRESS,
+  EMAIL_URL,
+  WHATSAPP_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/contact";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Contact NUR Zanzibar | Activity Enquiries";
@@ -142,7 +147,7 @@ export default function ContactPage() {
                   <p className="text-[12px] leading-[17px] text-white/75">full-day activity options</p>
                 </div>
               </div>
-              <div className="mt-[28px] grid grid-cols-2 gap-4">
+              <div className="mt-[28px] grid gap-4 sm:grid-cols-2">
                 <Button asChild className="h-12 rounded-[7px]" size="default">
                   <Link
                     href={WHATSAPP_URL}
@@ -152,8 +157,13 @@ export default function ContactPage() {
                     {WHATSAPP_LABEL}
                   </Link>
                 </Button>
-                <Button asChild className="h-12 rounded-[7px]" variant="secondary-dark" size="default">
-                  <Link href="mailto:info@gmail.com">info@gmail.com</Link>
+                <Button
+                  asChild
+                  className="h-12 rounded-[7px] px-3 text-[12px]"
+                  variant="secondary-dark"
+                  size="default"
+                >
+                  <Link href={EMAIL_URL}>{EMAIL_ADDRESS}</Link>
                 </Button>
               </div>
             </div>
@@ -216,8 +226,8 @@ export default function ContactPage() {
                 {WHATSAPP_LABEL}
               </Link>
             </Button>
-            <Button asChild variant="secondary-dark">
-              <Link href="mailto:info@gmail.com">info@gmail.com</Link>
+            <Button asChild variant="secondary-dark" className="px-4 text-[13px]">
+              <Link href={EMAIL_URL}>{EMAIL_ADDRESS}</Link>
             </Button>
           </div>
         </div>

@@ -6,7 +6,12 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { InnerPageShell } from "@/components/site/inner-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SectionLabel } from "@/components/home/home-page";
-import { WHATSAPP_LABEL, WHATSAPP_URL } from "@/lib/contact";
+import {
+  EMAIL_ADDRESS,
+  EMAIL_URL,
+  WHATSAPP_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/contact";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Partner Rates & White-Label Supply | NUR Zanzibar";
@@ -147,8 +152,8 @@ export default function PartnersPage() {
                     {WHATSAPP_LABEL}
                   </Link>
                 </Button>
-                <Button asChild variant="secondary">
-                  <Link href="mailto:info@gmail.com">info@gmail.com</Link>
+                <Button asChild variant="secondary" className="px-4 text-[13px]">
+                  <Link href={EMAIL_URL}>{EMAIL_ADDRESS}</Link>
                 </Button>
               </div>
             </article>
@@ -211,12 +216,12 @@ export default function PartnersPage() {
         </div>
       </section>
       <section className="bg-[#113e3c] px-5 pb-[70px] pt-[42px] sm:px-8 lg:px-0">
-        <div className="relative mx-auto min-h-[331px] max-w-[1207px] overflow-hidden rounded-[9px] border border-white/45 bg-white/[0.05] shadow-[0_4px_17px_rgba(0,0,0,0.1)] backdrop-blur-[9.5px]">
-          <div className="relative z-10 max-w-[586px] px-8 py-[38px] sm:px-[42px]">
-            <h2 className="text-[28px] font-extrabold leading-9 text-white">
+        <div className="relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] border border-white/30 bg-teal shadow-[0_4px_17px_rgba(0,0,0,0.1)] md:grid-cols-[507px_1fr]">
+          <div className="relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px]">
+            <h2 className="max-w-[420px] text-[34px] font-extrabold leading-[42px] text-white sm:text-[40px] sm:leading-[48px]">
               Agreements and availability
             </h2>
-            <p className="mt-4 text-[16px] leading-[27px] text-white/60">
+            <p className="mt-[22px] max-w-[452px] text-[15px] leading-[24px] text-white/75">
               For recurring partners, NUR can discuss STO terms, seasonal
               availability, group requests, private departures, priority
               support and custom activity planning across Zanzibar.
@@ -237,10 +242,10 @@ export default function PartnersPage() {
               ))}
             </div>
           </div>
-          <div className="absolute bottom-0 right-0 top-0 hidden w-[517px] overflow-hidden md:block">
+          <div className="relative min-h-[238px] overflow-hidden md:min-h-[422px] md:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
             <Image
-              src="/assets/figma/cta-image-partners.png"
-              alt="Guests on a Zanzibar boat activity with local guide"
+              src="/assets/figma/partners-agreements-snorkel-clean.webp"
+              alt="Guests snorkeling during a Zanzibar marine partner activity"
               fill
               sizes="(min-width: 1024px) 600px, 100vw"
               className="object-cover"
@@ -252,7 +257,7 @@ export default function PartnersPage() {
             width={156}
             height={305}
             loading="eager"
-            className="pointer-events-none absolute left-[51%] top-[168px] z-10 hidden w-[132px] md:block"
+            className="pointer-events-none absolute left-[42%] top-[78px] z-10 hidden w-[156px] md:block"
           />
         </div>
       </section>

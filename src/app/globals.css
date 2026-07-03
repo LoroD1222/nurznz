@@ -57,6 +57,25 @@ a {
 }
 
 @layer components {
+  .edge-carousel-padding {
+    padding-left: max(20px, calc((100vw - 1234px) / 2));
+    padding-right: max(20px, calc((100vw - 1234px) / 2));
+  }
+
+  @media (min-width: 640px) {
+    .edge-carousel-padding {
+      padding-left: max(32px, calc((100vw - 1234px) / 2));
+      padding-right: max(32px, calc((100vw - 1234px) / 2));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .edge-carousel-padding {
+      padding-left: max(0px, calc((100vw - 1234px) / 2));
+      padding-right: max(0px, calc((100vw - 1234px) / 2));
+    }
+  }
+
   .type-overline {
     color: var(--coral-bright);
     font-size: var(--text-overline);

@@ -22,65 +22,50 @@ export type Experience = {
   gallery: GalleryImage[];
 };
 
-const experienceAsset = (fileName: string) =>
-  `/assets/experiences/${fileName}.webp`;
+const driveAsset = (slug: string, index: number) =>
+  `/assets/drive/${slug}/${slug}-${String(index).padStart(2, "0")}.webp`;
 
-const image = (fileName: string, alt: string): GalleryImage => ({
-  src: experienceAsset(fileName),
-  alt,
-});
+const driveGallery = (
+  slug: string,
+  title: string,
+  count: number,
+): GalleryImage[] =>
+  Array.from({ length: count }, (_, index) => ({
+    src: driveAsset(slug, index + 1),
+    alt: `${title} Zanzibar trip photo ${index + 1}`,
+  }));
 
-const gallery = (
-  primary: GalleryImage,
-  secondary: GalleryImage,
-  tertiary: GalleryImage,
-  fourth: GalleryImage,
-) => [primary, secondary, tertiary, fourth];
-
-const dayTripSafari = image(
-  "day-trip-safari",
-  "Elephants in a green safari landscape connected to a Zanzibar day trip",
-);
-const jozaniForest = image(
-  "jozani-forest",
-  "Red colobus monkey in Jozani Forest during a Zanzibar nature route",
-);
-const mnembaSnorkeling = image(
-  "mnemba-snorkeling",
-  "Tropical fish in clear water near Mnemba reef",
-);
-const mtendeBeach = image(
-  "mtende-beach",
-  "Turquoise coastal water and beach route near Mtende",
-);
-const prisonIsland = image(
-  "prison-island",
-  "Boat and sandbank activity near Prison Island",
-);
-const salaamCave = image(
-  "salaam-cave",
-  "Zanzibar cave and coastal activity setting for Salaam Cave",
-);
-const safariBlue = image(
-  "safari-blue",
-  "Travel guests and a local guide smiling on a Zanzibar boat activity",
-);
-const snorkelingAtMnemba = image(
+const dayTripSafariGallery = driveGallery("day-trip-safari", "Day Trip Safari", 6);
+const jozaniForestGallery = driveGallery("jozani-forest", "Jozani Forest", 7);
+const mnembaSnorkelingGallery = driveGallery("mnemba-snorkeling", "Mnemba Snorkeling", 6);
+const mtendeBeachGallery = driveGallery("mtende-beach", "Mtende Beach", 5);
+const prisonIslandGallery = driveGallery("prison-island", "Prison Island", 6);
+const salaamCaveGallery = driveGallery("salaam-cave", "Salaam Cave", 6);
+const safariBlueGallery = driveGallery("safari-blue", "Safari Blue", 7);
+const snorkelingAtMnembaGallery = driveGallery(
   "snorkeling-at-mnemba",
-  "Guests snorkeling during a Zanzibar marine activity",
+  "Snorkeling at Mnemba",
+  6,
 );
-const spiceTour = image(
-  "spice-tour",
-  "Spices and local produce during a Zanzibar spice tour",
-);
-const stoneTown = image(
-  "stone-town",
-  "Stone Town street and local culture route in Zanzibar",
-);
-const sunsetAtMichamvi = image(
+const spiceTourGallery = driveGallery("spice-tour", "Spice Tour", 6);
+const stoneTownGallery = driveGallery("stone-town", "Stone Town", 7);
+const sunsetAtMichamviGallery = driveGallery(
   "sunset-at-michamvi",
-  "Beach sunset with performers and warm lights in Zanzibar",
+  "Sunset at Michamvi",
+  7,
 );
+
+const dayTripSafari = dayTripSafariGallery[0];
+const jozaniForest = jozaniForestGallery[0];
+const mnembaSnorkeling = mnembaSnorkelingGallery[0];
+const mtendeBeach = mtendeBeachGallery[4] ?? mtendeBeachGallery[0];
+const prisonIsland = prisonIslandGallery[0];
+const salaamCave = salaamCaveGallery[2] ?? salaamCaveGallery[0];
+const safariBlue = safariBlueGallery[2] ?? safariBlueGallery[0];
+const snorkelingAtMnemba = snorkelingAtMnembaGallery[0];
+const spiceTour = spiceTourGallery[0];
+const stoneTown = stoneTownGallery[0];
+const sunsetAtMichamvi = sunsetAtMichamviGallery[4] ?? sunsetAtMichamviGallery[0];
 
 export const experiences: Experience[] = [
   {
@@ -109,7 +94,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Confirm the travel date, pickup area and guest count so NUR can check the most practical safari-style day route and timings.",
-    gallery: gallery(dayTripSafari, jozaniForest, stoneTown, safariBlue),
+    gallery: dayTripSafariGallery,
   },
   {
     slug: "jozani-forest",
@@ -137,7 +122,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Share the guest count, hotel area and preferred half-day window so the forest route can be planned around pickup and walking comfort.",
-    gallery: gallery(jozaniForest, salaamCave, spiceTour, mtendeBeach),
+    gallery: jozaniForestGallery,
   },
   {
     slug: "mnemba-snorkeling",
@@ -165,7 +150,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Check the practical details before choosing a trip: duration, pickup options, inclusions, guest suitability and private or shared formats.",
-    gallery: gallery(mnembaSnorkeling, snorkelingAtMnemba, safariBlue, prisonIsland),
+    gallery: mnembaSnorkelingGallery,
   },
   {
     slug: "mtende-beach",
@@ -193,7 +178,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Ask about tide timing, pickup distance and the best half-day window for a smooth Mtende Beach visit.",
-    gallery: gallery(mtendeBeach, prisonIsland, sunsetAtMichamvi, safariBlue),
+    gallery: mtendeBeachGallery,
   },
   {
     slug: "prison-island",
@@ -221,7 +206,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Confirm pickup area, preferred timing and whether guests want a simple island visit or extra beach time.",
-    gallery: gallery(prisonIsland, stoneTown, snorkelingAtMnemba, mtendeBeach),
+    gallery: prisonIslandGallery,
   },
   {
     slug: "salaam-cave",
@@ -249,7 +234,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Share guest swim comfort, hotel area and preferred time so NUR can recommend the right cave visit window.",
-    gallery: gallery(salaamCave, jozaniForest, spiceTour, mtendeBeach),
+    gallery: salaamCaveGallery,
   },
   {
     slug: "safari-blue",
@@ -277,7 +262,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Check availability, weather suitability and whether guests need shared or private boat handling for Safari Blue.",
-    gallery: gallery(safariBlue, prisonIsland, snorkelingAtMnemba, sunsetAtMichamvi),
+    gallery: safariBlueGallery,
   },
   {
     slug: "snorkeling-at-mnemba",
@@ -305,7 +290,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Send the hotel area, guest count and preferred morning window so the Mnemba snorkeling plan can be checked.",
-    gallery: gallery(snorkelingAtMnemba, mnembaSnorkeling, safariBlue, prisonIsland),
+    gallery: snorkelingAtMnembaGallery,
   },
   {
     slug: "spice-tour",
@@ -333,7 +318,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Share hotel area, travel date and guest count so NUR can check the best spice farm timing.",
-    gallery: gallery(spiceTour, stoneTown, jozaniForest, salaamCave),
+    gallery: spiceTourGallery,
   },
   {
     slug: "stone-town",
@@ -361,7 +346,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Confirm hotel area, preferred walking time and any market or heritage priorities for the Stone Town route.",
-    gallery: gallery(stoneTown, spiceTour, prisonIsland, sunsetAtMichamvi),
+    gallery: stoneTownGallery,
   },
   {
     slug: "sunset-at-michamvi",
@@ -389,7 +374,7 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Ask about sunset timing, pickup distance and whether the evening should include dinner, drinks or simple beach time.",
-    gallery: gallery(sunsetAtMichamvi, mtendeBeach, safariBlue, prisonIsland),
+    gallery: sunsetAtMichamviGallery,
   },
 ];
 

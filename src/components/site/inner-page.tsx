@@ -145,7 +145,7 @@ export function CtaBand({
   body,
   primaryHref = "/contact",
   primaryLabel = "Send enquiry",
-  image = "/assets/figma/cta-image-home.png",
+  image = "/assets/figma/cta-image-home-clean.webp",
   imageAlt = "Guests and a local guide on a Zanzibar boat activity",
   imageClassName,
   reverse = false,
@@ -165,12 +165,11 @@ export function CtaBand({
     <div
       className={`relative min-h-[238px] overflow-hidden md:min-h-[422px] ${
         reverse ? "md:order-1" : "md:order-2"
+      } ${
+        reverse
+          ? "md:[clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]"
+          : "md:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]"
       }`}
-      style={{
-        clipPath: reverse
-          ? "polygon(0 0, 100% 0, 82% 100%, 0 100%)"
-          : "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
-      }}
     >
       <Image
         src={image}
@@ -186,8 +185,8 @@ export function CtaBand({
   return (
     <section className="px-5 py-[60px] sm:px-8 lg:px-0">
       <div
-        className={`relative mx-auto grid max-w-[1136px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
-          reverse ? "lg:grid-cols-[599px_1fr]" : "lg:grid-cols-[473px_1fr]"
+        className={`relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
+          reverse ? "lg:grid-cols-[663px_1fr]" : "lg:grid-cols-[507px_1fr]"
         }`}
       >
         {reverse ? imagePanel : null}
@@ -198,12 +197,12 @@ export function CtaBand({
           height={305}
           loading="eager"
           className={`pointer-events-none absolute z-20 hidden w-[156px] opacity-95 md:block ${
-            reverse ? "left-[40.5%] top-[62px]" : "left-[41%] top-[90px]"
+            reverse ? "left-[43%] top-[62px]" : "left-[42%] top-[78px]"
           }`}
         />
         <div
           className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
-            reverse ? "md:order-2 md:pl-16" : "md:order-1"
+            reverse ? "md:order-2 md:pl-16 md:pr-10" : "md:order-1"
           }`}
         >
           <SectionLabel>{label}</SectionLabel>

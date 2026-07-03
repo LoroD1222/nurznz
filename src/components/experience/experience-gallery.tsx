@@ -75,26 +75,28 @@ export function ExperienceGallery({ images }: { images: GalleryImage[] }) {
             <GalleryArrow direction="right" onClick={() => move(1)} label="Show next gallery image" />
           </div>
         </div>
-        <div className="flex gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {images.map((image, index) => (
-            <button
-              key={`${image.src}-${index}`}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Show gallery image ${index + 1}`}
-              className={`relative h-[92px] w-[118px] shrink-0 overflow-hidden rounded-[6px] border-2 transition ${
-                index === activeIndex ? "border-coral" : "border-transparent opacity-80"
-              }`}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="118px"
-                className="object-cover"
-              />
-            </button>
-          ))}
+        <div className="overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-max min-w-full justify-center gap-3">
+            {images.map((image, index) => (
+              <button
+                key={`${image.src}-${index}`}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Show gallery image ${index + 1}`}
+                className={`relative h-[92px] w-[118px] shrink-0 overflow-hidden rounded-[6px] border-2 transition ${
+                  index === activeIndex ? "border-coral" : "border-transparent opacity-80"
+                }`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="118px"
+                  className="object-cover"
+                />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       {isOpen ? (

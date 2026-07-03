@@ -89,16 +89,16 @@ export default function TripsPage() {
             {trips.map((trip) => (
               <article
                 key={trip.title}
-                className="rounded-[10px] border border-[rgba(17,62,60,0.1)] bg-cream p-[9px] shadow-[0_2px_26px_rgba(0,0,0,0.04)]"
+                className="rounded-[10px] border border-[rgba(17,62,60,0.1)] bg-cream p-3 shadow-[0_2px_26px_rgba(0,0,0,0.04)]"
               >
                 <Link href={trip.href} className="block">
-                  <div className="relative h-[174px] overflow-hidden rounded-[7px]">
+                  <div className="relative h-[180px] overflow-hidden rounded-[7px]">
                     <Image
                       src={trip.image}
                       alt={trip.alt}
                       fill
                       sizes="(min-width: 1280px) 285px, (min-width: 768px) 45vw, 90vw"
-                      className="object-cover transition-transform duration-300 hover:scale-[1.04]"
+                      className="object-cover object-center transition-transform duration-300 hover:scale-[1.04]"
                     />
                     <span
                       className={`absolute right-3 top-3 flex h-7 min-w-[68px] items-center justify-center rounded-full px-3 text-[12px] font-bold leading-4 ${trip.durationClass ?? "bg-coral text-white"}`}
@@ -106,13 +106,13 @@ export default function TripsPage() {
                       {trip.duration}
                     </span>
                   </div>
-                  <p className="mt-3 text-[13px] font-bold uppercase leading-5 tracking-[3px] text-coral">
+                  <p className="mt-4 px-1 text-[13px] font-bold uppercase leading-5 tracking-[3px] text-coral">
                     {trip.category}
                   </p>
-                  <h2 className="mt-1 text-[23px] font-extrabold leading-[29px] text-teal-deep">
+                  <h2 className="mt-1 px-1 text-[23px] font-extrabold leading-[29px] text-teal-deep">
                     {trip.title}
                   </h2>
-                  <p className="mt-3 min-h-[69px] text-[15px] leading-[23px] text-muted-copy">
+                  <p className="mt-3 min-h-[69px] px-1 text-[15px] leading-[23px] text-muted-copy">
                     {trip.excerpt}
                   </p>
                 </Link>
