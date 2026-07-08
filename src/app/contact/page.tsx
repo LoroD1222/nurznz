@@ -53,7 +53,7 @@ const helpCards = [
 
 const steps = [
   ["Enquiry received", "Share your activity interest, dates, guest count and pickup area."],
-  ["Activity match", "NUR recommends the right short activity and checks guest fit."],
+  ["Activity match", "NUR ZANZIBAR TOURS recommends the right short activity and checks guest fit."],
   ["Confirm details", "Agree timing, inclusions, private or shared format and final booking notes."],
 ];
 
@@ -134,7 +134,7 @@ export default function ContactPage() {
               </h2>
               <p className="mt-4 max-w-[352px] text-[13px] leading-5 text-white/75">
                 Share what you want to do, where you are staying, group size
-                and preferred timing. NUR can suggest suitable short activities
+                and preferred timing. NUR ZANZIBAR TOURS can suggest suitable short activities
                 and next steps.
               </p>
               <div className="mt-[27px] grid grid-cols-2 gap-5">
@@ -213,7 +213,7 @@ export default function ContactPage() {
             ))}
           </div>
           <p className="mx-auto mt-[64px] max-w-[900px] text-[18px] leading-7 text-white/80">
-            NUR checks availability, recommends a suitable Zanzibar activity,
+            NUR ZANZIBAR TOURS checks availability, recommends a suitable Zanzibar activity,
             confirms pickup details and sends the next booking step.
           </p>
           <div className="mt-5 flex justify-center gap-4">

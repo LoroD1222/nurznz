@@ -16,7 +16,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Partner Rates & White-Label Supply | NUR Zanzibar";
 const description =
-  "Request Zanzibar activity partner rates, STO terms, white-label options and private group operations from NUR Zanzibar.";
+  "Request Zanzibar activity partner rates, STO terms, white-label options, private airport VIP transfers and car rental support from NUR Zanzibar.";
 
 export const metadata: Metadata = {
   title,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 const benefitCards = [
-  ["white-label", "/assets/figma/partner-white-label.svg", "White-Label Delivery", "Activities can be sold under the partner brand while NUR handles local guides, logistics and guest delivery."],
+  ["white-label", "/assets/figma/partner-white-label.svg", "White-Label Delivery", "Activities can be sold under the partner brand while NUR ZANZIBAR TOURS handles local guides, logistics and guest delivery."],
   ["groups", "/assets/figma/partner-ops-desk.svg", "Ready-to-Sell Activity Catalogue", "Concise product copy, inclusions, durations, images and partner notes for quick sales enablement."],
   ["rates", "/assets/figma/partner-sto-rates.svg", "Special Partner / STO Rates", "Net rates, repeat-volume terms and seasonal agreement options for hotels, DMCs, agents and STOs."],
   ["operations", "/assets/figma/partner-private-groups.svg", "Reliable Zanzibar Operations", "Pickup windows, timing checks, guide communication and fast same-day WhatsApp/email support."],
@@ -47,10 +47,17 @@ const partnerOptions = [
 ];
 
 const processSteps = [
-  ["Talk with NUR", "Share partner type, guest profile and expected activity volume."],
+  ["Talk with NUR ZANZIBAR TOURS", "Share partner type, guest profile and expected activity volume."],
   ["Agree rates & terms", "Set STO or partner rates, inclusions, seasonality and cancellation rules."],
   ["Choose activities", "Use ready-made options or configure white-label/private group handling."],
-  ["Sell, NUR operates", "Your team sells to guests while NUR delivers locally in Zanzibar."],
+  ["Sell, NUR ZANZIBAR TOURS operates", "Your team sells to guests while NUR ZANZIBAR TOURS delivers locally in Zanzibar."],
+];
+
+const transferFeatures = [
+  ["Private 24/7 availability", "Airport arrivals, departures, hotels and villas can be handled privately by request, including early and late flight timings."],
+  ["Fleet matched to client", "Vehicle choice depends on guest count, luggage, route, comfort needs and the service level requested by the partner or client."],
+  ["Car rental available", "Self-drive or rental support can be checked on request, with practical notes confirmed before the client travels."],
+  ["Partner-ready operations", "Useful for hotels, DMCs, agents and STOs that need dependable point-to-point transport alongside activities."],
 ];
 
 export default function PartnersPage() {
@@ -73,7 +80,7 @@ export default function PartnersPage() {
       <InnerPageShell
         overline="Contact NUR Zanzibar"
         title="Whitelabel Zanzibar activity partner for B2B travel sales"
-        description="NUR operates reliable half-day, 3-4 hour and single-day activities across Zanzibar for hotels, DMCs, agents, STOs and travel partners, with white-label delivery available when partners sell under their own brand."
+        description="NUR ZANZIBAR TOURS operates reliable half-day, 3-4 hour and single-day activities across Zanzibar for hotels, DMCs, agents, STOs and travel partners, with white-label delivery available when partners sell under their own brand."
         image="/assets/figma/partners-hero-bg.png"
         imageAlt="Bright aerial Zanzibar beach and palms used for partner activity supply"
         heroClassName="pb-[110px] pt-[65px] lg:min-h-[610px]"
@@ -81,7 +88,7 @@ export default function PartnersPage() {
         overlayClassName="bg-[linear-gradient(80deg,rgba(17,62,60,0.95)_4%,rgba(17,62,60,0.58)_47%,rgba(17,62,60,0.06)_99%)]"
         contentClassName="max-w-[1226px] lg:grid-cols-[730px_442px] lg:items-start lg:gap-[57px]"
         descriptionClassName="max-w-[720px] text-white/90"
-        proofs={["3-4h & day trips", "STO rates", "White-label ready", "Zanzibar-based operations"]}
+        proofs={["3-4h & day trips", "24/7 transfers", "White-label ready", "Zanzibar-based operations"]}
         aside={
           <div className="relative flex min-h-[440px] flex-col rounded-[9px] border border-white/40 bg-[linear-gradient(241deg,rgba(17,62,60,0.41)_8%,rgba(17,62,60,0.8)_98%)] p-[34px] text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-[9.5px]">
             <SectionLabel>White-label ground partner</SectionLabel>
@@ -90,7 +97,7 @@ export default function PartnersPage() {
             </h2>
             <div className="mt-4 h-px bg-white/20" />
             <p className="mt-5 max-w-[352px] text-[15px] leading-[23px] text-white">
-              NUR supplies and operates local Zanzibar activities while your
+              NUR ZANZIBAR TOURS supplies and operates local Zanzibar activities while your
               team sells under agreed partner terms.
             </p>
             <div className="mt-auto grid grid-cols-2 gap-4 border-t border-white/20 pt-[26px] text-[13px] font-bold">
@@ -187,6 +194,74 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
+      <section className="bg-white px-5 py-[70px] sm:px-8 lg:px-0">
+        <div className="mx-auto grid max-w-[1226px] gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+          <div className="grid gap-4">
+            <div className="relative min-h-[292px] overflow-hidden rounded-[8px] border border-[#e4d6bf] bg-cream shadow-[0_14px_32px_rgba(15,31,28,0.08)] sm:min-h-[390px]">
+              <Image
+                src="/assets/activities/private-airport-vip-transfers/private-airport-vip-transfers-01.webp"
+                alt="Private airport VIP transfer vehicle for Zanzibar guests"
+                fill
+                sizes="(min-width: 1024px) 620px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["/assets/activities/private-airport-vip-transfers/private-airport-vip-transfers-02.webp", "Front view of a private Zanzibar transfer van"],
+                ["/assets/activities/private-airport-vip-transfers/private-airport-vip-transfers-03.webp", "Private SUV available for Zanzibar transfer and rental requests"],
+              ].map(([src, alt]) => (
+                <div
+                  key={src}
+                  className="relative min-h-[156px] overflow-hidden rounded-[8px] border border-[#e4d6bf] bg-cream sm:min-h-[184px]"
+                >
+                  <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    sizes="(min-width: 1024px) 300px, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <article>
+            <SectionLabel>Private airport VIP transfers</SectionLabel>
+            <h2 className="type-h2 mt-4 text-teal">
+              Private transport, 24/7 availability and car rental support
+            </h2>
+            <p className="mt-4 text-[18px] leading-7 text-muted-copy">
+              NUR ZANZIBAR TOURS can support partners and direct guests with
+              private airport VIP transfers, hotel and villa pickups, island
+              point-to-point routes and car rental requests. Vehicles are
+              allocated by client, group size, luggage and comfort needs.
+            </p>
+            <div className="mt-7 grid gap-5 sm:grid-cols-2">
+              {transferFeatures.map(([heading, body]) => (
+                <div key={heading} className="border-l-[3px] border-coral pl-4">
+                  <h3 className="text-[17px] font-extrabold leading-[22px] text-teal">
+                    {heading}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-[23px] text-muted-copy">
+                    {body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button asChild>
+                <Link href="/trips/private-airport-vip-transfers">
+                  View transfer trip
+                </Link>
+              </Button>
+              <Button asChild variant="secondary" className="px-4 text-[13px]">
+                <Link href="#partner-enquiry">Ask for partner support</Link>
+              </Button>
+            </div>
+          </article>
+        </div>
+      </section>
       <section className="bg-[linear-gradient(to_bottom,#fffaf3_0%,#fffaf3_51%,#113e3c_51%,#113e3c_100%)] px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1207px]">
           <SectionLabel>How it works</SectionLabel>
@@ -222,7 +297,7 @@ export default function PartnersPage() {
               Agreements and availability
             </h2>
             <p className="mt-[22px] max-w-[452px] text-[15px] leading-[24px] text-white/75">
-              For recurring partners, NUR can discuss STO terms, seasonal
+              For recurring partners, NUR ZANZIBAR TOURS can discuss STO terms, seasonal
               availability, group requests, private departures, priority
               support and custom activity planning across Zanzibar.
             </p>

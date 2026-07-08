@@ -8,11 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1 },
     { path: "/trips", priority: 0.9 },
     ...experiences.map((experience) => ({
-      path: `/experience/${experience.slug}`,
+      path: `/trips/${experience.slug}`,
       priority: 0.9,
     })),
     { path: "/partners", priority: 0.9 },
     { path: "/about", priority: 0.8 },
+    { path: "/payment", priority: 0.7 },
     { path: "/contact", priority: 0.8 },
   ];
 

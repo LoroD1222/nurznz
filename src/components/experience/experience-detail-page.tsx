@@ -52,7 +52,7 @@ export function ExperienceDetailPage({
   experience: Experience;
 }) {
   const relatedTrips = trips.filter(
-    (trip) => trip.href !== `/experience/${experience.slug}`,
+    (trip) => trip.href !== `/trips/${experience.slug}`,
   );
   const jsonLd = {
     "@context": "https://schema.org",
@@ -60,7 +60,7 @@ export function ExperienceDetailPage({
     name: experience.title,
     description: experience.description,
     image: `${SITE_URL}${experience.image}`,
-    url: `${SITE_URL}/experience/${experience.slug}`,
+    url: `${SITE_URL}/trips/${experience.slug}`,
     provider: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -154,6 +154,46 @@ export function ExperienceDetailPage({
                 </article>
               ))}
             </div>
+            {experience.included.length || experience.excluded.length ? (
+              <div className="mt-6 grid max-w-[452px] gap-5 sm:grid-cols-2">
+                {experience.included.length ? (
+                  <div>
+                    <h3 className="text-[13px] font-extrabold uppercase tracking-[2px] text-coral-bright">
+                      Included
+                    </h3>
+                    <ul className="mt-3 space-y-2">
+                      {experience.included.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 text-[13px] leading-[19px] text-white/80"
+                        >
+                          <span className="mt-[6px] size-1.5 shrink-0 rounded-full bg-coral" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                {experience.excluded.length ? (
+                  <div>
+                    <h3 className="text-[13px] font-extrabold uppercase tracking-[2px] text-coral-bright">
+                      Excluded
+                    </h3>
+                    <ul className="mt-3 space-y-2">
+                      {experience.excluded.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 text-[13px] leading-[19px] text-white/80"
+                        >
+                          <span className="mt-[6px] size-1.5 shrink-0 rounded-full bg-white/65" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
             <p className="mt-[18px] max-w-[452px] text-[13px] leading-[22px] text-white/85">
               {experience.ctaCopy}
             </p>

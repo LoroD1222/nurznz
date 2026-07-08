@@ -22,20 +22,21 @@ export async function generateMetadata({
 
   if (!experience) {
     return {
-      title: `Experience Not Found | ${SITE_NAME}`,
+      title: `Trip Not Found | ${SITE_NAME}`,
     };
   }
 
   const title = `${experience.title} | NUR Zanzibar`;
+  const url = `/trips/${experience.slug}`;
 
   return {
     title,
     description: experience.excerpt,
-    alternates: { canonical: `/experience/${experience.slug}` },
+    alternates: { canonical: url },
     openGraph: {
       title,
       description: experience.excerpt,
-      url: `/experience/${experience.slug}`,
+      url,
       siteName: SITE_NAME,
       type: "website",
       images: [
@@ -56,7 +57,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ExperienceSlugPage({ params }: PageProps) {
+export default async function TripSlugPage({ params }: PageProps) {
   const { slug } = await params;
   const experience = getExperienceBySlug(slug);
 

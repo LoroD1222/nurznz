@@ -20,7 +20,7 @@ export const trips: Trip[] = experiences.map((experience) => ({
   image: experience.image,
   alt: experience.alt,
   excerpt: experience.excerpt,
-  href: `/experience/${experience.slug}`,
+  href: `/trips/${experience.slug}`,
   durationClass: experience.durationClass,
 }));
 

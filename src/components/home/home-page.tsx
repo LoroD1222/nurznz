@@ -15,14 +15,14 @@ import { trips } from "@/lib/trips";
 const stats = [
   { value: "3-4h", label: "half-day activities" },
   { value: "1 day", label: "full-day operations" },
-  { value: "for B2B", label: "hotels, DMCs, agents" },
+  { value: "for partners", label: "hotels, DMCs, agents" },
   { value: "Daily ops", label: "guest-ready logistics" },
 ];
 
 const partnerCards = [
   {
     title: "White-label ready",
-    body: "Sell activities under your brand while NUR handles guides, pickups and local guest flow.",
+    body: "Sell activities under your brand while NUR ZANZIBAR TOURS handles guides, pickups and local guest flow.",
     icon: "/assets/figma/partner-white-label.svg",
     alt: "White-label partner icon",
   },
@@ -84,7 +84,7 @@ const reviews = [
   {
     id: 0,
     quote:
-      "NUR made our Zanzibar short trips easier to sell because timings, pickup notes and guest support were clear from the start.",
+      "NUR ZANZIBAR TOURS made our Zanzibar short trips easier to sell because timings, pickup notes and guest support were clear from the start.",
     author: "Amina Salim",
     details: "Hotel experiences desk",
   },
@@ -104,36 +104,19 @@ const reviews = [
   },
 ];
 
-const footerColumns = [
-  {
-    heading: "Explore",
-    links: [
-      { label: "Home", href: "/" },
-      { label: "Trips", href: "/trips" },
-      { label: "Partners", href: "/partners" },
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    heading: "Activities",
-    links: [
-      { label: "Mnemba Snorkeling", href: "/experience/mnemba-snorkeling" },
-      { label: "Stone Town", href: "/experience/stone-town" },
-      { label: "Spice Tour", href: "/experience/spice-tour" },
-      { label: "Safari Blue", href: "/experience/safari-blue" },
-    ],
-  },
-  {
-    heading: "Partner supply",
-    links: [
-      { label: "Partner rates", href: "/partners#rates" },
-      { label: "STO rates", href: "/partners#rates" },
-      { label: "White-label options", href: "/partners#white-label" },
-      { label: "Private groups", href: "/partners#groups" },
-    ],
-  },
+const footerExploreLinks = [
+  { label: "Home", href: "/" },
+  { label: "Trips", href: "/trips" },
+  { label: "Partners", href: "/partners" },
+  { label: "About", href: "/about" },
+  { label: "Payment", href: "/payment" },
+  { label: "Contact", href: "/contact" },
 ];
+
+const footerTripLinks = trips.map((trip) => ({
+  label: trip.title,
+  href: trip.href,
+}));
 
 function Logo() {
   return (
@@ -162,11 +145,8 @@ export function SiteHeader() {
           <SiteNavLinks className="hidden items-center gap-7 text-[14px] font-medium leading-[18px] text-teal md:flex lg:gap-10" />
         </div>
         <div className="hidden items-center gap-[10px] sm:flex sm:gap-[11px]">
-          <Button asChild variant="secondary" size="compact">
-            <Link href="/trips">Open Trips</Link>
-          </Button>
           <Button asChild size="wide">
-            <Link href="/partners#rates">Partner rates</Link>
+            <Link href="/trips">View Trips</Link>
           </Button>
         </div>
       </div>
@@ -194,7 +174,7 @@ function HeroSection() {
         <div className="relative mx-auto flex min-h-[488px] max-w-[1234px] items-center px-5 py-16 sm:px-8 lg:px-0">
           <div className="max-w-[760px]">
             <p className="text-[15px] font-black uppercase leading-[19px] tracking-[2px] text-coral-bright sm:text-[18px]">
-              B2B Zanzibar Activity Provider
+              Zanzibar Activity Provider
             </p>
             <h1
               id="home-title"
@@ -209,10 +189,7 @@ function HeroSection() {
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-[17px]">
               <Button asChild size="wide">
-                <Link href="/partners#rates">Partner rates</Link>
-              </Button>
-              <Button asChild variant="secondary-dark" size="default">
-                <Link href="/trips">Open Trips</Link>
+                <Link href="/trips">View All Trips</Link>
               </Button>
             </div>
           </div>
@@ -311,7 +288,7 @@ function PartnerSection() {
           ))}
         </div>
         <p className="mx-auto mt-[43px] max-w-[928px] text-[17px] leading-6 text-muted-copy">
-          NUR operates short Zanzibar experiences behind the scenes for hotels,
+          NUR ZANZIBAR TOURS operates short Zanzibar experiences behind the scenes for hotels,
           DMCs, agents and STOs. Partners can sell under their own brand,
           request STO rates and rely on local pickup, guides and guest support.
         </p>
@@ -550,7 +527,7 @@ function ReviewsAndFaq() {
 function FaqSection() {
   const faqs = [
     {
-      question: "Can partners sell NUR activities under their own brand?",
+      question: "Can partners sell NUR ZANZIBAR TOURS activities under their own brand?",
       answer:
         "Yes. Hotels, DMCs and travel sellers can request white-label descriptions, pickup notes and operational support for guest-facing sales.",
     },
@@ -562,7 +539,7 @@ function FaqSection() {
     {
       question: "How do partner rates work?",
       answer:
-        "Send an enquiry with your agency details, expected volume and activity interests. NUR will confirm STO or net rates for suitable products.",
+        "Send an enquiry with your agency details, expected volume and activity interests. NUR ZANZIBAR TOURS will confirm STO or net rates for suitable products.",
     },
     {
       question: "Which Zanzibar activity types are available?",
@@ -602,45 +579,57 @@ function FaqSection() {
 }
 
 export function SiteFooter() {
-  const linkColor = (heading: string) =>
-    heading === "Explore" ? "text-[#61716e]" : "text-[rgba(17,62,60,0.49)]";
-
   return (
     <footer
       id="contact"
       className="bg-cream px-5 pb-[18px] pt-[52px] sm:px-8 lg:px-0"
     >
       <div className="mx-auto max-w-[1248px]">
-        <div className="grid gap-10 lg:grid-cols-[360px_1fr_220px]">
+        <div className="grid gap-10 lg:grid-cols-[330px_1fr_220px]">
           <div>
-            <p className="text-[20px] font-bold leading-6 text-teal-deep">
-              NUR ZANZIBAR
-            </p>
+            <Link href="/" aria-label="Go to NUR Zanzibar home">
+              <Logo />
+            </Link>
             <p className="mt-10 max-w-[360px] text-[15px] leading-6 text-teal-deep">
               Zanzibar-based activity supply for short trips, day experiences
               and partner-ready local operations.
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {footerColumns.map((column) => (
-              <div key={column.heading}>
-                <h2 className="text-[12px] font-semibold uppercase leading-4 text-teal">
-                  {column.heading}
-                </h2>
-                <ul className="mt-7 space-y-[10px]">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className={`text-[15px] font-medium leading-[22px] ${linkColor(column.heading)}`}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="grid gap-8 sm:grid-cols-[150px_1fr]">
+            <div>
+              <h2 className="text-[12px] font-semibold uppercase leading-4 text-teal">
+                Explore
+              </h2>
+              <ul className="mt-7 space-y-[10px]">
+                {footerExploreLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-[15px] font-medium leading-[22px] text-[#61716e]"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-[12px] font-semibold uppercase leading-4 text-teal">
+                Trips
+              </h2>
+              <ul className="mt-7 grid gap-x-7 gap-y-[10px] sm:grid-cols-2 xl:grid-cols-3">
+                {footerTripLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[15px] font-medium leading-[22px] text-[rgba(17,62,60,0.49)]"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div>
             <h2 className="text-[12px] font-semibold uppercase leading-4 text-teal">

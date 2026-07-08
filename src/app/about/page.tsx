@@ -71,7 +71,7 @@ export default function AboutPage() {
       <InnerPageShell
         overline="About NUR Zanzibar"
         title="Local Zanzibar operators behind partner-ready activities"
-        description="NUR is a Zanzibar-based activity provider helping hotels, DMCs, agents and travel partners sell reliable short activities with clear coordination and guest-ready operations."
+        description="NUR ZANZIBAR TOURS is a Zanzibar-based activity provider helping hotels, DMCs, agents and travel partners sell reliable short activities with clear coordination and guest-ready operations."
         image="/assets/figma/about-hero-bg-exact.png"
         imageAlt="Local Zanzibar guide operation with coastal activity background"
         heroClassName="py-[111px] lg:min-h-[550px]"
@@ -141,7 +141,7 @@ export default function AboutPage() {
               Built from local guiding, coordination and partner trust
             </h2>
             <p className="mt-[26px] text-[16px] leading-[26px] text-muted-copy">
-              NUR grew from hands-on Zanzibar operations: Stone Town walks,
+              NUR ZANZIBAR TOURS grew from hands-on Zanzibar operations: Stone Town walks,
               spice farms, marine trips, hotel pickups, guest handling and
               guide coordination. The offer today packages that local knowledge
               for partners who need dependable 3-4 hour activities and day
@@ -178,7 +178,7 @@ export default function AboutPage() {
       <section className="px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1136px] text-center">
           <h2 className="text-[40px] font-extrabold leading-[40px] text-teal">
-            Why partners trust NUR?
+            Why partners trust NUR ZANZIBAR TOURS?
           </h2>
           <div className="mt-[63px] grid gap-3 md:grid-cols-4">
             {[
@@ -262,7 +262,7 @@ export default function AboutPage() {
       <CtaBand
         label="Activity Catalogue"
         title="Looking for a dependable Zanzibar activity partner?"
-        body="Hotels, DMCs, STOs and agents can discuss partner rates, white-label options and activity agreements with the NUR partner desk."
+        body="Hotels, DMCs, STOs and agents can discuss partner rates, white-label options and activity agreements with the NUR ZANZIBAR TOURS partner desk."
         primaryHref="/partners#rates"
         primaryLabel="Partner rates"
         image="/assets/figma/cta-image-partners-clean.webp"

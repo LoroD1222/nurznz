@@ -100,7 +100,7 @@ const structuredData = [
     mainEntity: [
       {
         "@type": "Question",
-        name: "Can partners sell NUR activities under their own brand?",
+        name: "Can partners sell NUR ZANZIBAR TOURS activities under their own brand?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Yes. Hotels, DMCs and travel sellers can request white-label descriptions, pickup notes and operational support for guest-facing sales.",

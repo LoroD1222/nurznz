@@ -25,7 +25,7 @@ const initialState: FormState = {
 const formConfigs = {
   activity: {
     title: "Activity enquiry",
-    intro: "Share the basics and the NUR team will reply with availability and next steps.",
+    intro: "Share the basics and the NUR ZANZIBAR TOURS team will reply with availability and next steps.",
     submit: "Send trip enquiry",
     helper: "Response routed to the activity team.",
     fields: {
@@ -48,7 +48,7 @@ const formConfigs = {
   },
   partner: {
     title: "Partner enquiry",
-    intro: "Share partner details so NUR can respond with rates, terms and operating fit.",
+    intro: "Share partner details so NUR ZANZIBAR TOURS can respond with rates, terms and operating fit.",
     submit: "Send partner enquiry",
     helper: "Response routed to partner sales and operations.",
     fields: {
