@@ -3,7 +3,7 @@ import { HomePage } from "@/components/home/home-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const pageTitle = "NUR Zanzibar | B2B Zanzibar Activity Provider";
+const pageTitle = "NUR Zanzibar | Zanzibar Activity Provider";
 const pageDescription =
   "Reliable half-day and full-day Zanzibar activities for hotels, DMCs, agents and travel partners, with partner rates, white-label options and local operations support.";
 
@@ -80,7 +80,7 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "B2B Zanzibar activity supply",
+    name: "Zanzibar activity supply",
     provider: {
       "@type": "Organization",
       name: SITE_NAME,
