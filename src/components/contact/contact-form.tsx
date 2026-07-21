@@ -24,6 +24,7 @@ const initialState: FormState = {
 
 const WEB3FORMS_ACCESS_KEY = "f461e6fa-57a6-499c-badc-e2c46e747260";
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const formConfigs = {
   activity: {
@@ -33,7 +34,7 @@ const formConfigs = {
     helper: "Response routed to the activity team.",
     fields: {
       primary: "Your name",
-      secondary: "Email or WhatsApp",
+      secondary: "Email",
       tertiary: "Trip type",
       quaternary: "Date or travel window",
       details: "Guests and pickup area",
@@ -41,7 +42,7 @@ const formConfigs = {
     },
     placeholders: {
       primary: "Full name",
-      secondary: "Best contact details",
+      secondary: "you@example.com",
       tertiary: "Snorkeling / Stone Town / spice / beach day",
       quaternary: "Preferred date or month",
       details: "2 adults, Nungwi hotel pickup, private or shared",
@@ -56,7 +57,7 @@ const formConfigs = {
     helper: "Response routed to partner sales and operations.",
     fields: {
       primary: "Company name",
-      secondary: "Contact person",
+      secondary: "Email",
       tertiary: "Partner type",
       quaternary: "Expected monthly guests",
       details: "Activity interests",
@@ -64,7 +65,7 @@ const formConfigs = {
     },
     placeholders: {
       primary: "Company or agency name",
-      secondary: "Name, role and email",
+      secondary: "partner@example.com",
       tertiary: "Hotel / DMC / Agency / STO / concierge",
       quaternary: "Approximate activity volume",
       details: "Stone Town, spice farm, sandbank, custom group, white-label",
@@ -98,7 +99,9 @@ export function ContactForm({
 
     if (!nextValues.primary.trim()) nextErrors.primary = "This field is required.";
     if (!nextValues.secondary.trim()) {
-      nextErrors.secondary = "Add a contact detail.";
+      nextErrors.secondary = "Add an email address.";
+    } else if (!emailPattern.test(nextValues.secondary.trim())) {
+      nextErrors.secondary = "Add a valid email address.";
     }
 
     setErrors(nextErrors);
@@ -122,33 +125,40 @@ export function ContactForm({
     setSubmitError("");
     if (!validate(nextValues)) return;
 
-    const submission = new FormData();
-    submission.append("access_key", WEB3FORMS_ACCESS_KEY);
-    submission.append("subject", `${config.title} from NUR Zanzibar website`);
-    submission.append("from_name", nextValues.primary);
-    submission.append("name", nextValues.primary);
-    submission.append("email", nextValues.secondary);
-    submission.append("enquiry_type", config.title);
-    submission.append(config.fields.primary, nextValues.primary);
-    submission.append(config.fields.secondary, nextValues.secondary);
-    submission.append(config.fields.tertiary, nextValues.tertiary);
-    submission.append(config.fields.quaternary, nextValues.quaternary);
-    submission.append(config.fields.details, nextValues.details);
-    submission.append("message", [
+    const message = [
       `${config.fields.primary}: ${nextValues.primary}`,
       `${config.fields.secondary}: ${nextValues.secondary}`,
-      `${config.fields.tertiary}: ${nextValues.tertiary}`,
-      `${config.fields.quaternary}: ${nextValues.quaternary}`,
-      `${config.fields.details}: ${nextValues.details}`,
+      `${config.fields.tertiary}: ${nextValues.tertiary || "Not provided"}`,
+      `${config.fields.quaternary}: ${nextValues.quaternary || "Not provided"}`,
+      `${config.fields.details}: ${nextValues.details || "Not provided"}`,
       "",
-      nextValues.message,
-    ].join("\n"));
+      nextValues.message || "No extra message provided.",
+    ].join("\n");
+
+    const submission = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `${config.title} from NUR Zanzibar website`,
+      from_name: "NUR Zanzibar website",
+      name: nextValues.primary,
+      email: nextValues.secondary.trim(),
+      enquiry_type: config.title,
+      [config.fields.primary]: nextValues.primary,
+      [config.fields.secondary]: nextValues.secondary,
+      [config.fields.tertiary]: nextValues.tertiary,
+      [config.fields.quaternary]: nextValues.quaternary,
+      [config.fields.details]: nextValues.details,
+      message,
+    };
 
     setSubmitting(true);
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        body: submission,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(submission),
       });
       const result = (await response.json()) as { success?: boolean; message?: string };
 
@@ -158,8 +168,9 @@ export function ContactForm({
 
       setValues(initialState);
       setSubmitted(true);
-    } catch {
-      setSubmitError("Something went wrong. Please try again or contact us on WhatsApp.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Submission failed";
+      setSubmitError(`${message}. Please try again or contact us on WhatsApp.`);
     } finally {
       setSubmitting(false);
     }
@@ -202,6 +213,8 @@ export function ContactForm({
             placeholder={config.placeholders.secondary}
             className="h-14 w-full rounded-[8px] border border-[#d8c9af] bg-cream px-[15px] text-[15px] outline-none focus:border-coral"
             autoComplete="email"
+            inputMode="email"
+            type="email"
           />
         </Field>
         <Field label={config.fields.tertiary} error={errors.tertiary}>
