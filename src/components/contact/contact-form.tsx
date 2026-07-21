@@ -100,12 +100,6 @@ export function ContactForm({
     if (!nextValues.secondary.trim()) {
       nextErrors.secondary = "Add a contact detail.";
     }
-    if (!nextValues.tertiary.trim()) nextErrors.tertiary = "This field is required.";
-    if (!nextValues.quaternary.trim()) nextErrors.quaternary = "This field is required.";
-    if (!nextValues.details.trim()) nextErrors.details = "This field is required.";
-    if (nextValues.message.trim().length < 12) {
-      nextErrors.message = "Tell us a little more about the request.";
-    }
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -213,7 +207,6 @@ export function ContactForm({
         <Field label={config.fields.tertiary} error={errors.tertiary}>
           <input
             name="tertiary"
-            required
             value={values.tertiary}
             onChange={(event) => update("tertiary", event.target.value)}
             aria-invalid={Boolean(errors.tertiary)}
@@ -224,7 +217,6 @@ export function ContactForm({
         <Field label={config.fields.quaternary} error={errors.quaternary}>
           <input
             name="quaternary"
-            required
             value={values.quaternary}
             onChange={(event) => update("quaternary", event.target.value)}
             aria-invalid={Boolean(errors.quaternary)}
@@ -236,7 +228,6 @@ export function ContactForm({
       <Field label={config.fields.details} error={errors.details} className="mt-[21px]">
         <input
           name="details"
-          required
           value={values.details}
           onChange={(event) => update("details", event.target.value)}
           aria-invalid={Boolean(errors.details)}
@@ -247,8 +238,6 @@ export function ContactForm({
       <Field label={config.fields.message} error={errors.message} className="mt-[21px]">
         <textarea
           name="message"
-          required
-          minLength={12}
           value={values.message}
           onChange={(event) => update("message", event.target.value)}
           aria-invalid={Boolean(errors.message)}
