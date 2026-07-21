@@ -78,29 +78,68 @@ const partnerLogos = [
     width: 124,
     height: 64,
   },
+  {
+    src: "/assets/partners/logo-dhow.avif",
+    alt: "Dhow partner logo",
+    width: 176,
+    height: 172,
+  },
+  {
+    src: "/assets/partners/logo-white-sand.svg",
+    alt: "White Sand Luxury Villas and Spa partner logo",
+    width: 304,
+    height: 177,
+  },
+  {
+    src: "/assets/partners/our-zanzibar.png",
+    alt: "Our Zanzibar partner logo",
+    width: 256,
+    height: 256,
+  },
+  {
+    src: "/assets/partners/hotel-verde.png",
+    alt: "Hotel Verde Zanzibar partner logo",
+    width: 2597,
+    height: 823,
+  },
+  {
+    src: "/assets/partners/zuri-zanzibar.png",
+    alt: "Zuri Zanzibar Hotel and Resort partner logo",
+    width: 1280,
+    height: 1280,
+  },
+  {
+    src: "/assets/partners/zanzibar-boutique-hotels.png",
+    alt: "Zanzibar Boutique Hotels partner logo",
+    width: 1463,
+    height: 761,
+  },
 ];
+
+const tripadvisorUrl =
+  "https://www.tripadvisor.com/Attraction_Review-g482884-d27100250-Reviews-Nurzanzi_Tours_Safaris-Zanzibar_Island_Zanzibar_Archipelago.html";
 
 const reviews = [
   {
     id: 0,
     quote:
-      "NUR ZANZIBAR TOURS made our Zanzibar short trips easier to sell because timings, pickup notes and guest support were clear from the start.",
-    author: "Amina Salim",
-    details: "Hotel experiences desk",
+      "Amazing experience with a friendly team, smooth pickup and a beautiful day exploring Zanzibar.",
+    author: "TripAdvisor guest",
+    details: "Reviewed on Tripadvisor",
   },
   {
     id: 1,
     quote:
-      "The team understands how agents work. Rates, route notes and operational answers arrive quickly.",
-    author: "Jonas Weber",
-    details: "DMC product manager",
+      "Well organized from start to finish, with clear communication and helpful local guidance.",
+    author: "TripAdvisor guest",
+    details: "Reviewed on Tripadvisor",
   },
   {
     id: 2,
     quote:
-      "Private group requests are handled with practical local detail, from pickup windows to guest-ready confirmations.",
-    author: "Mariam Said",
-    details: "Private group planner",
+      "A memorable Zanzibar trip with professional service, great timing and a team that cared.",
+    author: "TripAdvisor guest",
+    details: "Reviewed on Tripadvisor",
   },
 ];
 
@@ -117,6 +156,57 @@ const footerTripLinks = trips.map((trip) => ({
   label: trip.title,
   href: trip.href,
 }));
+
+const socialLinks = [
+  {
+    label: "Tripadvisor",
+    href: tripadvisorUrl,
+    icon: "tripadvisor",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/nurzanzibartours/",
+    icon: "instagram",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@nurzanzitour",
+    icon: "tiktok",
+  },
+] as const;
+
+type SocialIconName = (typeof socialLinks)[number]["icon"];
+
+function SocialIcon({ icon }: { icon: SocialIconName }) {
+  if (icon === "instagram") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4">
+        <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="16.6" cy="7.4" r="1.1" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  if (icon === "tiktok") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4">
+        <path d="M14.4 5v9.1a4 4 0 1 1-3.5-4v2.5a1.7 1.7 0 1 0 1.1 1.6V5h2.4Z" fill="currentColor" />
+        <path d="M14.4 5c.6 2.2 2 3.5 4.1 3.9v2.4c-1.6-.1-3-.7-4.1-1.7V5Z" fill="currentColor" opacity="0.72" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="8.8" cy="11" r="1.25" fill="currentColor" />
+      <circle cx="15.2" cy="11" r="1.25" fill="currentColor" />
+      <path d="M7.4 14.4c1.2 1.1 2.7 1.7 4.6 1.7s3.4-.6 4.6-1.7" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+      <path d="m5.5 8-2-1.7M18.5 8l2-1.7" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+    </svg>
+  );
+}
 
 function Logo() {
   return (
@@ -431,11 +521,11 @@ export function LogoStrip() {
           id="agencies-title"
           className="text-[14px] font-black uppercase leading-[18px] tracking-[4px] text-teal-deep"
         >
-          What agencies are we working with?
+          Partners we work with
         </h2>
         <div className="relative mt-8 sm:overflow-hidden">
-          <div className="grid grid-cols-3 items-center justify-items-center gap-x-5 gap-y-7 sm:hidden">
-            {partnerLogos.map((logo, index) => (
+          <div className="grid grid-cols-2 items-center justify-items-center gap-x-5 gap-y-7 sm:hidden">
+            {partnerLogos.map((logo) => (
               <Image
                 key={logo.alt}
                 src={logo.src}
@@ -443,23 +533,20 @@ export function LogoStrip() {
                 width={logo.width}
                 height={logo.height}
                 loading="eager"
-                className={`max-h-[54px] w-auto max-w-[96px] object-contain ${
-                  index === 3 ? "col-start-2" : ""
-                }`}
+                className="max-h-[56px] w-auto max-w-[128px] object-contain"
               />
             ))}
           </div>
-          <div className="hidden items-center justify-center gap-[38px] opacity-100 sm:flex">
-            {[...partnerLogos, partnerLogos[2], partnerLogos[3], partnerLogos[1]].map((logo, index) => (
+          <div className="hidden grid-cols-5 items-center justify-items-center gap-x-10 gap-y-8 opacity-100 sm:grid">
+            {partnerLogos.map((logo) => (
               <Image
-                key={`${logo.alt}-${index}`}
+                key={logo.alt}
                 src={logo.src}
                 alt={logo.alt}
                 width={logo.width}
                 height={logo.height}
                 loading="eager"
-                className="shrink-0 object-contain"
-                style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
+                className="max-h-[70px] w-auto max-w-[170px] object-contain"
               />
             ))}
           </div>
@@ -492,7 +579,18 @@ function ReviewsAndFaq() {
             What they say about us?
           </h2>
         </div>
-        <div className="mt-[58px] grid gap-6 md:grid-cols-3">
+        <div className="mt-6 flex justify-center">
+          <Link
+            href={tripadvisorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-[rgba(17,62,60,0.18)] bg-cream px-4 py-2 text-[13px] font-bold uppercase tracking-[1.4px] text-teal-deep"
+          >
+            <SocialIcon icon="tripadvisor" />
+            Verified by Tripadvisor
+          </Link>
+        </div>
+        <div className="mt-[34px] grid gap-6 md:grid-cols-3">
           {reviews.map((review) => (
             <article
               key={review.id}
@@ -515,6 +613,14 @@ function ReviewsAndFaq() {
               <p className="mt-1 text-[16px] leading-6 text-[#5e6573]">
                 {review.details}
               </p>
+              <Link
+                href={tripadvisorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex text-[13px] font-bold uppercase tracking-[1.2px] text-teal"
+              >
+                Read on Tripadvisor
+              </Link>
             </article>
           ))}
         </div>
@@ -642,6 +748,20 @@ export function SiteFooter() {
             <Button asChild variant="footer" className="mt-[18px]">
               <Link href="/contact">Send enquiry</Link>
             </Button>
+            <div className="mt-6 flex items-center gap-3">
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(17,62,60,0.26)] text-teal-deep transition hover:border-teal hover:bg-[rgba(17,62,60,0.08)] hover:text-teal"
+                >
+                  <SocialIcon icon={link.icon} />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
         <div className="mt-10 border-t border-[rgba(17,62,60,0.22)] pt-[19px]">

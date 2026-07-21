@@ -199,7 +199,7 @@ export default function AboutPage() {
       <section className="bg-cream px-5 py-[58px] sm:px-8 lg:px-0">
         <div className="mx-auto max-w-[1248px]">
           <SectionLabel>Past trip proof</SectionLabel>
-          <h2 className="type-h2 mt-5 text-teal">Proof from past Zanzibar experiences</h2>
+          <h2 className="type-h2 mt-5 text-teal">Past Zanzibar experiences</h2>
           <p className="mt-4 max-w-[620px] text-[16px] leading-[25px] text-muted-copy">
             Use the existing depth of the activity archive as credibility
             without turning the About page into a long image dump.

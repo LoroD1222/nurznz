@@ -22,6 +22,9 @@ const initialState: FormState = {
   message: "",
 };
 
+const WEB3FORMS_ACCESS_KEY = "f461e6fa-57a6-499c-badc-e2c46e747260";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
 const formConfigs = {
   activity: {
     title: "Activity enquiry",
@@ -80,11 +83,14 @@ export function ContactForm({
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   function update(field: keyof FormState, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
     setSubmitted(false);
+    setSubmitError("");
   }
 
   function validate(nextValues: FormState) {
@@ -105,7 +111,7 @@ export function ContactForm({
     return Object.keys(nextErrors).length === 0;
   }
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const nextValues = {
@@ -119,8 +125,50 @@ export function ContactForm({
 
     setValues(nextValues);
     setSubmitted(false);
+    setSubmitError("");
     if (!validate(nextValues)) return;
-    setSubmitted(true);
+
+    const submission = new FormData();
+    submission.append("access_key", WEB3FORMS_ACCESS_KEY);
+    submission.append("subject", `${config.title} from NUR Zanzibar website`);
+    submission.append("from_name", nextValues.primary);
+    submission.append("name", nextValues.primary);
+    submission.append("email", nextValues.secondary);
+    submission.append("enquiry_type", config.title);
+    submission.append(config.fields.primary, nextValues.primary);
+    submission.append(config.fields.secondary, nextValues.secondary);
+    submission.append(config.fields.tertiary, nextValues.tertiary);
+    submission.append(config.fields.quaternary, nextValues.quaternary);
+    submission.append(config.fields.details, nextValues.details);
+    submission.append("message", [
+      `${config.fields.primary}: ${nextValues.primary}`,
+      `${config.fields.secondary}: ${nextValues.secondary}`,
+      `${config.fields.tertiary}: ${nextValues.tertiary}`,
+      `${config.fields.quaternary}: ${nextValues.quaternary}`,
+      `${config.fields.details}: ${nextValues.details}`,
+      "",
+      nextValues.message,
+    ].join("\n"));
+
+    setSubmitting(true);
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        body: submission,
+      });
+      const result = (await response.json()) as { success?: boolean; message?: string };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message ?? "Submission failed");
+      }
+
+      setValues(initialState);
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Something went wrong. Please try again or contact us on WhatsApp.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -209,10 +257,14 @@ export function ContactForm({
         />
       </Field>
       <div className="mt-[25px] flex flex-wrap items-center gap-4">
-        <Button type="submit" size="wide">
-          {config.submit}
+        <Button type="submit" size="wide" disabled={submitting}>
+          {submitting ? "Sending..." : config.submit}
         </Button>
-        {submitted ? (
+        {submitError ? (
+          <p className="text-[15px] font-medium leading-6 text-coral" role="alert">
+            {submitError}
+          </p>
+        ) : submitted ? (
           <p className="text-[15px] font-medium leading-6 text-teal">
             {config.success}
           </p>
