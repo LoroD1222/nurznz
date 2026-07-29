@@ -709,34 +709,6 @@ export const experiences: Experience[] = [
     },
     imageCount: 3,
   }),
-  createExperience({
-    slug: "sunset-cruise",
-    title: "Sunset Cruise",
-    category: "Coast",
-    duration: "By request",
-    overline: "Evening Dhow Cruise",
-    excerpt:
-      "A relaxed evening cruise option for sunset views, sea breeze and a coastal finish to the day.",
-    description:
-      "Sunset Cruise can be arranged as a calm evening sea experience for guests who want coastal views and a relaxed finish to the day. Timing, boat style and pickup are confirmed by availability and weather.",
-    highlights: [
-      ["Pickup", "Area confirmed by request"],
-      ["Duration", "Evening timing"],
-      ["Best for", "Sunset views"],
-      ["Boat", "Local cruise support"],
-    ],
-    infoItems: [
-      "Sunset timing",
-      "Weather conditions",
-      "Boat availability",
-      "Group-friendly option",
-    ],
-    included: ["Availability check", "Boat coordination", "Pickup guidance when arranged"],
-    excluded: ["Meals and drinks", "Personal expenses", "Optional extras"],
-    ctaCopy:
-      "Share preferred date, pickup area and guest count so NUR ZANZIBAR TOURS can check the most practical sunset cruise option.",
-    imageCount: 1,
-  }),
 ];
 
 export function getExperienceBySlug(slug: string) {
