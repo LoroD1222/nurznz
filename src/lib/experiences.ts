@@ -27,26 +27,46 @@ export type Experience = {
 type ExperienceInput = Omit<Experience, "image" | "alt" | "gallery"> & {
   imageCount: number;
   primaryImage?: GalleryImage;
+  imageSource?: "activities" | "drive";
+  imageSlug?: string;
 };
 
 const activityAsset = (slug: string, index: number) =>
   `/assets/activities/${slug}/${slug}-${String(index).padStart(2, "0")}.webp`;
 
+const driveAsset = (slug: string, index: number) =>
+  `/assets/drive/${slug}/${slug}-${String(index).padStart(2, "0")}.webp`;
+
 const activityGallery = (
   slug: string,
   title: string,
   count: number,
+  imageSource: "activities" | "drive" = "activities",
 ): GalleryImage[] =>
   Array.from({ length: count }, (_, index) => ({
-    src: activityAsset(slug, index + 1),
+    src:
+      imageSource === "drive"
+        ? driveAsset(slug, index + 1)
+        : activityAsset(slug, index + 1),
     alt: `${title} Zanzibar trip photo ${index + 1}`,
   }));
 
 function createExperience(input: ExperienceInput): Experience {
-  const { primaryImage: preferredImage, ...experienceInput } = input;
+  const {
+    primaryImage: preferredImage,
+    imageSource = "activities",
+    imageSlug,
+    ...experienceInput
+  } = input;
+  const gallerySlug = imageSlug ?? experienceInput.slug;
   const gallery = [
     ...(preferredImage ? [preferredImage] : []),
-    ...activityGallery(experienceInput.slug, experienceInput.title, experienceInput.imageCount),
+    ...activityGallery(
+      gallerySlug,
+      experienceInput.title,
+      experienceInput.imageCount,
+      imageSource,
+    ),
   ];
   const primaryImage = gallery[0];
 
@@ -91,7 +111,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Optional gratuities", "Items not confirmed in the safari quote"],
     ctaCopy:
       "Share the travel date, pickup area and guest names so NUR ZANZIBAR TOURS can confirm practical flight timing, availability and safari routing.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "private-airport-vip-transfers",
@@ -158,11 +179,8 @@ export const experiences: Experience[] = [
     excluded: ["Food and beverages", "Personal shopping", "Souvenirs"],
     ctaCopy:
       "Confirm the preferred walking time and pickup point so the Stone Town route can be planned around heat, traffic and guest pace.",
-    primaryImage: {
-      src: "/assets/activities/stone-town/stone-town-main.png",
-      alt: "Stone Town memorial statues in a garden courtyard in Zanzibar",
-    },
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 7,
   }),
   createExperience({
     slug: "prison-island",
@@ -196,11 +214,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal shopping", "Food and beverages", "Optional gratuities"],
     ctaCopy:
       "Confirm pickup area, guest count and preferred timing so the island visit can be matched to boat and weather conditions.",
-    primaryImage: {
-      src: "/assets/activities/prison-island/prison-island-main.png",
-      alt: "Close view of an Aldabra giant tortoise on Prison Island in Zanzibar",
-    },
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "spice-tour",
@@ -228,7 +243,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Gratuities", "Optional purchases"],
     ctaCopy:
       "Share the hotel area, date and guest count so NUR ZANZIBAR TOURS can confirm a practical spice farm visit window.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "jozani-forest",
@@ -256,11 +272,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Gratuities", "Food and beverages"],
     ctaCopy:
       "Share the guest count, hotel area and preferred half-day window so NUR ZANZIBAR TOURS can plan pickup and forest timing.",
-    primaryImage: {
-      src: "/assets/activities/jozani-forest/jozani-forest-main.png",
-      alt: "Guest photographing a red colobus monkey in Jozani Forest Zanzibar",
-    },
-    imageCount: 4,
+    imageSource: "drive",
+    imageCount: 7,
   }),
   createExperience({
     slug: "safari-blue",
@@ -296,7 +309,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Gratuities", "Items not listed as included"],
     ctaCopy:
       "Check availability and sea conditions before choosing the Safari Blue date, especially for private groups.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 7,
   }),
   createExperience({
     slug: "snorkeling-at-mnemba",
@@ -332,7 +346,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Gratuities", "Access to the private island itself"],
     ctaCopy:
       "Send the hotel area, guest count and preferred morning window so the Mnemba plan can be checked against sea conditions.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "blue-lagoon",
@@ -367,7 +382,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Gratuities", "Food and beverages"],
     ctaCopy:
       "Confirm guest swim comfort, hotel area and preferred time so NUR ZANZIBAR TOURS can check the best lagoon conditions.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "sailing-trip",
@@ -423,7 +439,8 @@ export const experiences: Experience[] = [
     excluded: ["Personal expenses", "Gratuities", "Food and beverages"],
     ctaCopy:
       "Share guest swim comfort, hotel area and preferred timing so NUR ZANZIBAR TOURS can recommend the right cave visit window.",
-    imageCount: 1,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "sunset-at-kae-funk",
@@ -451,7 +468,9 @@ export const experiences: Experience[] = [
     excluded: ["Meals and drinks", "Personal expenses", "Optional gratuities"],
     ctaCopy:
       "Ask about sunset timing, pickup distance and whether the evening should include dinner, drinks or simple beach time.",
-    imageCount: 1,
+    imageSource: "drive",
+    imageSlug: "sunset-at-michamvi",
+    imageCount: 7,
   }),
   createExperience({
     slug: "pungume-sandbank",
@@ -515,7 +534,8 @@ export const experiences: Experience[] = [
     excluded: ["Meals and drinks", "Personal expenses", "Optional gratuities"],
     ctaCopy:
       "Ask about tide timing, pickup distance and the best visit window for a smooth Mtende Beach route.",
-    imageCount: 1,
+    imageSource: "drive",
+    imageCount: 5,
   }),
   createExperience({
     slug: "the-rock-restaurant",
@@ -684,7 +704,7 @@ export const experiences: Experience[] = [
     ctaCopy:
       "Send the travel date, guest count and pickup area so NUR ZANZIBAR TOURS can confirm whether Nakupenda timing is practical.",
     primaryImage: {
-      src: "/assets/activities/nakupenda-sandbank/nakupenda-sandbank-main.png",
+      src: "/assets/activities/nakupenda-sandbank/nakupenda-sandbank-main.webp",
       alt: "Guests standing in clear shallow water at Nakupenda Sandbank in Zanzibar",
     },
     imageCount: 3,
