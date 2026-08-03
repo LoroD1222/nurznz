@@ -151,7 +151,8 @@ export const experiences: Experience[] = [
     ],
     ctaCopy:
       "Send the flight number, arrival or departure time, pickup and drop-off points, guest count and luggage notes so NUR ZANZIBAR TOURS can match the right vehicle and driver.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 6,
   }),
   createExperience({
     slug: "stone-town",
@@ -535,7 +536,7 @@ export const experiences: Experience[] = [
     ctaCopy:
       "Ask about tide timing, pickup distance and the best visit window for a smooth Mtende Beach route.",
     imageSource: "drive",
-    imageCount: 5,
+    imageCount: 4,
   }),
   createExperience({
     slug: "the-rock-restaurant",
@@ -647,6 +648,7 @@ export const experiences: Experience[] = [
     excluded: ["Meals and drinks", "Personal expenses", "Optional extras"],
     ctaCopy:
       "Send the preferred day, guest count and hotel area so NUR ZANZIBAR TOURS can check whether Jet Car is available and suitable.",
+    imageSource: "drive",
     imageCount: 1,
   }),
   createExperience({
@@ -675,7 +677,8 @@ export const experiences: Experience[] = [
     excluded: ["Meals and drinks", "Personal expenses", "Optional extras"],
     ctaCopy:
       "Share the hotel area, date and guest count so NUR ZANZIBAR TOURS can check the most practical dolphin watching option.",
-    imageCount: 3,
+    imageSource: "drive",
+    imageCount: 4,
   }),
   createExperience({
     slug: "nakupenda-sandbank",

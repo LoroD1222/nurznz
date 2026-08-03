@@ -199,7 +199,7 @@ export default function PartnersPage() {
           <div className="grid gap-4">
             <div className="relative min-h-[292px] overflow-hidden rounded-[8px] border border-[#e4d6bf] bg-cream shadow-[0_14px_32px_rgba(15,31,28,0.08)] sm:min-h-[390px]">
               <Image
-                src="/assets/activities/private-airport-vip-transfers/private-airport-vip-transfers-01.webp"
+                src="/assets/drive/private-airport-vip-transfers/private-airport-vip-transfers-01.webp"
                 alt="Private airport VIP transfer vehicle for Zanzibar guests"
                 fill
                 sizes="(min-width: 1024px) 620px, 100vw"
@@ -208,8 +208,8 @@ export default function PartnersPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                ["/assets/activities/private-airport-vip-transfers/private-airport-vip-transfers-02.webp", "Front view of a private Zanzibar transfer van"],
-                ["/assets/activities/private-airport-vip-transfers/private-airport-vip-transfers-03.webp", "Private SUV available for Zanzibar transfer and rental requests"],
+                ["/assets/drive/private-airport-vip-transfers/private-airport-vip-transfers-02.webp", "Front view of a private Zanzibar transfer van"],
+                ["/assets/drive/private-airport-vip-transfers/private-airport-vip-transfers-03.webp", "Private SUV available for Zanzibar transfer and rental requests"],
               ].map(([src, alt]) => (
                 <div
                   key={src}
