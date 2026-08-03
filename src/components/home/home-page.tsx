@@ -417,6 +417,7 @@ export function SplitCta({
   copy,
   reverse = false,
   compactTop = false,
+  desktopImageSide = "right",
 }: {
   image: string;
   map: string;
@@ -425,13 +426,16 @@ export function SplitCta({
   copy?: string;
   reverse?: boolean;
   compactTop?: boolean;
+  desktopImageSide?: "left" | "right";
 }) {
+  const imageOnDesktopLeft = reverse || desktopImageSide === "left";
+
   const imagePanel = (
     <div
       className={`relative min-h-[238px] overflow-hidden md:min-h-[422px] ${
-        reverse ? "md:order-1" : "md:order-2"
+        imageOnDesktopLeft ? "md:order-1" : "md:order-2"
       } ${
-        reverse
+        imageOnDesktopLeft
           ? "md:[clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]"
           : "md:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]"
       }`}
@@ -455,13 +459,13 @@ export function SplitCta({
     >
       <div
         className={`relative mx-auto grid max-w-[1170px] overflow-hidden rounded-[12px] bg-teal shadow-[0_4px_17px_0_rgba(0,0,0,0.1)] md:grid-cols-2 ${
-          reverse ? "lg:grid-cols-[663px_1fr]" : "lg:grid-cols-[507px_1fr]"
+          imageOnDesktopLeft ? "lg:grid-cols-[663px_1fr]" : "lg:grid-cols-[507px_1fr]"
         }`}
       >
         {reverse ? imagePanel : null}
         <div
           className={`relative z-10 flex min-h-[360px] flex-col justify-center px-7 py-10 sm:px-12 md:min-h-[422px] ${
-            reverse ? "md:order-2 md:pl-16 md:pr-10" : "md:order-1"
+            imageOnDesktopLeft ? "md:order-2 md:pl-16 md:pr-10" : "md:order-1"
           }`}
         >
           <SectionLabel dark>Activity Catalogue</SectionLabel>
@@ -502,7 +506,7 @@ export function SplitCta({
           height={305}
           loading="eager"
           className={`pointer-events-none absolute z-20 hidden w-[156px] md:block ${
-            reverse ? "left-[43%] top-[62px]" : "left-[42%] top-[78px]"
+            imageOnDesktopLeft ? "left-[43%] top-[62px]" : "left-[42%] top-[78px]"
           }`}
         />
       </div>
@@ -787,6 +791,7 @@ export function HomePage() {
         map="/assets/figma/map-coral-cta.svg"
         imageAlt="Travel guests and a local guide smiling on a Zanzibar boat activity"
         title="Short-trip operations that are easy to sell"
+        desktopImageSide="left"
       />
       <LogoStrip />
       <ReviewsAndFaq />
